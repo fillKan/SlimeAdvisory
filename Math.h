@@ -37,16 +37,16 @@ namespace Math
 
 	bool RectCollision(Object* objectA, Object* objectB)
 	{
-		Collider colliderA = objectA->collider;
-		Collider colliderB = objectB->collider;
+		Vector2 ALeftTop   = objectA->collider.leftTop   + objectA->Position;
+		Vector2 ARightDown = objectA->collider.rightDown + objectA->Position;
+		
+		Vector2 BLeftTop   = objectB->collider.leftTop   + objectB->Position;
+		Vector2 BRightDown = objectB->collider.rightDown + objectB->Position;
 
-		Vector2 positionA = objectA->Position;
-		Vector2 positionB = objectB->Position;
-
-		return (colliderA.leftTop.x + positionA.x < colliderB.rightDown.x + positionB.x && 
-				colliderA.leftTop.y + positionA.y < colliderB.rightDown.y + positionB.y &&
-				colliderB.leftTop.x + positionB.x < colliderA.rightDown.x + positionA.x && 
-				colliderB.leftTop.y + positionB.y < colliderA.rightDown.y + positionA.y);
+		return (ALeftTop.x < BRightDown.x && 
+				ALeftTop.y < BRightDown.y &&
+				BLeftTop.x < ARightDown.x && 
+				BLeftTop.y < ARightDown.y);
 	}
 
 	float RadianAngle(Vector2 pointA, Vector2 pointB)
