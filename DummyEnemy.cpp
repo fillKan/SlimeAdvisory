@@ -10,6 +10,8 @@ void DummyEnemy::Init()
 
 	mTexture = IMAGE->AddImage("DummyEnemy", "./image/DummyEnemy.png");
 	collider.Init(ZERO, Vector2(mTexture->info.Width, mTexture->info.Height));
+
+	CircleRadius = mTexture->info.Width * 0.5f;
 }
 
 void DummyEnemy::Update()

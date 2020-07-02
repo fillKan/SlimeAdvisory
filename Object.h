@@ -21,9 +21,11 @@ public:
 	bool IsCrntCollision;
 
 	float Rotation;
+	float CircleRadius;
 
 	Vector2 Position;
 	Vector2 Scale;
+	Vector2 Velocity;
 	Vector2 ImageSize;
 
 	Collider collider;

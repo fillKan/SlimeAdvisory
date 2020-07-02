@@ -2,6 +2,7 @@
 #include "MainGame.h"
 
 #include "DummyEnemy.h"
+#include "Player.h"
 
 MainGame::MainGame()
 {
@@ -14,6 +15,7 @@ MainGame::~MainGame()
 void MainGame::Init()
 {
 	OBJECT->AddObject(new DummyEnemy());
+	OBJECT->AddObject(new Player());
 }
 
 void MainGame::Update()

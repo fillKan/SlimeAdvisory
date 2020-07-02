@@ -1,7 +1,7 @@
 #include "DXUT.h"
 #include "Object.h"
 
-Object::Object() : Parent(nullptr), Name(""), Tag(TAG::NONE), IsDestory(false), IsActive(true), IsPrevCollision(false), IsCrntCollision(false), Rotation(0.0f), Position(ZERO), Scale(ONE), ImageSize(ZERO)
+Object::Object() : Parent(nullptr), Name(""), Tag(TAG::NONE), IsDestory(false), IsActive(true), IsPrevCollision(false), IsCrntCollision(false), Rotation(0.0f), Position(ZERO), Scale(ONE), ImageSize(ZERO), Velocity(ZERO), CircleRadius(0.f)
 {
 }
 
@@ -53,15 +53,13 @@ Object* ObjectManager::FindObject(TAG tag)
 
 void ObjectManager::CollisionCheck(TAG tagA, TAG tagB)
 {
-	return;
-
 	if (mCurObjects.empty()) return;
 
-	for (auto& iterA = mCurObjects.begin(); iterA != mCurObjects.end(); )
+	for (auto& iterA = mCurObjects.begin(); iterA != mCurObjects.end(); iterA++)
 	{
 		if ((*iterA)->Tag != tagA) continue;
 
-		for (auto& iterB = mCurObjects.begin(); iterB != mCurObjects.end(); )
+		for (auto& iterB = mCurObjects.begin(); iterB != mCurObjects.end(); iterB++)
 		{
 			if ((*iterB)->Tag != tagB) continue;
 
@@ -69,7 +67,7 @@ void ObjectManager::CollisionCheck(TAG tagA, TAG tagB)
 			{
 				(*iterB)->IsPrevCollision = (*iterB)->IsCrntCollision;
 
-				if (Math::RectCollision(*iterA, *iterB))
+				if (Math::CircleCollision((*iterA)->Position, (*iterA)->CircleRadius, (*iterB)->Position, (*iterB)->CircleRadius))
 				{
 					(*iterB)->IsCrntCollision = true;
 
@@ -113,7 +111,7 @@ void ObjectManager::Update()
 
 	if (mCurObjects.empty()) return;
 
-	CollisionCheck(TAG::PLAYER, TAG::EBULLET);
+	CollisionCheck(TAG::PLAYER, TAG::ENEMY);
 	CollisionCheck(TAG::ENEMY, TAG::BULLET);
 
 	for (auto iter = mCurObjects.begin(); iter != mCurObjects.end();)
@@ -131,9 +129,11 @@ void ObjectManager::Update()
 		}
 		else if((*iter)->IsActive)
 		{
-			(*iter++)->Update();
+			(*iter)->Update();
+			//¾ÈµÊ(*iter++)->Update();
 			// Array[i++].Update();
 		}
+		iter++;
 	}
 }
 

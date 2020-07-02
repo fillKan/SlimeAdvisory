@@ -143,6 +143,9 @@
     <ClCompile Include="DummyEnemy.cpp">
       <Filter>System\Object\Enemy\DummyEnemy</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>System\Object\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -176,6 +179,9 @@
     </ClInclude>
     <ClInclude Include="DummyEnemy.h">
       <Filter>System\Object\Enemy\DummyEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>System\Object\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
