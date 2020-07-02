@@ -1,6 +1,8 @@
 #include "DXUT.h"
 #include "MainGame.h"
 
+#include "DummyEnemy.h"
+
 MainGame::MainGame()
 {
 }
@@ -11,6 +13,7 @@ MainGame::~MainGame()
 
 void MainGame::Init()
 {
+	OBJECT->AddObject(new DummyEnemy());
 }
 
 void MainGame::Update()

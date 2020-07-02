@@ -386,12 +386,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="DummyEnemy.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Scence.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="DummyEnemy.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Math.h" />
