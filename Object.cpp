@@ -64,6 +64,35 @@ void ObjectManager::CollisionCheck(TAG tagA, TAG tagB)
 		for (auto& iterB = mCurObjects.begin(); iterB != mCurObjects.end(); )
 		{
 			if ((*iterB)->Tag != tagB) continue;
+
+			if (Math::Distance((*iterA)->Position, (*iterB)->Position) <= 50.f)
+			{
+				(*iterB)->IsPrevCollision = (*iterB)->IsCrntCollision;
+
+				if (Math::RectCollision(*iterA, *iterB))
+				{
+					(*iterB)->IsCrntCollision = true;
+
+					if ((*iterB)->IsCrntCollision && (*iterB)->IsPrevCollision)
+					{
+						(*iterB)->OnCollisionStay(*iterA);
+						(*iterA)->OnCollisionStay(*iterB);
+					}
+					else if((*iterB)->IsCrntCollision && !(*iterB)->IsPrevCollision)
+					{
+						(*iterB)->OnCollisionEnter(*iterA);
+						(*iterA)->OnCollisionEnter(*iterB);
+					}
+					continue;
+				}
+				(*iterB)->IsCrntCollision = false;
+				
+				if (!(*iterB)->IsPrevCollision)
+				{
+					(*iterB)->OnCollisionExit(*iterA);
+					(*iterA)->OnCollisionExit(*iterB);
+				}
+			}
 		}
 	}
 }

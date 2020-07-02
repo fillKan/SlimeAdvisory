@@ -1,4 +1,6 @@
 #pragma once
+#include "Object.h"
+
 namespace Math
 {
 	inline float Distance(Vector2 pointA, Vector2 pointB)
@@ -31,6 +33,20 @@ namespace Math
 		float degree = TO_DEGREE * atan2f((pointA.x - pointB.x), (pointA.y - pointB.y)) - GRAPH_CORRECTION;
 
 		return (degree < 0.f) ? -degree : degree;
+	}
+
+	bool RectCollision(Object* objectA, Object* objectB)
+	{
+		Collider colliderA = objectA->collider;
+		Collider colliderB = objectB->collider;
+
+		Vector2 positionA = objectA->Position;
+		Vector2 positionB = objectB->Position;
+
+		return (colliderA.leftTop.x + positionA.x < colliderB.rightDown.x + positionB.x && 
+				colliderA.leftTop.y + positionA.y < colliderB.rightDown.y + positionB.y &&
+				colliderB.leftTop.x + positionB.x < colliderA.rightDown.x + positionA.x && 
+				colliderB.leftTop.y + positionB.y < colliderA.rightDown.y + positionA.y);
 	}
 
 	float RadianAngle(Vector2 pointA, Vector2 pointB)

@@ -26,6 +26,8 @@ public:
 	Vector2 Scale;
 	Vector2 ImageSize;
 
+	Collider collider;
+
 public:
 			 Object();
 	virtual ~Object();
