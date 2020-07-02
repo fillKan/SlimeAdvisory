@@ -1,5 +1,5 @@
 #pragma once
-#include "Object.h"
+class Object;
 
 namespace Math
 {
@@ -35,19 +35,7 @@ namespace Math
 		return (degree < 0.f) ? -degree : degree;
 	}
 
-	bool RectCollision(Object* objectA, Object* objectB)
-	{
-		Vector2 ALeftTop   = objectA->collider.leftTop   + objectA->Position;
-		Vector2 ARightDown = objectA->collider.rightDown + objectA->Position;
-		
-		Vector2 BLeftTop   = objectB->collider.leftTop   + objectB->Position;
-		Vector2 BRightDown = objectB->collider.rightDown + objectB->Position;
-
-		return (ALeftTop.x < BRightDown.x && 
-				ALeftTop.y < BRightDown.y &&
-				BLeftTop.x < ARightDown.x && 
-				BLeftTop.y < ARightDown.y);
-	}
+	bool RectCollision(Object* objectA, Object* objectB);
 
 	float RadianAngle(Vector2 pointA, Vector2 pointB)
 	{
