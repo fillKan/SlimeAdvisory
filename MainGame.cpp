@@ -1,8 +1,7 @@
 #include "DXUT.h"
 #include "MainGame.h"
 
-#include "DummyEnemy.h"
-#include "Player.h"
+#include "StageONE.h"
 
 MainGame::MainGame()
 {
@@ -15,19 +14,14 @@ MainGame::~MainGame()
 void MainGame::Init()
 {
 	srand(time(NULL));
-	OBJECT->AddObject(new Player());
 
-	OBJECT->AddObject(new DummyEnemy());
+	SCENCE->AddScence("StageONE", new StageONE());
 
-	mTimer.SetTimer(0.35f, true);
+	SCENCE->LoadScence("StageONE");
 }
 
 void MainGame::Update()
 {
-	if (mTimer.TimeOver())
-	{
-		OBJECT->AddObject(new DummyEnemy());
-	}
 	CAMERA->Update();
 	 INPUT->Update();
 	SCENCE->Update();

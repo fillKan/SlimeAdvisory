@@ -54,6 +54,9 @@
     <Filter Include="System\Object\PBulllet">
       <UniqueIdentifier>{6bb42daa-9a6f-4871-b633-7d62ab705088}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Scence\StageONE">
+      <UniqueIdentifier>{ef87fcef-d330-481b-b3d1-31469b43f0f4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -152,6 +155,9 @@
     <ClCompile Include="PBullet.cpp">
       <Filter>System\Object\PBulllet</Filter>
     </ClCompile>
+    <ClCompile Include="StageONE.cpp">
+      <Filter>System\Scence\StageONE</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -191,6 +197,9 @@
     </ClInclude>
     <ClInclude Include="PBullet.h">
       <Filter>System\Object\PBulllet</Filter>
+    </ClInclude>
+    <ClInclude Include="StageONE.h">
+      <Filter>System\Scence\StageONE</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

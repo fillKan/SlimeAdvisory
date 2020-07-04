@@ -14,7 +14,5 @@ public:
 	void ResetDevice();
 
 private:
-
-	Timer mTimer;
 };
 
