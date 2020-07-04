@@ -12,7 +12,7 @@ public:
 	virtual void OnCollisionExit (Object* other) override;
 
 private:
-	Texture* mTexture;	
+	Animation mAnimation;
 
 	float mSpeed;
 };

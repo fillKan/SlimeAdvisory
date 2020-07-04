@@ -8,9 +8,12 @@ void PBullet::Init()
 
 	Position = ZERO;
 
-	mTexture = IMAGE->AddImage("PBullet", "./image/PBullet.png");
+	mAnimation.AddFrame(IMAGE->AddImage("BoneSpine1", "./image/PBullet/BoneSpine1.png"));
+	mAnimation.AddFrame(IMAGE->AddImage("BoneSpine2", "./image/PBullet/BoneSpine2.png"));
+	mAnimation.AddFrame(IMAGE->AddImage("BoneSpine3", "./image/PBullet/BoneSpine3.png"));
+	mAnimation.AddFrame(IMAGE->AddImage("BoneSpine4", "./image/PBullet/BoneSpine4.png"));
 
-	CircleRadius = 64.f;
+	CircleRadius = 8.f;
 
 	mSpeed = 5.5f;
 }
@@ -24,7 +27,7 @@ void PBullet::Update()
 
 void PBullet::Render()
 {
-	mTexture->CenterRender(Position);
+	IMAGE->CenterRender(mAnimation.Play(), Position);
 }
 
 void PBullet::Release()

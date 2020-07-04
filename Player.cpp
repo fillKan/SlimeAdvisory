@@ -28,7 +28,7 @@ void Player::Init()
 
 	mSpeed = 4.5f;
 
-	mTimer.SetTimer(0.1f, true);
+	mTimer.SetTimer(0.25f, true);
 }
 
 void Player::Update()
