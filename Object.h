@@ -22,6 +22,7 @@ public:
 
 	float Rotation;
 	float CircleRadius;
+	float Health;
 
 	Vector2 Position;
 	Vector2 Scale;
@@ -56,7 +57,7 @@ public:
 	 ObjectManager() {};
 	~ObjectManager();
 
-	Object* AddObject(Object* object);
+	void AddObject(Object* object);
 
 	Object* FindObject  (const string& name);
 	Object* operator [] (const string& name) { return FindObject(name); }

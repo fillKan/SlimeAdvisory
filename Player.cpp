@@ -16,7 +16,7 @@ void Player::Init()
 
 	CircleRadius = 128.f;
 
-	mSpeed = 6.5f;
+	mSpeed = 4.5f;
 
 	CAMERA->mTraceObject = this;
 	CAMERA->mIsTrace = true;
@@ -28,14 +28,11 @@ void Player::Update()
 {
 	Velocity = ZERO;
 
-	/*if (mTimer.TimeOver())
-	{
-		Object* enemy = OBJECT->AddObject(new DummyEnemy());
-	}*/
-
 	if (INPUT->GetKey(VK_SPACE) && mTimer.TimeOver())
 	{
-		Object* bullet = OBJECT->AddObject(new PBullet);
+		Object* bullet = new PBullet();
+		
+		OBJECT->AddObject(bullet);
 
 		bullet->Position = Position;
 	}

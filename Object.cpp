@@ -1,7 +1,7 @@
 #include "DXUT.h"
 #include "Object.h"
 
-Object::Object() : Parent(nullptr), Name(""), Tag(TAG::NONE), IsDestory(false), IsActive(true), IsPrevCollision(false), IsCrntCollision(false), Rotation(0.0f), Position(ZERO), Scale(ONE), ImageSize(ZERO), Velocity(ZERO), CircleRadius(0.f)
+Object::Object() : Parent(nullptr), Name(""), Tag(TAG::NONE), IsDestory(false), IsActive(true), IsPrevCollision(false), IsCrntCollision(false), Rotation(0.0f), Position(ZERO), Scale(ONE), ImageSize(ZERO), Velocity(ZERO), CircleRadius(0.f), Health(1.f)
 {
 }
 
@@ -26,13 +26,11 @@ ObjectManager::~ObjectManager()
 	mCurObjects.clear();
 }
 
-Object* ObjectManager::AddObject(Object* object)
+void ObjectManager::AddObject(Object* object)
 {
 	object->Init();
 
 	mNewObjects.emplace_back(object);
-
-	return object;
 }
 
 Object* ObjectManager::FindObject(const string& name)
@@ -118,7 +116,7 @@ void ObjectManager::Update()
 
 	for (auto iter = mCurObjects.begin(); iter != mCurObjects.end();)
 	{
-		if ((*iter)->IsDestory || (*iter)->IsOutMap())
+		if ((*iter)->IsDestory || (*iter)->IsOutMap() || (*iter)->Health <= 0.f)
 		{
 			SAFE_DELETE(*iter);
 
