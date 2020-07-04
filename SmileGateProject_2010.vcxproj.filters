@@ -51,6 +51,9 @@
     <Filter Include="System\Object\Enemy\DummyEnemy">
       <UniqueIdentifier>{ae71d07e-b272-4e8e-9b2c-0195373a1feb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Object\PBulllet">
+      <UniqueIdentifier>{6bb42daa-9a6f-4871-b633-7d62ab705088}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -146,6 +149,9 @@
     <ClCompile Include="Player.cpp">
       <Filter>System\Object\Player</Filter>
     </ClCompile>
+    <ClCompile Include="PBullet.cpp">
+      <Filter>System\Object\PBulllet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -182,6 +188,9 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>System\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PBullet.h">
+      <Filter>System\Object\PBulllet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

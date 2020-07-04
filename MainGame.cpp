@@ -14,12 +14,20 @@ MainGame::~MainGame()
 
 void MainGame::Init()
 {
-	OBJECT->AddObject(new DummyEnemy());
+	srand(time(NULL));
 	OBJECT->AddObject(new Player());
+
+	OBJECT->AddObject(new DummyEnemy());
+
+	mTimer.SetTimer(0.35f, true);
 }
 
 void MainGame::Update()
 {
+	if (mTimer.TimeOver())
+	{
+		OBJECT->AddObject(new DummyEnemy());
+	}
 	CAMERA->Update();
 	 INPUT->Update();
 	SCENCE->Update();

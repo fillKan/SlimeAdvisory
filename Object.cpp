@@ -26,11 +26,13 @@ ObjectManager::~ObjectManager()
 	mCurObjects.clear();
 }
 
-void ObjectManager::AddObject(Object* object)
+Object* ObjectManager::AddObject(Object* object)
 {
 	object->Init();
 
 	mNewObjects.emplace_back(object);
+
+	return object;
 }
 
 Object* ObjectManager::FindObject(const string& name)
@@ -112,7 +114,7 @@ void ObjectManager::Update()
 	if (mCurObjects.empty()) return;
 
 	CollisionCheck(TAG::PLAYER, TAG::ENEMY);
-	CollisionCheck(TAG::ENEMY, TAG::BULLET);
+	CollisionCheck(TAG::ENEMY, TAG::PBULLET);
 
 	for (auto iter = mCurObjects.begin(); iter != mCurObjects.end();)
 	{
@@ -127,13 +129,14 @@ void ObjectManager::Update()
 			// mCurObjects.erase(iter++); 이런식으로 사용하는 것을 상상할 수도 있는데, 
 			// 이미 iter는 erase함수를 통해 갈곳을 잃었기 때문에 엄한곳만 가리키게된다
 		}
-		else if((*iter)->IsActive)
+		else
 		{
-			(*iter)->Update();
+			if ((*iter)->IsActive) (*iter)->Update();
 			//안됨(*iter++)->Update();
 			// Array[i++].Update();
+
+			iter++;
 		}
-		iter++;
 	}
 }
 

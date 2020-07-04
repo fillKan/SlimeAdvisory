@@ -2,7 +2,7 @@
 
 enum class TAG
 {
-	PLAYER, ENEMY, EBULLET, BULLET, NONE
+	PLAYER, ENEMY, EBULLET, PBULLET, NONE
 };
 
 class Object abstract
@@ -56,7 +56,7 @@ public:
 	 ObjectManager() {};
 	~ObjectManager();
 
-	void AddObject(Object* object);
+	Object* AddObject(Object* object);
 
 	Object* FindObject  (const string& name);
 	Object* operator [] (const string& name) { return FindObject(name); }

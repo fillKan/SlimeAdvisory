@@ -1,6 +1,9 @@
 #include "DXUT.h"
 #include "Player.h"
 
+#include "PBullet.h"
+#include "DummyEnemy.h"
+
 void Player::Init()
 {
 	Name = "Player";
@@ -11,18 +14,31 @@ void Player::Init()
 	mTexture = IMAGE->AddImage("Player", "./image/Player.png");
 	collider.Init(Vector2(-mTexture->info.Width / 2, -mTexture->info.Height / 2), Vector2(mTexture->info.Width / 2, mTexture->info.Height / 2));
 
-	CircleRadius = mTexture->info.Width * 0.5f;
+	CircleRadius = 128.f;
 
-	mSpeed = 2.5f;
+	mSpeed = 6.5f;
 
 	CAMERA->mTraceObject = this;
 	CAMERA->mIsTrace = true;
+
+	mTimer.SetTimer(0.1f, true);
 }
 
 void Player::Update()
 {
 	Velocity = ZERO;
 
+	/*if (mTimer.TimeOver())
+	{
+		Object* enemy = OBJECT->AddObject(new DummyEnemy());
+	}*/
+
+	if (INPUT->GetKey(VK_SPACE) && mTimer.TimeOver())
+	{
+		Object* bullet = OBJECT->AddObject(new PBullet);
+
+		bullet->Position = Position;
+	}
 	if (INPUT->GetKey(VK_UP))
 	{
 		Velocity = UP * mSpeed;

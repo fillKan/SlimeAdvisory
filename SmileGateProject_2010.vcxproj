@@ -389,6 +389,7 @@
     <ClCompile Include="DummyEnemy.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="PBullet.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scence.cpp" />
     <ClCompile Include="Sound.cpp" />
@@ -399,6 +400,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="PBullet.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scence.h" />
     <ClInclude Include="Singleton.h" />

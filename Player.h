@@ -15,5 +15,7 @@ private:
 	Texture* mTexture;
 
 	float mSpeed;
+
+	Timer mTimer;
 };
 
