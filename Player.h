@@ -2,6 +2,9 @@
 class Player : public Object
 {
 public:
+	 Player();
+	~Player();
+
 	virtual void Init   () override;
 	virtual void Update () override;
 	virtual void Render () override;
@@ -12,7 +15,7 @@ public:
 	virtual void OnCollisionExit (Object* other) override;
 
 private:
-	Texture* mTexture;
+	Animation mAnimation;
 
 	float mSpeed;
 

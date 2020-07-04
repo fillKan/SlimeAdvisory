@@ -29,8 +29,6 @@ public:
 	Vector2 Velocity;
 	Vector2 ImageSize;
 
-	Collider collider;
-
 public:
 			 Object();
 	virtual ~Object();

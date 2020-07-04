@@ -3,7 +3,7 @@
 
 bool Math::RectCollision(Object* objectA, Object* objectB)
 {
-	Vector2 ALeftTop   = objectA->collider.leftTop   + objectA->Position;
+	/*Vector2 ALeftTop   = objectA->collider.leftTop   + objectA->Position;
 	Vector2 ARightDown = objectA->collider.rightDown + objectA->Position;
 
 	Vector2 BLeftTop   = objectB->collider.leftTop   + objectB->Position;
@@ -12,7 +12,9 @@ bool Math::RectCollision(Object* objectA, Object* objectB)
 	return (ALeftTop.x < BRightDown.x &&
 			ALeftTop.y < BRightDown.y &&
 			BLeftTop.x < ARightDown.x &&
-			BLeftTop.y < ARightDown.y);
+			BLeftTop.y < ARightDown.y);*/
+
+	return false;
 }
 
 Vector2 Math::AimVector(Vector2 target, Vector2 tracer)

@@ -157,7 +157,7 @@ void Animation::AddFrame(Texture* frame)
 	if(frame) Frames.push_back(frame);
 }
 
-void Animation::Release()
+void Animation::Clear()
 {
 	Frames.clear();
 }

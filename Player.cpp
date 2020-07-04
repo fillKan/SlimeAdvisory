@@ -4,6 +4,15 @@
 #include "PBullet.h"
 #include "DummyEnemy.h"
 
+Player::Player()
+{
+}
+
+Player::~Player()
+{
+	mAnimation.Clear();
+}
+
 void Player::Init()
 {
 	Name = "Player";
@@ -11,15 +20,13 @@ void Player::Init()
 
 	Position = Vector2(WINSIZEX / 2, WINSIZEY / 2);
 
-	mTexture = IMAGE->AddImage("Player", "./image/Player.png");
-	collider.Init(Vector2(-mTexture->info.Width / 2, -mTexture->info.Height / 2), Vector2(mTexture->info.Width / 2, mTexture->info.Height / 2));
+	mAnimation.AddFrame(IMAGE->AddImage("Skull1", "./image/Player/Skull1.png"));
+	mAnimation.AddFrame(IMAGE->AddImage("Skull2", "./image/Player/Skull2.png"));
+	mAnimation.AddFrame(IMAGE->AddImage("Skull3", "./image/Player/Skull3.png"));
 
 	CircleRadius = 128.f;
 
 	mSpeed = 4.5f;
-
-	CAMERA->mTraceObject = this;
-	CAMERA->mIsTrace = true;
 
 	mTimer.SetTimer(0.1f, true);
 }
@@ -57,12 +64,11 @@ void Player::Update()
 
 void Player::Render()
 {
-	mTexture->CenterRender(Position);
+	IMAGE->CenterRender(mAnimation.Play(), Position);
 }
 
 void Player::Release()
 {
-	CAMERA->mTraceObject = nullptr;
 }
 
 void Player::OnCollisionEnter(Object* other)

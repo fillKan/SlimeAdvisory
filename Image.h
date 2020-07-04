@@ -22,7 +22,7 @@ struct Animation
 	vector<Texture*> Frames;
 
 	void AddFrame(Texture* frame);
-	void Release();
+	void Clear();
 
 	Texture* Play();
 
