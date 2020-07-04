@@ -28,8 +28,12 @@ const int MAPSIZEMINX = -2000;
 const int MAPSIZEMAXY =  1600;
 const int MAPSIZEMINY = -1600;
 
-const D3DXVECTOR2 ZERO = D3DXVECTOR2(0, 0);
-const D3DXVECTOR2  ONE = D3DXVECTOR2(1, 1);
+const D3DXVECTOR2  ZERO = D3DXVECTOR2( 0, 0);
+const D3DXVECTOR2   ONE = D3DXVECTOR2( 1, 1);
+const D3DXVECTOR2 RIGHT = D3DXVECTOR2( 1, 0);
+const D3DXVECTOR2  LEFT = D3DXVECTOR2(-1, 0);
+const D3DXVECTOR2  DOWN = D3DXVECTOR2( 0, 1);
+const D3DXVECTOR2    UP = D3DXVECTOR2( 0,-1);
 
 #define Dictionary map
 
@@ -38,6 +42,16 @@ const D3DXVECTOR2  ONE = D3DXVECTOR2(1, 1);
 #define ELAPSED	   DXUTGetTime()
 
 #define RANDOM(min, max) rand() % ((max) + 2) + (min)
+
+struct Collider
+{
+	Vector2 leftTop, rightDown;
+
+	void Init(Vector2 lTop = ZERO, Vector2 rDown = ZERO)
+	{
+		leftTop = lTop; rightDown = rDown;
+	}
+};
 
 #include "Math.h"
 #include "Singleton.h"

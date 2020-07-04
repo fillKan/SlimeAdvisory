@@ -12,5 +12,9 @@ public:
 
 	void  LostDevice();
 	void ResetDevice();
+
+private:
+
+	Timer mTimer;
 };
 

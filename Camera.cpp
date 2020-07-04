@@ -3,26 +3,24 @@
 
 void Camera::Update()
 {
-	float deltaTime = DELTA_TIME;
-
 	if (mTraceObject != nullptr && mIsTrace)
 	{
 		mCanMove = (Math::Distance(mPosition, mTraceObject->Position) >= 1);
 
 		if (mCanMove)
 		{
-			mPosition = Math::Lerp(mPosition, mTraceObject->Position, 2.f);
-			mScale	  = Math::Lerp(mScale, mMaxScale, 2.f);
+			Math::Lerp(&mPosition, mPosition, mTraceObject->Position, 2.f);
+			Math::Lerp(&mScale, mScale, mMaxScale, 2.f);
 		}
 	}
 
 	if (mShakeTime > 0)
 	{
-		mShakeTime -= deltaTime;
+		mShakeTime -= DELTA_TIME;
 
 		mPosition += Vector2(RANDOM(-1, 1) + RANDOM(-10, 10) * 0.1f, RANDOM(-1, 1) + RANDOM(-10, 10) * 0.1f);
 	}
-	else if (mIsTrace) mPosition = mBasicPos;
+	else if (!mIsTrace) mPosition = mBasicPos;
 
 	mVlewMat = Matrix
 	(

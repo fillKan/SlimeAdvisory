@@ -1,7 +1,7 @@
 #include "DXUT.h"
 #include "Object.h"
 
-Object::Object() : Parent(nullptr), Name(""), Tag(TAG::NONE), IsDestory(false), IsActive(true), IsPrevCollision(false), IsCrntCollision(false), Rotation(0.0f), Position(ZERO), Scale(ONE), ImageSize(ZERO)
+Object::Object() : Parent(nullptr), Name(""), Tag(TAG::NONE), IsDestory(false), IsActive(true), IsPrevCollision(false), IsCrntCollision(false), Rotation(0.0f), Position(ZERO), Scale(ONE), ImageSize(ZERO), Velocity(ZERO), CircleRadius(0.f)
 {
 }
 
@@ -26,11 +26,13 @@ ObjectManager::~ObjectManager()
 	mCurObjects.clear();
 }
 
-void ObjectManager::AddObject(Object* object)
+Object* ObjectManager::AddObject(Object* object)
 {
 	object->Init();
 
 	mNewObjects.emplace_back(object);
+
+	return object;
 }
 
 Object* ObjectManager::FindObject(const string& name)
@@ -53,17 +55,44 @@ Object* ObjectManager::FindObject(TAG tag)
 
 void ObjectManager::CollisionCheck(TAG tagA, TAG tagB)
 {
-	return;
-
 	if (mCurObjects.empty()) return;
 
-	for (auto& iterA = mCurObjects.begin(); iterA != mCurObjects.end(); )
+	for (auto& iterA = mCurObjects.begin(); iterA != mCurObjects.end(); iterA++)
 	{
 		if ((*iterA)->Tag != tagA) continue;
 
-		for (auto& iterB = mCurObjects.begin(); iterB != mCurObjects.end(); )
+		for (auto& iterB = mCurObjects.begin(); iterB != mCurObjects.end(); iterB++)
 		{
 			if ((*iterB)->Tag != tagB) continue;
+
+			if (Math::Distance((*iterA)->Position, (*iterB)->Position) <= 50.f)
+			{
+				(*iterB)->IsPrevCollision = (*iterB)->IsCrntCollision;
+
+				if (Math::CircleCollision((*iterA)->Position, (*iterA)->CircleRadius, (*iterB)->Position, (*iterB)->CircleRadius))
+				{
+					(*iterB)->IsCrntCollision = true;
+
+					if ((*iterB)->IsCrntCollision && (*iterB)->IsPrevCollision)
+					{
+						(*iterB)->OnCollisionStay(*iterA);
+						(*iterA)->OnCollisionStay(*iterB);
+					}
+					else if((*iterB)->IsCrntCollision && !(*iterB)->IsPrevCollision)
+					{
+						(*iterB)->OnCollisionEnter(*iterA);
+						(*iterA)->OnCollisionEnter(*iterB);
+					}
+					continue;
+				}
+				(*iterB)->IsCrntCollision = false;
+				
+				if (!(*iterB)->IsPrevCollision)
+				{
+					(*iterB)->OnCollisionExit(*iterA);
+					(*iterA)->OnCollisionExit(*iterB);
+				}
+			}
 		}
 	}
 }
@@ -84,8 +113,8 @@ void ObjectManager::Update()
 
 	if (mCurObjects.empty()) return;
 
-	CollisionCheck(TAG::PLAYER, TAG::EBULLET);
-	CollisionCheck(TAG::ENEMY, TAG::BULLET);
+	CollisionCheck(TAG::PLAYER, TAG::ENEMY);
+	CollisionCheck(TAG::ENEMY, TAG::PBULLET);
 
 	for (auto iter = mCurObjects.begin(); iter != mCurObjects.end();)
 	{
@@ -100,10 +129,13 @@ void ObjectManager::Update()
 			// mCurObjects.erase(iter++); 이런식으로 사용하는 것을 상상할 수도 있는데, 
 			// 이미 iter는 erase함수를 통해 갈곳을 잃었기 때문에 엄한곳만 가리키게된다
 		}
-		else if((*iter)->IsActive)
+		else
 		{
-			(*iter++)->Update();
+			if ((*iter)->IsActive) (*iter)->Update();
+			//안됨(*iter++)->Update();
 			// Array[i++].Update();
+
+			iter++;
 		}
 	}
 }

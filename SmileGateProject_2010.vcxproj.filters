@@ -42,6 +42,18 @@
     <Filter Include="System\Camera">
       <UniqueIdentifier>{efda3bcf-88af-4ec7-938f-009cd751b7a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Object\Player">
+      <UniqueIdentifier>{6ca4f20b-39b9-4177-9ac1-bd47764a9763}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Object\Enemy">
+      <UniqueIdentifier>{c2ad85c4-750e-423a-8475-63ee40e3acd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Object\Enemy\DummyEnemy">
+      <UniqueIdentifier>{ae71d07e-b272-4e8e-9b2c-0195373a1feb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Object\PBulllet">
+      <UniqueIdentifier>{6bb42daa-9a6f-4871-b633-7d62ab705088}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -131,6 +143,15 @@
     <ClCompile Include="Camera.cpp">
       <Filter>System\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="DummyEnemy.cpp">
+      <Filter>System\Object\Enemy\DummyEnemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>System\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PBullet.cpp">
+      <Filter>System\Object\PBulllet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -161,6 +182,15 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>System\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="DummyEnemy.h">
+      <Filter>System\Object\Enemy\DummyEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>System\Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PBullet.h">
+      <Filter>System\Object\PBulllet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,6 @@
 #pragma once
+class Object;
+
 namespace Math
 {
 	inline float Distance(Vector2 pointA, Vector2 pointB)
@@ -6,9 +8,9 @@ namespace Math
 		return sqrtf(pow(pointA.x - pointB.x, 2) + pow(pointA.y - pointB.y, 2));
 	}
 
-	inline Vector2 Lerp(Vector2 start, Vector2 end, float value)
+	inline void Lerp(Vector2* target, Vector2& start, Vector2& end, float value)
 	{
-		return start + (end - start) * value * DELTA_TIME;
+		*target = start + (end - start) * value * DELTA_TIME;
 	}
 
 	inline float SinGraph(float radius, float degree, float offset = 0.f)
@@ -32,6 +34,8 @@ namespace Math
 
 		return (degree < 0.f) ? -degree : degree;
 	}
+
+	bool RectCollision(Object* objectA, Object* objectB);
 
 	float RadianAngle(Vector2 pointA, Vector2 pointB)
 	{

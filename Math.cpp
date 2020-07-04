@@ -1,6 +1,20 @@
 #include "DXUT.h"
 #include "Math.h"
 
+bool Math::RectCollision(Object* objectA, Object* objectB)
+{
+	Vector2 ALeftTop   = objectA->collider.leftTop   + objectA->Position;
+	Vector2 ARightDown = objectA->collider.rightDown + objectA->Position;
+
+	Vector2 BLeftTop   = objectB->collider.leftTop   + objectB->Position;
+	Vector2 BRightDown = objectB->collider.rightDown + objectB->Position;
+
+	return (ALeftTop.x < BRightDown.x &&
+			ALeftTop.y < BRightDown.y &&
+			BLeftTop.x < ARightDown.x &&
+			BLeftTop.y < ARightDown.y);
+}
+
 Vector2 Math::AimVector(Vector2 target, Vector2 tracer)
 {
 	return Vector2();
