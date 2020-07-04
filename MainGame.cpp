@@ -46,6 +46,7 @@ void MainGame::Release()
 	 Input::ReleaseInstance();
 	Camera::ReleaseInstance();
 
+	UserInterface::ReleaseInstance();
 	 ImageManager::ReleaseInstance();
 	ObjectManager::ReleaseInstance();
 	ScenceManager::ReleaseInstance();

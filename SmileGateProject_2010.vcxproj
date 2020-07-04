@@ -395,6 +395,7 @@
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="StageONE.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="UI.cpp" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DummyEnemy.h" />
     <ClInclude Include="Image.h" />
@@ -408,6 +409,7 @@
     <ClInclude Include="Sound.h" />
     <ClInclude Include="StageONE.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="UI.h" />
     <None Include="DXUT\Optional\directx.ico" />
     <ClInclude Include="DXUT\Core\DXUT.h" />
     <ClInclude Include="DXUT\Core\DXUTenum.h" />

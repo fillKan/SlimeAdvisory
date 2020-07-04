@@ -57,6 +57,7 @@ struct Collider
 #include "Singleton.h"
 #include "Timer.h"
 #include "Sound.h"
+#include "UI.h"
 #include "Scence.h"
 #include "Input.h"
 #include "Image.h"

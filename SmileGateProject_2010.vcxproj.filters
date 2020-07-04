@@ -57,6 +57,9 @@
     <Filter Include="System\Scence\StageONE">
       <UniqueIdentifier>{ef87fcef-d330-481b-b3d1-31469b43f0f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\UI">
+      <UniqueIdentifier>{fbd9da98-96d8-4784-a505-56fc37f6719a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -158,6 +161,9 @@
     <ClCompile Include="StageONE.cpp">
       <Filter>System\Scence\StageONE</Filter>
     </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>System\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -200,6 +206,9 @@
     </ClInclude>
     <ClInclude Include="StageONE.h">
       <Filter>System\Scence\StageONE</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>System\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
