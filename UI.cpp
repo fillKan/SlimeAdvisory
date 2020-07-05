@@ -19,19 +19,27 @@ void Image::SetRect(UI_RENDER_TYPE renderType, float fillAmount)
 	switch (renderType)
 	{
 	case UI_RENDER_TYPE::DECREASEBOX_UP:
+		float decreasAmount = FillImage->info.Height - FillImage->info.Height * (1 - fillAmount);
+
+		RenderRect = { 0, (LONG)-decreasAmount, (LONG)FillImage->info.Width, (LONG)(FillImage->info.Height * (1 - fillAmount)) };
 		break;
 
 	case UI_RENDER_TYPE::DECREASEBOX_DOWN:
+		RenderRect = { 0, 0, (LONG)FillImage->info.Width, (LONG)(FillImage->info.Height * (1 - fillAmount)) };
 		break;
 
 	case UI_RENDER_TYPE::DECREASEBOX_LEFT:
+		float decreasAmount = FillImage->info.Width - FillImage->info.Width * (1 - fillAmount);
+
+		RenderRect = { (LONG)-decreasAmount, 0, (LONG)(FillImage->info.Width * (1 - fillAmount)), (LONG)FillImage->info.Height };
 		break;
 
 	case UI_RENDER_TYPE::DECREASEBOX_RIGHT:
+		RenderRect = { 0, 0, (LONG)(FillImage->info.Width * (1 - fillAmount)), (LONG)FillImage->info.Height };
 		break;
 
 	default:
-		this->RenderRect = { 0,0,0,0 };
+		RenderRect = { 0, 0, (LONG)FillImage->info.Width, (LONG)FillImage->info.Height };
 		break;
 	}
 }
