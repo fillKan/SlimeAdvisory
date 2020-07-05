@@ -22,6 +22,18 @@ protected:
 	RECT mRenderingRect;
 };
 
+struct Image
+{
+	RECT RenderRect;
+
+	Texture* FillImage;
+	Texture* EdgeImage;
+	Texture* BackImage;
+
+	void Render(Vector2 pos, float fillAmount = 1.f);
+	void SetRect(UI_RENDER_TYPE renderType);
+};
+
 class UserInterface : public Singleton<UserInterface>
 {
 
