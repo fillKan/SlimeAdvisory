@@ -9,13 +9,31 @@ UI::~UI()
 {
 }
 
-void Image::Render(Vector2 pos, float fillAmount = 1.f)
+void Image::Render(Vector2 pos)
 {
 	USER_INTERFACE->Render(pos, this, this->RenderRect);
 }
 
-void Image::SetRect(UI_RENDER_TYPE renderType)
+void Image::SetRect(UI_RENDER_TYPE renderType, float fillAmount)
 {
+	switch (renderType)
+	{
+	case UI_RENDER_TYPE::DECREASEBOX_UP:
+		break;
+
+	case UI_RENDER_TYPE::DECREASEBOX_DOWN:
+		break;
+
+	case UI_RENDER_TYPE::DECREASEBOX_LEFT:
+		break;
+
+	case UI_RENDER_TYPE::DECREASEBOX_RIGHT:
+		break;
+
+	default:
+		this->RenderRect = { 0,0,0,0 };
+		break;
+	}
 }
 
 void UserInterface::Render(Vector2 pos, Image* image, RECT renderingRECT)

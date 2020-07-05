@@ -30,9 +30,9 @@ struct Image
 	Texture* EdgeImage;
 	Texture* BackImage;
 
-	void Render(Vector2 pos, float fillAmount = 1.f);
+	void Render(Vector2 pos);
 
-	void SetRect(UI_RENDER_TYPE renderType);
+	void SetRect(UI_RENDER_TYPE renderType, float fillAmount);
 };
 
 class UserInterface : public Singleton<UserInterface>
