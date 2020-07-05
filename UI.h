@@ -5,6 +5,19 @@ enum class UI_RENDER_TYPE
 	DECREASEBOX_LEFT, DECREASEBOX_RIGHT
 };
 
+struct Image
+{
+	RECT RenderRect;
+
+	Texture* FillImage;
+	Texture* EdgeImage;
+	Texture* BackImage;
+
+	void Render(Vector2 pos);
+
+	void SetRect(UI_RENDER_TYPE renderType, float fillAmount);
+};
+
 class UI abstract
 {
 public:
@@ -20,19 +33,6 @@ protected:
 	UI_RENDER_TYPE mRenderType;
 
 	Image mImage;
-};
-
-struct Image
-{
-	RECT RenderRect;
-
-	Texture* FillImage;
-	Texture* EdgeImage;
-	Texture* BackImage;
-
-	void Render(Vector2 pos);
-
-	void SetRect(UI_RENDER_TYPE renderType, float fillAmount);
 };
 
 class UserInterface : public Singleton<UserInterface>
