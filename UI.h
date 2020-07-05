@@ -19,7 +19,7 @@ public:
 protected:
 	UI_RENDER_TYPE mRenderType;
 
-	RECT mRenderingRect;
+	Image mImage;
 };
 
 struct Image
@@ -31,11 +31,13 @@ struct Image
 	Texture* BackImage;
 
 	void Render(Vector2 pos, float fillAmount = 1.f);
+
 	void SetRect(UI_RENDER_TYPE renderType);
 };
 
 class UserInterface : public Singleton<UserInterface>
 {
-
+public:
+	void Render(Vector2 pos, Image* image, RECT renderingRECT);
 };
 #define USER_INTERFACE UserInterface::Instance()
