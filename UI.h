@@ -37,7 +37,18 @@ protected:
 
 class UserInterface : public Singleton<UserInterface>
 {
+private:
+	vector<UI*> mUIs;
+
 public:
+	 UserInterface();
+	~UserInterface();
+
+	void AddUI(UI* value);
+	void DelUI(UI* value);
+
+	void Update();
 	void Render(Vector2 pos, Image* image, RECT renderingRECT);
+	void Release();
 };
 #define USER_INTERFACE UserInterface::Instance()

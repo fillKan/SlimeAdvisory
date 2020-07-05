@@ -44,6 +44,44 @@ void Image::SetRect(UI_RENDER_TYPE renderType, float fillAmount)
 	}
 }
 
+UserInterface::UserInterface()
+{
+}
+
+UserInterface::~UserInterface()
+{
+	Release();
+}
+
+void UserInterface::AddUI(UI* value)
+{
+	mUIs.emplace_back(value);
+}
+
+void UserInterface::DelUI(UI* value)
+{
+	for (auto iter = mUIs.begin(); iter != mUIs.end(); iter++)
+	{
+		if ((*iter) == value)
+		{
+			SAFE_DELETE((*iter));
+
+			mUIs.erase(iter); break;
+		}
+	}
+}
+
+void UserInterface::Update()
+{
+	for (auto iter : mUIs)
+	{
+		if (iter)
+		{
+			iter->Update();
+		}
+	}
+}
+
 void UserInterface::Render(Vector2 pos, Image* image, RECT renderingRECT)
 {
 	Matrix16 matrix;
@@ -63,4 +101,13 @@ void UserInterface::Render(Vector2 pos, Image* image, RECT renderingRECT)
 	{
 		IMAGE->GetSprite()->Draw(image->BackImage->pTexture, nullptr, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
 	}
+}
+
+void UserInterface::Release()
+{
+	for (auto iter : mUIs)
+	{
+		SAFE_DELETE(iter);
+	}
+	mUIs.clear();
 }
