@@ -16,10 +16,12 @@ void Image::Render(Vector2 pos)
 
 void Image::SetRect(UI_RENDER_TYPE renderType, float fillAmount)
 {
+	float decreasAmount;
+
 	switch (renderType)
 	{
 	case UI_RENDER_TYPE::DECREASEBOX_UP:
-		float decreasAmount = FillImage->info.Height - FillImage->info.Height * (1 - fillAmount);
+		decreasAmount = FillImage->info.Height - FillImage->info.Height * (1 - fillAmount);
 
 		RenderRect = { 0, (LONG)-decreasAmount, (LONG)FillImage->info.Width, (LONG)(FillImage->info.Height * (1 - fillAmount)) };
 		break;
@@ -29,7 +31,7 @@ void Image::SetRect(UI_RENDER_TYPE renderType, float fillAmount)
 		break;
 
 	case UI_RENDER_TYPE::DECREASEBOX_LEFT:
-		float decreasAmount = FillImage->info.Width - FillImage->info.Width * (1 - fillAmount);
+		decreasAmount = FillImage->info.Width - FillImage->info.Width * (1 - fillAmount);
 
 		RenderRect = { (LONG)-decreasAmount, 0, (LONG)(FillImage->info.Width * (1 - fillAmount)), (LONG)FillImage->info.Height };
 		break;
@@ -55,6 +57,8 @@ UserInterface::~UserInterface()
 
 void UserInterface::AddUI(UI* value)
 {
+	value->Init();
+
 	mUIs.emplace_back(value);
 }
 
