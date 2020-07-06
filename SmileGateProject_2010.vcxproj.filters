@@ -60,6 +60,9 @@
     <Filter Include="System\UI">
       <UniqueIdentifier>{fbd9da98-96d8-4784-a505-56fc37f6719a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\UI\PHealthBar">
+      <UniqueIdentifier>{d7f52091-1ab0-4af7-ac4e-fff127030cab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -164,6 +167,9 @@
     <ClCompile Include="UI.cpp">
       <Filter>System\UI</Filter>
     </ClCompile>
+    <ClCompile Include="PHealthBar.cpp">
+      <Filter>System\UI\PHealthBar</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -209,6 +215,9 @@
     </ClInclude>
     <ClInclude Include="UI.h">
       <Filter>System\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="PHealthBar.h">
+      <Filter>System\UI\PHealthBar</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

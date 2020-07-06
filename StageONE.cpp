@@ -9,6 +9,8 @@ void StageONE::Init()
 	mEnemySpawnTimer.SetTimer(0.5f, true);
 
 	OBJECT->AddObject(new Player());
+
+	mPlayerHPUI.Init();
 }
 
 void StageONE::Update()
@@ -17,10 +19,12 @@ void StageONE::Update()
 	{
 		OBJECT->AddObject(new DummyEnemy());
 	}
+	mPlayerHPUI.Update();
 }
 
 void StageONE::Render()
 {
+	mPlayerHPUI.Render();
 }
 
 void StageONE::Release()

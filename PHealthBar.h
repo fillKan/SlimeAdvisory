@@ -1,9 +1,10 @@
 #pragma once
-#include "PHealthBar.h"
-
-class StageONE : public Scence
+class PHealthBar : public UI
 {
 public:
+	 PHealthBar();
+	~PHealthBar();
+
 	virtual void Init   () override;
 	virtual void Update () override;
 	virtual void Render () override;
@@ -11,8 +12,6 @@ public:
 
 private:
 
-	Timer mEnemySpawnTimer;
-
-	PHealthBar mPlayerHPUI;
+	float mFillAmount;
 };
 
