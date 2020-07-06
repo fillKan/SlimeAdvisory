@@ -17,28 +17,27 @@ void Image::Render(Vector2 pos)
 void Image::SetRect(UI_RENDER_TYPE renderType, float fillAmount)
 {
 	float decrease;
-	UINT height;
+
+	UINT height = FillImage->info.Height;
 
 	switch (renderType)
 	{
 	case UI_RENDER_TYPE::DECREASEBOX_UP:
-		height = FillImage->info.Height * -1.25f; // 위치는 맞음
-		height = FillImage->info.Height;
-
 		decrease = height - height * fillAmount;
+
 		RenderRect = { 0, (LONG)(height), (LONG)FillImage->info.Width, (LONG)decrease };
 		break;
 
 	case UI_RENDER_TYPE::DECREASEBOX_DOWN:
-		RenderRect = { 0, 0, (LONG)FillImage->info.Width, (LONG)(FillImage->info.Height * fillAmount) };
+		RenderRect = { 0, 0, (LONG)FillImage->info.Width, (LONG)(height * fillAmount) };
 		break;
 
 	case UI_RENDER_TYPE::DECREASEBOX_SIDE:
-		RenderRect = { 0, 0, (LONG)(FillImage->info.Width * fillAmount), (LONG)FillImage->info.Height };
+		RenderRect = { 0, 0, (LONG)(FillImage->info.Width * fillAmount), (LONG)height };
 		break;
 
 	default:
-		RenderRect = { 0, 0, (LONG)FillImage->info.Width, (LONG)FillImage->info.Height };
+		RenderRect = { 0, 0, (LONG)FillImage->info.Width, (LONG)height };
 		break;
 	}
 }
@@ -87,12 +86,19 @@ void UserInterface::Render(Vector2 pos, Image* image, RECT renderingRECT)
 {
 	Matrix16 matrix;
 
+	RECT upRect = { 0, (LONG)image->FillImage->info.Height, (LONG)image->FillImage->info.Width, 0 };
+
 	if (image->BackImage)
 	{
 		D3DXMatrixAffineTransformation2D(&matrix, 1.0f, nullptr, 0.f, &pos);
 
 		IMAGE->GetSprite()->SetTransform(&matrix);
-		IMAGE->GetSprite()->Draw(image->BackImage->pTexture, nullptr, nullptr, nullptr, D3DCOLOR_XRGB(255,255,255));
+
+		if (image->RenderType == UI_RENDER_TYPE::DECREASEBOX_UP)
+		{
+			IMAGE->GetSprite()->Draw(image->BackImage->pTexture, &upRect, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
+		}		
+		else IMAGE->GetSprite()->Draw(image->BackImage->pTexture, nullptr, nullptr, nullptr, D3DCOLOR_XRGB(255,255,255));
 	}
 	if (image->FillImage)
 	{
@@ -100,7 +106,11 @@ void UserInterface::Render(Vector2 pos, Image* image, RECT renderingRECT)
 	}
 	if (image->EdgeImage)
 	{
-		IMAGE->GetSprite()->Draw(image->EdgeImage->pTexture, nullptr, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
+		if (image->RenderType == UI_RENDER_TYPE::DECREASEBOX_UP)
+		{
+			IMAGE->GetSprite()->Draw(image->BackImage->pTexture, &upRect, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
+		}
+		else IMAGE->GetSprite()->Draw(image->EdgeImage->pTexture, nullptr, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
 	}
 }
 

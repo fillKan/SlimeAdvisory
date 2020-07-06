@@ -1,7 +1,7 @@
 #pragma once
 enum class UI_RENDER_TYPE
 {
-	DECREASEBOX_UP, DECREASEBOX_DOWN, DECREASEBOX_SIDE
+	DECREASEBOX_UP, DECREASEBOX_DOWN, DECREASEBOX_SIDE, NONE
 };
 
 struct Image
@@ -11,6 +11,8 @@ struct Image
 	Texture* FillImage;
 	Texture* EdgeImage;
 	Texture* BackImage;
+
+	UI_RENDER_TYPE RenderType = UI_RENDER_TYPE::NONE;
 
 	void Render(Vector2 pos);
 
