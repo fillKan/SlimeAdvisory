@@ -1,7 +1,7 @@
 #include "DXUT.h"
 #include "PHealthBar.h"
 
-PHealthBar::PHealthBar() : UI(UI_RENDER_TYPE::DECREASEBOX_RIGHT)
+PHealthBar::PHealthBar() : UI(UI_RENDER_TYPE::DECREASEBOX_UP)
 {
 }
 
@@ -21,12 +21,12 @@ void PHealthBar::Init()
 
 void PHealthBar::Update()
 {
-	mImage.SetRect(mRenderType, (mFillAmount -= 0.02f));
+	mImage.SetRect(mRenderType, (mFillAmount -= 0.005f));
 }
 
 void PHealthBar::Render()
 {
-	mImage.Render(ONE * 20.f);
+	mImage.Render(ONE * 25.f);
 }
 
 void PHealthBar::Release()

@@ -16,28 +16,26 @@ void Image::Render(Vector2 pos)
 
 void Image::SetRect(UI_RENDER_TYPE renderType, float fillAmount)
 {
-	float decreasAmount;
+	float decrease;
 
 	switch (renderType)
 	{
 	case UI_RENDER_TYPE::DECREASEBOX_UP:
-		decreasAmount = FillImage->info.Height - FillImage->info.Height * (1 - fillAmount);
+		decrease = FillImage->info.Height - FillImage->info.Height * fillAmount;
 
-		RenderRect = { 0, (LONG)-decreasAmount, (LONG)FillImage->info.Width, (LONG)(FillImage->info.Height * (1 - fillAmount)) };
+		RenderRect = { 0, (LONG)(FillImage->info.Height), (LONG)FillImage->info.Width, (LONG)decrease };
 		break;
 
 	case UI_RENDER_TYPE::DECREASEBOX_DOWN:
-		RenderRect = { 0, 0, (LONG)FillImage->info.Width, (LONG)(FillImage->info.Height * (1 - fillAmount)) };
+		RenderRect = { 0, 0, (LONG)FillImage->info.Width, (LONG)(FillImage->info.Height * fillAmount) };
 		break;
 
 	case UI_RENDER_TYPE::DECREASEBOX_LEFT:
-		decreasAmount = FillImage->info.Width - FillImage->info.Width * (1 - fillAmount);
-
-		RenderRect = { (LONG)-decreasAmount, 0, (LONG)(FillImage->info.Width * (1 - fillAmount)), (LONG)FillImage->info.Height };
+		//RenderRect = { 0, (LONG)(FillImage->info.Height), (LONG)FillImage->info.Width, (LONG)(FillImage->info.Height * fillAmount) };
 		break;
 
 	case UI_RENDER_TYPE::DECREASEBOX_RIGHT:
-		RenderRect = { 0, 0, (LONG)(FillImage->info.Width * (1 - fillAmount)), (LONG)FillImage->info.Height };
+		RenderRect = { 0, 0, (LONG)(FillImage->info.Width * fillAmount), (LONG)FillImage->info.Height };
 		break;
 
 	default:
