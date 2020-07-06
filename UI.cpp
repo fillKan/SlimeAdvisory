@@ -17,24 +17,23 @@ void Image::Render(Vector2 pos)
 void Image::SetRect(UI_RENDER_TYPE renderType, float fillAmount)
 {
 	float decrease;
+	UINT height;
 
 	switch (renderType)
 	{
 	case UI_RENDER_TYPE::DECREASEBOX_UP:
-		decrease = FillImage->info.Height - FillImage->info.Height * fillAmount;
+		height = FillImage->info.Height * -1.25f; // 위치는 맞음
+		height = FillImage->info.Height;
 
-		RenderRect = { 0, (LONG)(FillImage->info.Height), (LONG)FillImage->info.Width, (LONG)decrease };
+		decrease = height - height * fillAmount;
+		RenderRect = { 0, (LONG)(height), (LONG)FillImage->info.Width, (LONG)decrease };
 		break;
 
 	case UI_RENDER_TYPE::DECREASEBOX_DOWN:
 		RenderRect = { 0, 0, (LONG)FillImage->info.Width, (LONG)(FillImage->info.Height * fillAmount) };
 		break;
 
-	case UI_RENDER_TYPE::DECREASEBOX_LEFT:
-		//RenderRect = { 0, (LONG)(FillImage->info.Height), (LONG)FillImage->info.Width, (LONG)(FillImage->info.Height * fillAmount) };
-		break;
-
-	case UI_RENDER_TYPE::DECREASEBOX_RIGHT:
+	case UI_RENDER_TYPE::DECREASEBOX_SIDE:
 		RenderRect = { 0, 0, (LONG)(FillImage->info.Width * fillAmount), (LONG)FillImage->info.Height };
 		break;
 
