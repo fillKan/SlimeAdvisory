@@ -15,7 +15,7 @@ void Button::Init()
 
 void Button::Update()
 {
-	mCursorPos = INPUT->CursorPos();
+	mCursorPos = INPUT->CursorPos() - mPosition;
 
 	mIsHighlight = (mCursorPos.x >= mButtonScale.left && mCursorPos.x <= mButtonScale.right &&
 					mCursorPos.y >= mButtonScale.top  && mCursorPos.y <= mButtonScale.bottom);

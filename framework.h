@@ -61,6 +61,7 @@ struct Collider
 #include "Sound.h"
 #include "Image.h"
 #include "UI.h"
+#include "Button.h"
 #include "Scence.h"
 #include "Input.h"
 #include "Camera.h"
