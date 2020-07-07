@@ -12,5 +12,7 @@ public:
 private:
 
 	Timer mEnemySpawnTimer;
+
+	Button* mButton;
 };
 
