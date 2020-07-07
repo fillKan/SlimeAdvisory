@@ -26,6 +26,8 @@ void MainGame::Update()
 	 INPUT->Update();
 	SCENCE->Update();
 	OBJECT->Update();
+
+	USER_INTERFACE->Update();
 }
 
 void MainGame::Render()
@@ -36,6 +38,8 @@ void MainGame::Render()
 
 	SCENCE->Render();
 	OBJECT->Render();
+
+	USER_INTERFACE->Render();
 
 	IMAGE->End();
 }

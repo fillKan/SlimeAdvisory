@@ -12,7 +12,5 @@ public:
 private:
 
 	Timer mEnemySpawnTimer;
-
-	PHealthBar mPlayerHPUI;
 };
 

@@ -11,7 +11,7 @@ UI::~UI()
 
 void Image::Render(Vector2 pos)
 {
-	USER_INTERFACE->Render(pos, this, this->RenderRect);
+	USER_INTERFACE->UIRender(pos, this, this->RenderRect);
 }
 
 void Image::SetRect(UI_RENDER_TYPE renderType, float fillAmount)
@@ -82,7 +82,15 @@ void UserInterface::Update()
 	}
 }
 
-void UserInterface::Render(Vector2 pos, Image* image, RECT renderingRECT)
+void UserInterface::Render()
+{
+	for (auto iter : mUIs)
+	{
+		iter->Render();
+	}
+}
+
+void UserInterface::UIRender(Vector2 pos, Image* image, RECT renderingRECT)
 {
 	Matrix16 matrix;
 
@@ -104,14 +112,14 @@ void UserInterface::Render(Vector2 pos, Image* image, RECT renderingRECT)
 	{
 		IMAGE->GetSprite()->Draw(image->FillImage->pTexture, &renderingRECT, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
 	}
-	if (image->EdgeImage)
-	{
-		if (image->RenderType == UI_RENDER_TYPE::DECREASEBOX_UP)
-		{
-			IMAGE->GetSprite()->Draw(image->BackImage->pTexture, &upRect, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
-		}
-		else IMAGE->GetSprite()->Draw(image->EdgeImage->pTexture, nullptr, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
-	}
+	//if (image->EdgeImage)
+	//{
+	//	if (image->RenderType == UI_RENDER_TYPE::DECREASEBOX_UP)
+	//	{
+	//		IMAGE->GetSprite()->Draw(image->BackImage->pTexture, &upRect, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
+	//	}
+	//	else IMAGE->GetSprite()->Draw(image->EdgeImage->pTexture, nullptr, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
+	//}
 }
 
 void UserInterface::Release()

@@ -49,7 +49,8 @@ public:
 	void DelUI(UI* value);
 
 	void Update();
-	void Render(Vector2 pos, Image* image, RECT renderingRECT);
+	void Render();
+	void UIRender(Vector2 pos, Image* image, RECT renderingRECT);
 	void Release();
 };
 #define USER_INTERFACE UserInterface::Instance()

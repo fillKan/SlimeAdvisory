@@ -1,7 +1,7 @@
 #include "DXUT.h"
 #include "PHealthBar.h"
 
-PHealthBar::PHealthBar() : UI(UI_RENDER_TYPE::DECREASEBOX_UP)
+PHealthBar::PHealthBar() : UI(UI_RENDER_TYPE::DECREASEBOX_SIDE)
 {
 }
 
