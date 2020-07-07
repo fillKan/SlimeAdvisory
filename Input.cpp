@@ -1,9 +1,8 @@
 #include "DXUT.h"
 #include "Input.h"
 
-Input::Input()
+Input::Input() : mHandle(FindWindow(NULL, TITLE))
 {
-	Init();
 }
 
 Input::~Input()
@@ -77,9 +76,4 @@ Vector2 Input::CursorPos()
 	ScreenToClient(mHandle, &point);
 
 	return Vector2(point.x, point.y);
-}
-
-void Input::Init()
-{
-	mHandle = FindWindow(NULL, L"AAA");
 }

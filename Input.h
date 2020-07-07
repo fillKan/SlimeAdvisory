@@ -25,8 +25,6 @@ public:
 	bool GetMouseDown(UINT mouse);
 
 	Vector2 CursorPos();
-
-	void Init();
 };
 
 #define INPUT Input::Instance()

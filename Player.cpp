@@ -64,7 +64,9 @@ void Player::Update()
 
 void Player::Render()
 {
-	IMAGE->CenterRender(mAnimation.Play(), INPUT->CursorPos());
+	Position = INPUT->CursorPos();
+
+	IMAGE->CenterRender(mAnimation.Play(), Position);
 }
 
 void Player::Release()

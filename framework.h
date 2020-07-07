@@ -20,6 +20,8 @@ const float GRAPH_CORRECTION = 45.f;
 const float TO_RADIAN = 0.01745329f;
 const float TO_DEGREE = 57.2957795f;
 
+const LPCWSTR TITLE = L"AAA";
+
 const int WINSIZEX = 1280;
 const int WINSIZEY =  720;
 
