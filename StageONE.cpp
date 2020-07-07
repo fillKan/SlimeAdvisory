@@ -9,6 +9,8 @@ void StageONE::Init()
 	mEnemySpawnTimer.SetTimer(0.5f, true);
 
 	OBJECT->AddObject(new Player());
+
+	USER_INTERFACE->AddUI(new PHealthBar());
 }
 
 void StageONE::Update()
@@ -25,4 +27,5 @@ void StageONE::Render()
 
 void StageONE::Release()
 {
+	USER_INTERFACE->Release();
 }
