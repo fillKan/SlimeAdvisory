@@ -8,7 +8,12 @@ private:
 	bool mCurrentMouse[2];
 	bool    mPrevMouse[2];
 
+	HWND mHandle;
+
 public:
+	 Input();
+	~Input();
+
 	void Update();
 
 	bool GetKey    (UINT keyCode);
@@ -18,6 +23,10 @@ public:
 	bool GetMouse    (UINT mouse);
 	bool GetMouseUp  (UINT mouse);
 	bool GetMouseDown(UINT mouse);
+
+	Vector2 CursorPos();
+
+	void Init();
 };
 
 #define INPUT Input::Instance()

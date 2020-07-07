@@ -1,6 +1,15 @@
 #include "DXUT.h"
 #include "Input.h"
 
+Input::Input()
+{
+	Init();
+}
+
+Input::~Input()
+{
+}
+
 void Input::Update()
 {
 	for (int i = 0; i < 256; ++i)
@@ -57,4 +66,20 @@ bool Input::GetMouseUp(UINT mouse)
 bool Input::GetMouseDown(UINT mouse)
 {
 	return mCurrentMouse[mouse] && !mPrevMouse[mouse];
+}
+
+Vector2 Input::CursorPos()
+{
+	tagPOINT point;
+
+	GetCursorPos(&point);
+
+	ScreenToClient(mHandle, &point);
+
+	return Vector2(point.x, point.y);
+}
+
+void Input::Init()
+{
+	mHandle = FindWindow(NULL, L"AAA");
 }
