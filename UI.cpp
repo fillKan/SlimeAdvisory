@@ -112,14 +112,6 @@ void UserInterface::UIRender(Vector2 pos, Image* image, RECT renderingRECT)
 	{
 		IMAGE->GetSprite()->Draw(image->FillImage->pTexture, &renderingRECT, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
 	}
-	//if (image->EdgeImage)
-	//{
-	//	if (image->RenderType == UI_RENDER_TYPE::DECREASEBOX_UP)
-	//	{
-	//		IMAGE->GetSprite()->Draw(image->BackImage->pTexture, &upRect, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
-	//	}
-	//	else IMAGE->GetSprite()->Draw(image->EdgeImage->pTexture, nullptr, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
-	//}
 }
 
 void UserInterface::Release()

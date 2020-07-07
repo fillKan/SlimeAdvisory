@@ -50,7 +50,7 @@ public:
 
 	void Update();
 	void Render();
-	void UIRender(Vector2 pos, Image* image, RECT renderingRECT);
+	void UIRender(Vector2 pos, Image* image, RECT renderingRECT = RECT{ 0,0,0,0 });
 	void Release();
 };
 #define USER_INTERFACE UserInterface::Instance()
