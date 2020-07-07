@@ -63,34 +63,33 @@ void ObjectManager::CollisionCheck(TAG tagA, TAG tagB)
 		{
 			if ((*iterB)->Tag != tagB) continue;
 
-			if (Math::Distance((*iterA)->Position, (*iterB)->Position) <= 50.f)
+			(*iterB)->IsPrevCollision = (*iterB)->IsCrntCollision;
+
+			if (Math::CircleCollision((*iterA)->Position, (*iterA)->CircleRadius, (*iterB)->Position, (*iterB)->CircleRadius))
 			{
-				(*iterB)->IsPrevCollision = (*iterB)->IsCrntCollision;
+				(*iterB)->IsCrntCollision = true;
 
-				if (Math::CircleCollision((*iterA)->Position, (*iterA)->CircleRadius, (*iterB)->Position, (*iterB)->CircleRadius))
+				if ((*iterB)->IsCrntCollision && (*iterB)->IsPrevCollision)
 				{
-					(*iterB)->IsCrntCollision = true;
-
-					if ((*iterB)->IsCrntCollision && (*iterB)->IsPrevCollision)
-					{
-						(*iterB)->OnCollisionStay(*iterA);
-						(*iterA)->OnCollisionStay(*iterB);
-					}
-					else if((*iterB)->IsCrntCollision && !(*iterB)->IsPrevCollision)
-					{
-						(*iterB)->OnCollisionEnter(*iterA);
-						(*iterA)->OnCollisionEnter(*iterB);
-					}
-					continue;
+					(*iterB)->OnCollisionStay(*iterA);
+					(*iterA)->OnCollisionStay(*iterB);
 				}
+				else if ((*iterB)->IsCrntCollision && !(*iterB)->IsPrevCollision)
+				{
+					(*iterB)->OnCollisionEnter(*iterA);
+					(*iterA)->OnCollisionEnter(*iterB);
+				}
+			}
+			else
+			{
 				(*iterB)->IsCrntCollision = false;
-				
-				if (!(*iterB)->IsPrevCollision)
+
+				if ((*iterB)->IsPrevCollision)
 				{
 					(*iterB)->OnCollisionExit(*iterA);
 					(*iterA)->OnCollisionExit(*iterB);
 				}
-			}
+			}			
 		}
 	}
 }
