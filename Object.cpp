@@ -1,7 +1,7 @@
 #include "DXUT.h"
 #include "Object.h"
 
-Object::Object() : Parent(nullptr), Name(""), Tag(TAG::NONE), IsDestory(false), IsActive(true), IsPrevCollision(false), IsCrntCollision(false), Rotation(0.0f), Position(ZERO), Scale(ONE), ImageSize(ZERO), Velocity(ZERO), CircleRadius(0.f), Health(1.f)
+Object::Object() : Parent(nullptr), Name(""), Tag(TAG::NONE), IsDestory(false), IsActive(true), IsPrevCollision(false), IsCrntCollision(false), Rotation(0.0f), Position(ZERO), Scale(ONE), ImageSize(ZERO), Velocity(ZERO), CircleRadius(0.f)
 {
 }
 
@@ -115,7 +115,7 @@ void ObjectManager::Update()
 
 	for (auto iter = mCurObjects.begin(); iter != mCurObjects.end();)
 	{
-		if ((*iter)->IsDestory || (*iter)->IsOutMap() || (*iter)->Health <= 0.f)
+		if ((*iter)->IsDestory || (*iter)->IsOutMap() || (*iter)->CURHealth <= 0.f)
 		{
 			SAFE_DELETE(*iter);
 
@@ -146,4 +146,10 @@ void ObjectManager::Render()
 			if (iter->IsActive) iter->Render();
 		}
 	}
+}
+
+void Object::HealthInit(float max)
+{
+	MAXHealth = max;
+	CURHealth = max;
 }

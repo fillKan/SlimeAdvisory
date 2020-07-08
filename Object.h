@@ -22,7 +22,9 @@ public:
 
 	float Rotation;
 	float CircleRadius;
-	float Health;
+	
+	float MAXHealth = 1.f;
+	float CURHealth = 1.f;
 
 	Vector2 Position;
 	Vector2 Scale;
@@ -47,6 +49,8 @@ public:
 		return (Position.x > MAPSIZEMAXX || Position.x < MAPSIZEMINX || 
 				Position.y < MAPSIZEMINY || Position.y > MAPSIZEMAXY);
 	}
+
+	void HealthInit(float max);
 };
 
 class ObjectManager : public Singleton<ObjectManager>
