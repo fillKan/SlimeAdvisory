@@ -44,6 +44,8 @@ namespace Math
 		return (radian < 0.f) ? -radian : radian;
 	}
 
+	Vector2 RandomCirclePoint(Vector2 pivot);
+
 	Vector2  AimVector(Vector2 target, Vector2 tracer);
 
 	Vector2* RadiateVector(Vector2 point, float theta, int num);

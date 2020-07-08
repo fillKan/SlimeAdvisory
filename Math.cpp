@@ -17,6 +17,13 @@ bool Math::RectCollision(Object* objectA, Object* objectB)
 	return false;
 }
 
+Vector2 Math::RandomCirclePoint(Vector2 pivot)
+{
+	float degree = rand() / (float)RAND_MAX * 360.f;
+
+	return Vector2(cos(degree), sin(degree));
+}
+
 Vector2 Math::AimVector(Vector2 target, Vector2 tracer)
 {
 	return Vector2();
