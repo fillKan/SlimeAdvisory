@@ -20,16 +20,18 @@ void Button::Update()
 	mIsHighlight = (mCursorPos.x >= mButtonScale.left && mCursorPos.x <= mButtonScale.right &&
 					mCursorPos.y >= mButtonScale.top  && mCursorPos.y <= mButtonScale.bottom);
 
+	mIsPrevClick = mIsCrntClick;
+
 	if (mIsHighlight && DXUTIsMouseButtonDown(VK_LBUTTON))
 	{
-		 mIsClick = true;
+		 mIsCrntClick = true;
 	}
-	else mIsClick = false;
+	else mIsCrntClick = false;
 }
 
 void Button::Render()
 {
-	if (mIsClick)
+	if (mIsCrntClick)
 	{
 		IMAGE->Render(mImage.EdgeImage, mPosition);
 	}
@@ -61,5 +63,15 @@ void Button::SetChangeImage(const string& default, const string& highlight, cons
 
 bool Button::OnClick()
 {
-	return mIsClick;
+	return (mIsCrntClick && !mIsPrevClick);
+}
+
+bool Button::OnPress()
+{
+	return (mIsCrntClick && mIsPrevClick);
+}
+
+bool Button::TakeOff()
+{
+	return (!mIsCrntClick && mIsPrevClick);
 }

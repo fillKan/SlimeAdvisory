@@ -15,6 +15,9 @@ public:
 	void SetChangeImage(const string& default, const string& highlight, const string& onMouse);
 
 	bool OnClick();
+	bool OnPress();
+
+	bool TakeOff();
 
 private:
 	RECT mButtonScale;
@@ -23,6 +26,7 @@ private:
 	Vector2 mPosition;
 
 	bool mIsHighlight = false;
-	bool mIsClick	  = false;
+	bool mIsPrevClick = false;
+	bool mIsCrntClick = false;
 };
 
