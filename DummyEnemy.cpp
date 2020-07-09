@@ -8,9 +8,7 @@ void DummyEnemy::Init()
 
 	Position = Vector2(WINSIZEX, RANDOM(1, WINSIZEY));
 
-	mAnimation.AddFrame(IMAGE->AddImage("DummyEnemy1", "./image/DummyEnemy/Skull_enemy1.png"));
-	mAnimation.AddFrame(IMAGE->AddImage("DummyEnemy2", "./image/DummyEnemy/Skull_enemy2.png"));
-	mAnimation.AddFrame(IMAGE->AddImage("DummyEnemy3", "./image/DummyEnemy/Skull_enemy3.png"));
+	mAnimation.AddFrame("./image/DummyEnemy/", "Skull_enemy", 3);
 
 	mSpeed = 2 + (RANDOM(1, 5) * 0.1f);
 

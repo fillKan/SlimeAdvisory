@@ -21,7 +21,7 @@ struct Animation
 {
 	vector<Texture*> Frames;
 
-	void AddFrame(Texture* frame);
+	void AddFrame(const string& path, const string& name, int frame);
 	void Clear();
 
 	Texture* Play();

@@ -152,9 +152,19 @@ void ImageManager::ResetDevice()
 	mSprite->OnResetDevice();
 }
 
-void Animation::AddFrame(Texture* frame)
+void Animation::AddFrame(const string& path, const string& name, int frame)
 {
-	if(frame) Frames.push_back(frame);
+	char _path[256];
+	char _name[64];
+
+	for (int i = 1; i <= frame; ++i)
+	{
+		sprintf(_path, "%s%s%d.png", path.c_str(), name.c_str(), i);
+
+		sprintf(_name, "%s%d.png", name.c_str(), i);
+
+		Frames.emplace_back(IMAGE->AddImage(_name, _path));
+	}
 }
 
 void Animation::Clear()

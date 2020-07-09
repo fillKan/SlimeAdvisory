@@ -8,10 +8,7 @@ void PBullet::Init()
 
 	Position = ZERO;
 
-	mAnimation.AddFrame(IMAGE->AddImage("BoneSpine1", "./image/PBullet/BoneSpine1.png"));
-	mAnimation.AddFrame(IMAGE->AddImage("BoneSpine2", "./image/PBullet/BoneSpine2.png"));
-	mAnimation.AddFrame(IMAGE->AddImage("BoneSpine3", "./image/PBullet/BoneSpine3.png"));
-	mAnimation.AddFrame(IMAGE->AddImage("BoneSpine4", "./image/PBullet/BoneSpine4.png"));
+	mAnimation.AddFrame("./image/PBullet/", "BoneSpine", 4);
 
 	CircleRadius = 8.f;
 
