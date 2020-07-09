@@ -47,8 +47,4 @@ void DummyEnemy::OnCollisionStay(Object* other)
 
 void DummyEnemy::OnCollisionExit(Object* other)
 {
-	if (other->Tag == TAG::PLAYER)
-	{
-		IsDestory = true;
-	}
 }
