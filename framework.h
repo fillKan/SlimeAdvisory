@@ -22,8 +22,8 @@ const float TO_DEGREE = 57.2957795f;
 
 const LPCWSTR TITLE = L"AAA";
 
-const int WINSIZEX = 1280;
-const int WINSIZEY =  720;
+const int WINSIZEX = 1600;
+const int WINSIZEY =  900;
 
 const int MAPSIZEMAXX =  2000;
 const int MAPSIZEMINX = -2000;

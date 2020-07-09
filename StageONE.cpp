@@ -6,7 +6,7 @@
 
 void StageONE::Init()
 {
-	mButton = new Button(Vector2(800, 20));
+	mButton = new Button(Vector2(WINSIZEX - 160, 20));
 	mButton->SetChangeImage("DaengDaengYi1", "DaengDaengYi3", "DaengDaengYi2");
 	mButton->SetButtonScale(RECT{ 0, 0, 128, 128 });
 
