@@ -20,7 +20,7 @@ void Player::Init()
 
 	Position = Vector2(WINSIZEX / 2, WINSIZEY / 2);
 
-	mAnimation.AddFrame("./image/Player/PlayerDefault/", "Player", 18);
+	mAnimation.AddFrame("./image/Player/Default/", "Player", 18);
 
 	CircleRadius = 128.f;
 
