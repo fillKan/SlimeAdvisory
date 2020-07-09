@@ -8,7 +8,7 @@ void DummyEnemy::Init()
 
 	Position = Vector2(WINSIZEX, RANDOM(1, WINSIZEY));
 
-	mAnimation.AddFrame("./image/DummyEnemy/", "Skull_enemy", 3);
+	mAnimation.AddFrame("./image/Enemy/Normal/Attack/", "Monster_attack", 15);
 
 	mSpeed = 2 + (RANDOM(1, 5) * 0.1f);
 
