@@ -66,6 +66,9 @@
     <Filter Include="System\UI\Button">
       <UniqueIdentifier>{fb96ae89-236f-48eb-ba8d-5a800772af4d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Particle">
+      <UniqueIdentifier>{f9fa5283-63f3-4b21-82f6-d047d0391552}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -176,6 +179,9 @@
     <ClCompile Include="Button.cpp">
       <Filter>System\UI\Button</Filter>
     </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>System\Particle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -227,6 +233,9 @@
     </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>System\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>System\Particle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

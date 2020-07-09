@@ -60,6 +60,7 @@ struct Collider
 #include "Timer.h"
 #include "Sound.h"
 #include "Image.h"
+#include "Particle.h"
 #include "UI.h"
 #include "Button.h"
 #include "Scence.h"
