@@ -14,5 +14,7 @@ private:
 	Timer mEnemySpawnTimer;
 
 	Button* mButton;
+
+	Texture* mBackGround;
 };
 
