@@ -10,6 +10,8 @@ void StageONE::Init()
 	mButton->SetChangeImage("DaengDaengYi1", "DaengDaengYi3", "DaengDaengYi2");
 	mButton->SetButtonScale(RECT{ 0, 0, 128, 128 });
 
+	mBackGround = IMAGE->AddImage("BackGround","./image/BackGround/backgruond.png");
+
 	mEnemySpawnTimer.SetTimer(0.5f, true);
 
 	OBJECT->AddObject(new Player());
@@ -28,6 +30,7 @@ void StageONE::Update()
 
 void StageONE::Render()
 {
+	mBackGround->Render(ZERO);
 }
 
 void StageONE::Release()
