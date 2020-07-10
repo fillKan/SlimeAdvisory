@@ -36,6 +36,8 @@ void ParticleAdmin::Instantiate(PARTICLES key, Vector2 pos)
 	{
 		Particle* particle = mLibrary[key]->Instantiate(pos);
 
+		particle->Init();
+
 		mParticles.emplace_back(particle);
 	}
 }
