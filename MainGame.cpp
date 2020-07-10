@@ -3,6 +3,8 @@
 
 #include "StageONE.h"
 
+#include "PBulletBreak.h"
+
 MainGame::MainGame()
 {
 }
@@ -17,6 +19,8 @@ void MainGame::Init()
 
 	SCENCE->AddScence("StageONE", new StageONE());
 
+	PARTICLE->AddParticle(PARTICLES::PBULLET_BREAK, new PBulletBreak(ZERO));
+
 	SCENCE->LoadScence("StageONE");
 }
 
@@ -26,6 +30,8 @@ void MainGame::Update()
 	 INPUT->Update();
 	SCENCE->Update();
 	OBJECT->Update();
+
+	PARTICLE->Update();
 
 	USER_INTERFACE->Update();
 }
@@ -38,6 +44,8 @@ void MainGame::Render()
 
 	SCENCE->Render();
 	OBJECT->Render();
+
+	PARTICLE->Render();
 
 	USER_INTERFACE->Render();
 
