@@ -72,6 +72,9 @@
     <Filter Include="System\Particle\PBulletBreak">
       <UniqueIdentifier>{16412e53-6ce5-43a1-b72a-23529a7afcbe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Particle\PAttack">
+      <UniqueIdentifier>{03bab7f5-5e2a-436a-b3ec-b6d0e84aeb6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -188,6 +191,9 @@
     <ClCompile Include="PBulletBreak.cpp">
       <Filter>System\Particle\PBulletBreak</Filter>
     </ClCompile>
+    <ClCompile Include="PAttack.cpp">
+      <Filter>System\Particle\PAttack</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -245,6 +251,9 @@
     </ClInclude>
     <ClInclude Include="PBulletBreak.h">
       <Filter>System\Particle\PBulletBreak</Filter>
+    </ClInclude>
+    <ClInclude Include="PAttack.h">
+      <Filter>System\Particle\PAttack</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

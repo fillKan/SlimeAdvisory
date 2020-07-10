@@ -1,7 +1,7 @@
 #pragma once
 enum class PARTICLES
 {
-	PBULLET_BREAK
+	PBULLET_BREAK, PATTACK
 };
 
 class Particle abstract
