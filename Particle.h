@@ -15,7 +15,7 @@ public:
 	virtual void Render () PURE;
 	virtual void Release() PURE;
 
-	bool CanDestroy() { return mTimer.TimeOver(); }
+	bool CanDestroy() { return mCanDestroy; }
 
 	virtual Particle* Instantiate(Vector2 pos) PURE;
 
@@ -25,6 +25,8 @@ protected:
 	Vector2 mPosition;
 
 	Animation mAnimation;
+
+	bool mCanDestroy = false;
 };
 
 class ParticleAdmin : public Singleton<ParticleAdmin>

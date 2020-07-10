@@ -12,7 +12,7 @@ PBulletBreak::~PBulletBreak()
 
 void PBulletBreak::Init()
 {
-	if (rand() % 2 == 1)
+	if (RANDOM(0, 1) == 1)
 	{
 		mAnimation.AddFrame("./image/Particle/PBulletBreak/", "ExplosiveEffect1_", 9);
 	}
@@ -26,6 +26,7 @@ void PBulletBreak::Init()
 
 void PBulletBreak::Update()
 {
+	mCanDestroy = mTimer.TimeOver();
 }
 
 void PBulletBreak::Render()
