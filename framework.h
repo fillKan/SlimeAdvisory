@@ -43,7 +43,7 @@ const D3DXVECTOR2    UP = D3DXVECTOR2( 0,-1);
 #define DELTA_TIME DXUTGetElapsedTime()
 #define ELAPSED	   DXUTGetTime()
 
-#define RANDOM(min, max) rand() % ((max) + 2) + (min)
+#define RANDOM(min, max) (rand() % ((max) + 1)) + min
 
 struct Collider
 {
