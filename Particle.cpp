@@ -44,7 +44,7 @@ void ParticleAdmin::Instantiate(PARTICLES key, Vector2 pos)
 
 void ParticleAdmin::Update()
 {
-	for (auto iter = mParticles.begin(); iter != mParticles.end(); iter++)
+	for (auto iter = mParticles.begin(); iter != mParticles.end(); )
 	{
 		(*iter)->Update();
 
@@ -53,7 +53,10 @@ void ParticleAdmin::Update()
 			SAFE_DELETE((*iter));
 
 			iter = mParticles.erase(iter);
+
+			continue;
 		}
+		iter++;
 	}
 }
 
@@ -72,4 +75,10 @@ void ParticleAdmin::Release()
 		SAFE_DELETE(iter);
 	}
 	mParticles.clear();
+
+	for (auto iter : mLibrary)
+	{
+		SAFE_DELETE(iter.second);
+	}
+	mLibrary.clear();
 }
