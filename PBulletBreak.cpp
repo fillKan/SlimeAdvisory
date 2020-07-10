@@ -12,7 +12,14 @@ PBulletBreak::~PBulletBreak()
 
 void PBulletBreak::Init()
 {
-	mAnimation.AddFrame("./image/Particle/PBulletBreak/", "ExplosiveEffect1_", 9);
+	if (rand() % 2 == 1)
+	{
+		mAnimation.AddFrame("./image/Particle/PBulletBreak/", "ExplosiveEffect1_", 9);
+	}
+	else
+	{
+		mAnimation.AddFrame("./image/Particle/PBulletBreak2/", "ExplosiveEffect2_", 9);
+	}
 
 	mTimer.SetTimer(0.9f);
 }
