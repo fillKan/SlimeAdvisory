@@ -50,6 +50,7 @@ void MainGame::Release()
 	 Input::ReleaseInstance();
 	Camera::ReleaseInstance();
 
+	ParticleAdmin::ReleaseInstance();
 	UserInterface::ReleaseInstance();
 	 ImageManager::ReleaseInstance();
 	ObjectManager::ReleaseInstance();
