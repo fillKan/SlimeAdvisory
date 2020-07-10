@@ -390,7 +390,9 @@
     <ClCompile Include="DummyEnemy.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PBullet.cpp" />
+    <ClCompile Include="PBulletBreak.cpp" />
     <ClCompile Include="PHealthBar.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scence.cpp" />
@@ -405,7 +407,9 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Particle.h" />
     <ClInclude Include="PBullet.h" />
+    <ClInclude Include="PBulletBreak.h" />
     <ClInclude Include="PHealthBar.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scence.h" />

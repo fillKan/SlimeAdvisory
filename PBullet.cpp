@@ -1,6 +1,8 @@
 #include "DXUT.h"
 #include "PBullet.h"
 
+#include "PBulletBreak.h"
+
 void PBullet::Init()
 {
 	Name = "PBullet";
@@ -36,6 +38,8 @@ void PBullet::OnCollisionEnter(Object* other)
 	if (other->Tag == TAG::ENEMY)
 	{
 		IsDestory = true;
+
+		PARTICLE->Instantiate(PARTICLES::PBULLET_BREAK, Position);
 	}
 }
 
