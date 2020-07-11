@@ -27,9 +27,9 @@ void Player::Init()
 
 	CircleRadius = 128.f;
 
-	mSpeed = 6.f;
+	mSpeed = 9.f;
 
-	mTimer.SetTimer(0.25f, true);
+	mTimer.SetTimer(0.15f, true);
 
 	mAttackParticle = nullptr;
 

@@ -16,5 +16,9 @@ private:
 	Button* mButton;
 
 	Texture* mBackGround;
+
+	Texture* mCloudHuge  [2];
+	Texture* mCloudMiddle[2];
+	Texture* mCloudSmall [2];
 };
 
