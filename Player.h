@@ -20,5 +20,9 @@ private:
 	float mSpeed;
 
 	Timer mTimer;
+
+	Vector2 mAttackPoint;
+
+	Particle* mAttackParticle;
 };
 

@@ -1,7 +1,7 @@
 #pragma once
 enum class PARTICLES
 {
-	PBULLET_BREAK
+	PBULLET_BREAK, PATTACK
 };
 
 class Particle abstract
@@ -19,10 +19,11 @@ public:
 
 	virtual Particle* Instantiate(Vector2 pos) PURE;
 
+public:
+	Vector2 Position;
+
 protected:
 	Timer mTimer;
-
-	Vector2 mPosition;
 
 	Animation mAnimation;
 
@@ -37,7 +38,7 @@ public:
 
 	void AddParticle(PARTICLES key, Particle* value);
 
-	void Instantiate(PARTICLES key, Vector2 pos);
+	Particle* Instantiate(PARTICLES key, Vector2 pos);
 
 	void Update ();
 	void Render ();

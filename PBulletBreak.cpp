@@ -31,7 +31,7 @@ void PBulletBreak::Update()
 
 void PBulletBreak::Render()
 {
-	IMAGE->CenterRender(mAnimation.Play(), mPosition);
+	IMAGE->CenterRender(mAnimation.Play(), Position);
 }
 
 void PBulletBreak::Release()
