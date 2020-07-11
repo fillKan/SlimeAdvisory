@@ -25,9 +25,11 @@ void PAttack::Init()
 
 void PAttack::Update()
 {
-	if (INPUT->GetKeyDown(ATTACKKEY))
+	if (INPUT->GetKeyDown(ATTACKKEY) && mCurrentState != PLAY_STATE::BEGIN)
 	{
 		mCurrentState = PLAY_STATE::BEGIN;
+
+		mAttackBegin.Rewind();
 
 		mTimer.SetTimer(0.15f);
 	}
@@ -38,9 +40,11 @@ void PAttack::Update()
 			mCurrentState = PLAY_STATE::ING;
 		}
 	}
-	else if (INPUT->GetKeyUp(ATTACKKEY))
+	else if (INPUT->GetKeyUp(ATTACKKEY) && mCurrentState != PLAY_STATE::END)
 	{
 		mCurrentState = PLAY_STATE::END;
+
+		mAttackEnd.Rewind();
 
 		mTimer.SetTimer(0.15f);
 	}
@@ -62,11 +66,11 @@ void PAttack::Render()
 		break;
 
 	case PLAY_STATE::BEGIN:
-		IMAGE->CenterRender(mAttackBegin.Play(), Position);
+		IMAGE->CenterRender(mAttackBegin.PlayOnce(), Position);
 		break;
 
 	case PLAY_STATE::END:
-		IMAGE->CenterRender(mAttackEnd.Play(), Position);
+		IMAGE->CenterRender(mAttackEnd.PlayOnce(), Position);
 		break;
 
 	default:
