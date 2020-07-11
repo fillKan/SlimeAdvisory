@@ -30,25 +30,25 @@ void Title::Init()
 
 	mStartButton = new Button(Vector2(WINSIZEX / 2, WINSIZEY * 0.59f));
 	mStartButton->SetChangeImage("Start/GameStart1", "Start/GameStart2", "Start/GameStart3");
-	mStartButton->SetButtonScale(RECT{ 53, 6, 200, 49 });
+	mStartButton->SetButtonScale(RECT{ -75, -28, 72, 15 });
 
 	USER_INTERFACE->AddUI(mStartButton);
 
 	mCreditButton = new Button(Vector2(WINSIZEX / 2, WINSIZEY * 0.66f));
 	mCreditButton->SetChangeImage("Credit/Credit1", "Credit/Credit2", "Credit/Credit3");
-	mCreditButton->SetButtonScale(RECT{ 77, 6, 177, 49 });
+	mCreditButton->SetButtonScale(RECT{ -75, -28, 72, 15 });
 
 	USER_INTERFACE->AddUI(mCreditButton);
 
 	mSettingButton = new Button(Vector2(WINSIZEX / 2, WINSIZEY * 0.725f));
 	mSettingButton->SetChangeImage("Setting/Setting1", "Setting/Setting2", "Setting/Setting3");
-	mSettingButton->SetButtonScale(RECT{ 29, 7, 97, 49 });
+	mSettingButton->SetButtonScale(RECT{ -35, -25, 33, 17 });
 
 	USER_INTERFACE->AddUI(mSettingButton);
 
 	mExitButton = new Button(Vector2(WINSIZEX / 2, WINSIZEY * 0.79f));
 	mExitButton->SetChangeImage("Exit/Exit1", "Exit/Exit2", "Exit/Exit3");
-	mExitButton->SetButtonScale(RECT{ 29, 7, 97, 49 });
+	mExitButton->SetButtonScale(RECT{ -35, -25, 33, 17 });
 
 	USER_INTERFACE->AddUI(mExitButton);
 }
