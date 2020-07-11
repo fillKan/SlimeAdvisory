@@ -12,6 +12,11 @@ public:
 
 private:
 
+	Button* mStartButton;
+	Button* mCreditButton;
+	Button* mSettingButton;
+	Button* mExitButton;
+
 	Texture* mTitle;
 	Texture* mBackGround;
 	Texture* mCredit;

@@ -27,6 +27,30 @@ void Title::Init()
 	mHCloudPos[0] = ZERO; mHCloudPos[1] = Vector2(WINSIZEX, 0);
 	mMCloudPos[0] = ZERO; mMCloudPos[1] = Vector2(WINSIZEX, 0);
 	mSCloudPos[0] = ZERO; mSCloudPos[1] = Vector2(WINSIZEX, 0);
+
+	mStartButton = new Button(Vector2(WINSIZEX / 2, WINSIZEY * 0.4f));
+	mStartButton->SetChangeImage("Start/GameStart1", "Start/GameStart2", "Start/GameStart3");
+	mStartButton->SetButtonScale(RECT{ 53, 6, 200, 49 });
+
+	USER_INTERFACE->AddUI(mStartButton);
+
+	mCreditButton = new Button(Vector2(WINSIZEX / 2, WINSIZEY * 0.47f));
+	mCreditButton->SetChangeImage("Credit/Credit1", "Credit/Credit2", "Credit/Credit3");
+	mCreditButton->SetButtonScale(RECT{ 77, 6, 177, 49 });
+
+	USER_INTERFACE->AddUI(mCreditButton);
+
+	mSettingButton = new Button(Vector2(WINSIZEX / 2, WINSIZEY * 0.54f));
+	mSettingButton->SetChangeImage("Setting/Setting1", "Setting/Setting2", "Setting/Setting3");
+	mSettingButton->SetButtonScale(RECT{ 29, 7, 97, 49 });
+
+	USER_INTERFACE->AddUI(mSettingButton);
+
+	mExitButton = new Button(Vector2(WINSIZEX / 2, WINSIZEY * 0.61f));
+	mExitButton->SetChangeImage("Exit/Exit1", "Exit/Exit2", "Exit/Exit3");
+	mExitButton->SetButtonScale(RECT{ 29, 7, 97, 49 });
+
+	USER_INTERFACE->AddUI(mExitButton);
 }
 
 void Title::Update()
@@ -61,4 +85,5 @@ void Title::Render()
 
 void Title::Release()
 {
+	USER_INTERFACE->Release();
 }
