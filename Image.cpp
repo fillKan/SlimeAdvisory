@@ -184,3 +184,19 @@ Texture* Animation::Play()
 	}
 	return Frames[currentFrame];
 }
+
+Texture* Animation::PlayOnce()
+{
+	if (currentFrame < Frames.size() - 1)
+	{
+		progress += DELTA_TIME;
+
+		if (progress >= delay)
+		{
+			progress = 0.f;
+
+			return Frames[++currentFrame];
+		}
+	}
+	return Frames[currentFrame];
+}

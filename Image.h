@@ -25,6 +25,7 @@ struct Animation
 	void Clear();
 
 	Texture* Play();
+	Texture* PlayOnce();
 
 	unsigned currentFrame = 0;
 
