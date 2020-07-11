@@ -1,7 +1,7 @@
 #include "DXUT.h"
 #include "Particle.h"
 
-Particle::Particle(Vector2 pos) : mPosition(pos)
+Particle::Particle(Vector2 pos) : Position(pos)
 {
 }
 
@@ -28,7 +28,7 @@ void ParticleAdmin::AddParticle(PARTICLES key, Particle* value)
 	}
 }
 
-void ParticleAdmin::Instantiate(PARTICLES key, Vector2 pos)
+Particle* ParticleAdmin::Instantiate(PARTICLES key, Vector2 pos)
 {
 	auto find = mLibrary.find(key);
 
@@ -39,7 +39,9 @@ void ParticleAdmin::Instantiate(PARTICLES key, Vector2 pos)
 		particle->Init();
 
 		mParticles.emplace_back(particle);
+		return particle;
 	}
+	return nullptr;
 }
 
 void ParticleAdmin::Update()

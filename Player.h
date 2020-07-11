@@ -22,5 +22,7 @@ private:
 	Timer mTimer;
 
 	Vector2 mAttackPoint;
+
+	Particle* mAttackParticle;
 };
 

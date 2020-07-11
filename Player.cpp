@@ -29,6 +29,8 @@ void Player::Init()
 
 	mTimer.SetTimer(0.25f, true);
 
+	mAttackParticle = nullptr;
+
 }
 
 void Player::Update()
@@ -37,7 +39,7 @@ void Player::Update()
 
 	if (INPUT->GetKeyDown(ATTACKKEY))
 	{
-		PARTICLE->Instantiate(PARTICLES::PATTACK, mAttackPoint);
+		mAttackParticle = PARTICLE->Instantiate(PARTICLES::PATTACK, mAttackPoint);
 	}
 
 	if (INPUT->GetKey(VK_SPACE) && mTimer.TimeOver())
@@ -65,6 +67,13 @@ void Player::Update()
 		Velocity = LEFT * mSpeed;
 	}
 	Position += Velocity;
+
+	mAttackPoint = (Position + Vector2(130.5f, 20.5f));
+
+	if (mAttackParticle)
+	{
+		mAttackParticle->Position = mAttackPoint;
+	}
 }
 
 void Player::Render()

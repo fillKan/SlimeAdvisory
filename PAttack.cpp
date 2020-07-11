@@ -55,15 +55,15 @@ void PAttack::Render()
 	switch (mCurrentState)
 	{
 	case PLAY_STATE::ING:
-		IMAGE->CenterRender(mAnimation.Play(), mPosition);
+		IMAGE->CenterRender(mAnimation.Play(), Position);
 		break;
 
 	case PLAY_STATE::BEGIN:
-		IMAGE->CenterRender(mAttackBegin.Play(), mPosition);
+		IMAGE->CenterRender(mAttackBegin.Play(), Position);
 		break;
 
 	case PLAY_STATE::END:
-		IMAGE->CenterRender(mAttackEnd.Play(), mPosition);
+		IMAGE->CenterRender(mAttackEnd.Play(), Position);
 		break;
 
 	default:
