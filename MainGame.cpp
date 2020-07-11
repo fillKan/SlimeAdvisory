@@ -4,6 +4,7 @@
 #include "StageONE.h"
 
 #include "PBulletBreak.h"
+#include "PAttack.h"
 
 MainGame::MainGame()
 {
@@ -20,6 +21,7 @@ void MainGame::Init()
 	SCENCE->AddScence("StageONE", new StageONE());
 
 	PARTICLE->AddParticle(PARTICLES::PBULLET_BREAK, new PBulletBreak(ZERO));
+	PARTICLE->AddParticle(PARTICLES::PATTACK, new PAttack(ZERO));
 
 	SCENCE->LoadScence("StageONE");
 }

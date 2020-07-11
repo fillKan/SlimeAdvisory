@@ -27,11 +27,17 @@ void Player::Init()
 	mSpeed = 4.5f;
 
 	mTimer.SetTimer(0.25f, true);
+
 }
 
 void Player::Update()
 {
 	Velocity = ZERO;
+
+	if (INPUT->GetKeyDown(ATTACKKEY))
+	{
+		PARTICLE->Instantiate(PARTICLES::PATTACK, Position + Vector2(20, 0));
+	}
 
 	if (INPUT->GetKey(VK_SPACE) && mTimer.TimeOver())
 	{
