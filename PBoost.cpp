@@ -37,7 +37,7 @@ void PBoost::Update()
 	}
 	else if (INPUT->GetKey(ATTACKKEY))
 	{
-		if (mTimer.TimeOver())
+		if (mTimer.TimeOver() && mCurrentState != PLAY_STATE::ING)
 		{
 			mCurrentState = PLAY_STATE::ING;
 		}

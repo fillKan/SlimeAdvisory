@@ -32,7 +32,12 @@ void Player::Init()
 	mTimer.SetTimer(0.25f, true);
 
 	mAttackParticle = nullptr;
-	mBoostEffect = nullptr;
+
+					  mBoostEffect = new PBoost();
+	OBJECT->AddObject(mBoostEffect);
+
+	this->Child = mBoostEffect;
+				  mBoostEffect->Parent = this;
 }
 
 void Player::Update()
@@ -43,15 +48,6 @@ void Player::Update()
 	{
 		mAttackParticle = PARTICLE->Instantiate(PARTICLES::PATTACK, mAttackPoint);
 	}
-	if (mBoostEffect == nullptr)
-	{
-		mBoostEffect = new PBoost();
-		OBJECT->AddObject(mBoostEffect);
-
-		Child = mBoostEffect;
-		mBoostEffect->Parent = this;
-	}
-
 	if (INPUT->GetKey(VK_SPACE) && mTimer.TimeOver())
 	{
 		Object* bullet = new PBullet();
@@ -78,9 +74,9 @@ void Player::Update()
 	}
 	Position += Velocity;
 
-	mAttackPoint = (Position + Vector2(130.5f, 20.5f));
+	mAttackPoint = (Position + ATK_PARTICLE_OFFSET);
 
-	mBoostEffect->Position = (Position + Vector2(-90.f, 20.f));
+	mBoostEffect->Position = (Position + BOOST_OFFSET);
 
 	if (mAttackParticle)
 	{
