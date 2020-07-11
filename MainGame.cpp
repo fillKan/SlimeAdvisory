@@ -2,6 +2,7 @@
 #include "MainGame.h"
 
 #include "StageONE.h"
+#include "Title.h"
 
 #include "PBulletBreak.h"
 #include "PAttack.h"
@@ -19,11 +20,12 @@ void MainGame::Init()
 	srand(time(NULL));
 
 	SCENCE->AddScence("StageONE", new StageONE());
+	SCENCE->AddScence("Title", new Title());
 
 	PARTICLE->AddParticle(PARTICLES::PBULLET_BREAK, new PBulletBreak(ZERO));
 	PARTICLE->AddParticle(PARTICLES::PATTACK, new PAttack(ZERO));
 
-	SCENCE->LoadScence("StageONE");
+	SCENCE->LoadScence("Title");
 }
 
 void MainGame::Update()

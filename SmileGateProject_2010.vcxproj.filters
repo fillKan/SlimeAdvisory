@@ -78,6 +78,9 @@
     <Filter Include="System\Object\Player\PBoost">
       <UniqueIdentifier>{25c50d97-0fdc-4518-86d9-a3b31d025155}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Scence\Title">
+      <UniqueIdentifier>{0352f9fc-2903-454f-82d7-2277bd643e4f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -200,6 +203,9 @@
     <ClCompile Include="PBoost.cpp">
       <Filter>System\Object\Player\PBoost</Filter>
     </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>System\Scence\Title</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -263,6 +269,9 @@
     </ClInclude>
     <ClInclude Include="PBoost.h">
       <Filter>System\Object\Player\PBoost</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>System\Scence\Title</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
