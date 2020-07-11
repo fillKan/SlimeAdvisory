@@ -10,6 +10,7 @@ class Object abstract
 public:
 
 	Object* Parent;
+	Object* Child;
 
 	string Name;
 	TAG Tag;
