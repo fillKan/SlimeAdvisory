@@ -23,6 +23,7 @@ struct Animation
 
 	void AddFrame(const string& path, const string& name, int frame);
 	void Clear();
+	void Rewind() { currentFrame = 0; }
 
 	Texture* Play();
 	Texture* PlayOnce();

@@ -75,6 +75,9 @@
     <Filter Include="System\Particle\PAttack">
       <UniqueIdentifier>{03bab7f5-5e2a-436a-b3ec-b6d0e84aeb6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Object\Player\PBoost">
+      <UniqueIdentifier>{25c50d97-0fdc-4518-86d9-a3b31d025155}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -194,6 +197,9 @@
     <ClCompile Include="PAttack.cpp">
       <Filter>System\Particle\PAttack</Filter>
     </ClCompile>
+    <ClCompile Include="PBoost.cpp">
+      <Filter>System\Object\Player\PBoost</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -254,6 +260,9 @@
     </ClInclude>
     <ClInclude Include="PAttack.h">
       <Filter>System\Particle\PAttack</Filter>
+    </ClInclude>
+    <ClInclude Include="PBoost.h">
+      <Filter>System\Object\Player\PBoost</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

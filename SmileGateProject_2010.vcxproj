@@ -392,6 +392,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PAttack.cpp" />
+    <ClCompile Include="PBoost.cpp" />
     <ClCompile Include="PBullet.cpp" />
     <ClCompile Include="PBulletBreak.cpp" />
     <ClCompile Include="PHealthBar.cpp" />
@@ -410,6 +411,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="PAttack.h" />
+    <ClInclude Include="PBoost.h" />
     <ClInclude Include="PBullet.h" />
     <ClInclude Include="PBulletBreak.h" />
     <ClInclude Include="PHealthBar.h" />

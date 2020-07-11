@@ -1,12 +1,15 @@
 #pragma once
 
-class PBoost;
+enum class PLAY_STATE
+{
+	NONE, ING, BEGIN, END
+};
 
-class Player : public Object
+class PBoost : public Object
 {
 public:
-	 Player();
-	~Player();
+	 PBoost();
+	~PBoost();
 
 	virtual void Init   () override;
 	virtual void Update () override;
@@ -18,18 +21,12 @@ public:
 	virtual void OnCollisionExit (Object* other) override;
 
 private:
-	Animation mAnimation;
+	Animation mIngAnim;
+	Animation mBeginAnim;
+	Animation mEndAnim;
 
-	float mSpeed;
+	PLAY_STATE mCurrentState;
 
 	Timer mTimer;
-
-	Vector2 mAttackPoint;
-
-	Particle* mAttackParticle;
-	  PBoost* mBoostEffect;
-
-	const Vector2 ATK_PARTICLE_OFFSET = Vector2(130.5f, 20.5f);
-	const Vector2		 BOOST_OFFSET = Vector2(-90.f, 20.f);
 };
 

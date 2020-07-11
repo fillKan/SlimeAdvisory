@@ -4,6 +4,8 @@
 #include "PBullet.h"
 #include "DummyEnemy.h"
 
+#include "PBoost.h"
+
 Player::Player()
 {
 }
@@ -31,6 +33,11 @@ void Player::Init()
 
 	mAttackParticle = nullptr;
 
+					  mBoostEffect = new PBoost();
+	OBJECT->AddObject(mBoostEffect);
+
+	this->Child = mBoostEffect;
+				  mBoostEffect->Parent = this;
 }
 
 void Player::Update()
@@ -41,7 +48,6 @@ void Player::Update()
 	{
 		mAttackParticle = PARTICLE->Instantiate(PARTICLES::PATTACK, mAttackPoint);
 	}
-
 	if (INPUT->GetKey(VK_SPACE) && mTimer.TimeOver())
 	{
 		Object* bullet = new PBullet();
@@ -68,7 +74,9 @@ void Player::Update()
 	}
 	Position += Velocity;
 
-	mAttackPoint = (Position + Vector2(130.5f, 20.5f));
+	mAttackPoint = (Position + ATK_PARTICLE_OFFSET);
+
+	mBoostEffect->Position = (Position + BOOST_OFFSET);
 
 	if (mAttackParticle)
 	{
