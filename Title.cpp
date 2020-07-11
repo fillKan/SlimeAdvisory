@@ -12,6 +12,7 @@ Title::~Title()
 void Title::Init()
 {
 	mBackGround = IMAGE->AddImage("BackGround", "./image/BackGround/backgruond.png");
+	mCreditWindow = IMAGE->AddImage("CreditPage", "./image/Title/CreditPage.png");
 
 	mTitle = IMAGE->AddImage("MainLogo", "./image/Title/MainLogo.png");
 
@@ -65,6 +66,18 @@ void Title::Update()
 		if (mMCloudPos[i].x <= -WINSIZEX) { mMCloudPos[i].x = WINSIZEX; }
 		if (mSCloudPos[i].x <= -WINSIZEX) { mSCloudPos[i].x = WINSIZEX; }
 	}
+	if (mStartButton->OnClick())
+	{
+		SCENCE->LoadScence("StageONE");
+	}
+	if (mCreditButton->OnClick())
+	{
+		mCanShowCredit = true;
+	}
+	else if (mCreditButton->TakeOff())
+	{
+		mCanShowCredit = false;
+	}
 }
 
 void Title::Render()
@@ -81,6 +94,11 @@ void Title::Render()
 	mHCloud[1]->Render(mHCloudPos[1]);
 
 	mTitle->CenterRender(WINSIZEX / 2, WINSIZEY * 0.3f);
+
+	if (mCanShowCredit)
+	{
+		mCreditWindow->Render(ZERO);
+	}
 }
 
 void Title::Release()
