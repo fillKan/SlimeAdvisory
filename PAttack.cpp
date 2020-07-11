@@ -14,7 +14,7 @@ PAttack::~PAttack()
 void PAttack::Init()
 {
 	mAnimation.AddFrame("./image/Particle/PAttack/", "PlayerAttackEffect", 6);
-	mAnimation.delay = 0.05f;
+	mAnimation.delay = 0.025f;
 
 	mAttackBegin.AddFrame("./image/Particle/PAttackBegin/", "PlayerAttackStart", 3);
 	mAttackBegin.delay = 0.05f;

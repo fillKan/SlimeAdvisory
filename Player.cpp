@@ -19,6 +19,7 @@ void Player::Init()
 	Tag = TAG::PLAYER;
 
 	Position = Vector2(WINSIZEX / 2, WINSIZEY / 2);
+	mAttackPoint = (Position + Vector2(130.5f, 20.5f));
 
 	mAnimation.AddFrame("./image/Player/Default/", "Player", 18);
 
@@ -36,7 +37,7 @@ void Player::Update()
 
 	if (INPUT->GetKeyDown(ATTACKKEY))
 	{
-		PARTICLE->Instantiate(PARTICLES::PATTACK, Position + Vector2(20, 0));
+		PARTICLE->Instantiate(PARTICLES::PATTACK, mAttackPoint);
 	}
 
 	if (INPUT->GetKey(VK_SPACE) && mTimer.TimeOver())
@@ -45,7 +46,7 @@ void Player::Update()
 		
 		OBJECT->AddObject(bullet);
 
-		bullet->Position = Position;
+		bullet->Position = mAttackPoint;
 	}
 	if (INPUT->GetKey(VK_UP))
 	{
