@@ -1,4 +1,7 @@
 #pragma once
+
+class PBoost;
+
 class Player : public Object
 {
 public:
@@ -24,5 +27,6 @@ private:
 	Vector2 mAttackPoint;
 
 	Particle* mAttackParticle;
+	PBoost* mBoostEffect;
 };
 

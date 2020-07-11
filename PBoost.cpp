@@ -17,13 +17,10 @@ PBoost::~PBoost()
 void PBoost::Init()
 {
 	mBeginAnim.AddFrame("./image/Player/Boost/Begin/", "PlayerAttackBoostStart", 3);
-	mBeginAnim.delay = 0.05f;
 
 	mIngAnim.AddFrame("./image/Player/Boost/Ing/", "PlayerAttackBoost", 12);
-	mIngAnim.delay = 0.025f;
 
-	mEndAnim.AddFrame("./image/Player/Boost/End/", "PlayerAttackEnd", 3);
-	mEndAnim.delay = 0.05f;
+	mEndAnim.AddFrame("./image/Player/Boost/End/", "PlayerAttackBoostEnd", 3);
 
 	mCurrentState = PLAY_STATE::NONE;
 }
@@ -34,7 +31,7 @@ void PBoost::Update()
 	{
 		mCurrentState = PLAY_STATE::BEGIN;
 
-		mTimer.SetTimer(0.15f);
+		mTimer.SetTimer(0.3f);
 	}
 	else if (INPUT->GetKey(ATTACKKEY))
 	{
@@ -47,7 +44,7 @@ void PBoost::Update()
 	{
 		mCurrentState = PLAY_STATE::END;
 
-		mTimer.SetTimer(0.15f);
+		mTimer.SetTimer(0.3f);
 	}
 	if (mCurrentState == PLAY_STATE::END && mTimer.TimeOver())
 	{

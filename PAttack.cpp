@@ -44,9 +44,12 @@ void PAttack::Update()
 
 		mTimer.SetTimer(0.15f);
 	}
-	if (mCurrentState == PLAY_STATE::END && mTimer.TimeOver())
+	if (mCurrentState == PLAY_STATE::END)
 	{
-		mCurrentState = PLAY_STATE::NONE;
+		if (mTimer.TimeOver())
+		{
+			mCurrentState = PLAY_STATE::NONE;
+		}		
 	}
 }
 

@@ -4,6 +4,8 @@
 #include "PBullet.h"
 #include "DummyEnemy.h"
 
+#include "PBoost.h"
+
 Player::Player()
 {
 }
@@ -30,7 +32,7 @@ void Player::Init()
 	mTimer.SetTimer(0.25f, true);
 
 	mAttackParticle = nullptr;
-
+	mBoostEffect = nullptr;
 }
 
 void Player::Update()
@@ -40,6 +42,14 @@ void Player::Update()
 	if (INPUT->GetKeyDown(ATTACKKEY) && mAttackParticle == nullptr)
 	{
 		mAttackParticle = PARTICLE->Instantiate(PARTICLES::PATTACK, mAttackPoint);
+	}
+	if (mBoostEffect == nullptr)
+	{
+		mBoostEffect = new PBoost();
+		OBJECT->AddObject(mBoostEffect);
+
+		Child = mBoostEffect;
+		mBoostEffect->Parent = this;
 	}
 
 	if (INPUT->GetKey(VK_SPACE) && mTimer.TimeOver())
@@ -69,6 +79,8 @@ void Player::Update()
 	Position += Velocity;
 
 	mAttackPoint = (Position + Vector2(130.5f, 20.5f));
+
+	mBoostEffect->Position = (Position + Vector2(-90.f, 20.f));
 
 	if (mAttackParticle)
 	{
