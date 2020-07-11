@@ -14,7 +14,7 @@ void PBullet::Init()
 
 	CircleRadius = 8.f;
 
-	mSpeed = 5.5f;
+	mSpeed = 7.5f;
 }
 
 void PBullet::Update()

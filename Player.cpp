@@ -25,7 +25,7 @@ void Player::Init()
 
 	CircleRadius = 128.f;
 
-	mSpeed = 4.5f;
+	mSpeed = 6.f;
 
 	mTimer.SetTimer(0.25f, true);
 
