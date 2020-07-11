@@ -37,7 +37,7 @@ void Player::Update()
 {
 	Velocity = ZERO;
 
-	if (INPUT->GetKeyDown(ATTACKKEY))
+	if (INPUT->GetKeyDown(ATTACKKEY) && mAttackParticle == nullptr)
 	{
 		mAttackParticle = PARTICLE->Instantiate(PARTICLES::PATTACK, mAttackPoint);
 	}

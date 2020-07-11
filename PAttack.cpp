@@ -46,7 +46,7 @@ void PAttack::Update()
 	}
 	if (mCurrentState == PLAY_STATE::END && mTimer.TimeOver())
 	{
-		mCanDestroy = true;
+		mCurrentState = PLAY_STATE::NONE;
 	}
 }
 
