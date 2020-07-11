@@ -1,7 +1,7 @@
 #include "DXUT.h"
 #include "Object.h"
 
-Object::Object() : Parent(nullptr), Name(""), Tag(TAG::NONE), IsDestory(false), IsActive(true), IsPrevCollision(false), IsCrntCollision(false), Rotation(0.0f), Position(ZERO), Scale(ONE), ImageSize(ZERO), Velocity(ZERO), CircleRadius(0.f)
+Object::Object() : Parent(nullptr), Child(nullptr), Name(""), Tag(TAG::NONE), IsDestory(false), IsActive(true), IsPrevCollision(false), IsCrntCollision(false), Rotation(0.0f), Position(ZERO), Scale(ONE), ImageSize(ZERO), Velocity(ZERO), CircleRadius(0.f)
 {
 }
 
@@ -143,7 +143,14 @@ void ObjectManager::Render()
 	{
 		for (auto iter : mCurObjects)
 		{
-			if (iter->IsActive) iter->Render();
+			if (iter->IsActive && !iter->Parent)
+			{
+				if (iter->Child)
+				{
+					iter->Child->Render();
+				}
+				iter->Render();
+			}
 		}
 	}
 }
