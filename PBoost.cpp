@@ -31,6 +31,8 @@ void PBoost::Update()
 	{
 		mCurrentState = PLAY_STATE::BEGIN;
 
+		mBeginAnim.Rewind();
+
 		mTimer.SetTimer(0.3f);
 	}
 	else if (INPUT->GetKey(ATTACKKEY))
@@ -43,6 +45,8 @@ void PBoost::Update()
 	else if (INPUT->GetKeyUp(ATTACKKEY))
 	{
 		mCurrentState = PLAY_STATE::END;
+
+		mEndAnim.Rewind();
 
 		mTimer.SetTimer(0.3f);
 	}
@@ -61,11 +65,11 @@ void PBoost::Render()
 		break;
 
 	case PLAY_STATE::BEGIN:
-		IMAGE->CenterRender(mBeginAnim.Play(), Position);
+		IMAGE->CenterRender(mBeginAnim.PlayOnce(), Position);
 		break;
 
 	case PLAY_STATE::END:
-		IMAGE->CenterRender(mEndAnim.Play(), Position);
+		IMAGE->CenterRender(mEndAnim.PlayOnce(), Position);
 		break;
 
 	default:
