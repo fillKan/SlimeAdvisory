@@ -30,7 +30,7 @@ public:
 	Vector2 Position;
 	Vector2 Scale;
 	Vector2 Velocity;
-	Vector2 ImageSize;
+	Vector2 Direction;
 
 public:
 			 Object();

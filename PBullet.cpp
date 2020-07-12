@@ -21,7 +21,9 @@ void PBullet::Update()
 {
 	Velocity = ZERO;
 
-	Position += (Velocity += RIGHT * mSpeed);
+	Direction = Math::AimVector(INPUT->CursorPos(), Position);
+
+	Position += (Velocity += Direction * mSpeed);
 }
 
 void PBullet::Render()

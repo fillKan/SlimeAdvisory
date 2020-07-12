@@ -26,7 +26,9 @@ Vector2 Math::RandomCirclePoint(Vector2 pivot)
 
 Vector2 Math::AimVector(Vector2 target, Vector2 tracer)
 {
-	return Vector2();
+	Vector2 Aim = target - tracer;
+
+	return Aim / Distance(target, tracer);
 }
 
 Vector2* Math::RadiateVector(Vector2 point, float theta, int num)
