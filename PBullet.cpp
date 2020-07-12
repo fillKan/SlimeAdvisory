@@ -20,10 +20,10 @@ void PBullet::Init()
 
 	mAnimation.AddFrame("./image/Player/Bullet/", "PlayerBullet", 6);
 
-	Direction = Math::AimVector(INPUT->CursorPos(), Position);
 	CircleRadius = 8.f;
 
-	mSpeed = 9.5f;
+	Direction = RIGHT;
+	mSpeed = 15.5f;
 }
 
 void PBullet::Update()
@@ -35,7 +35,7 @@ void PBullet::Update()
 
 void PBullet::Render()
 {
-	IMAGE->CenterRender(mAnimation.Play(), Position);
+	IMAGE->CenterRender(mAnimation.Play(), Position, Rotation);
 }
 
 void PBullet::Release()
