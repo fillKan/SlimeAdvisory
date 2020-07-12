@@ -52,6 +52,8 @@ void Title::Init()
 	mExitButton->SetButtonScale(RECT{ -35, -25, 33, 17 });
 
 	USER_INTERFACE->AddUI(mExitButton);
+
+	BANNER->SetBanner(mCreditWindow, ZERO);
 }
 
 void Title::Update()
@@ -72,6 +74,14 @@ void Title::Update()
 	}
 	if (mCreditButton->OnClick())
 	{
+		if (!mCanShowCredit)
+		{
+			BANNER->Show();
+		}
+		if (mCanShowCredit)
+		{
+			BANNER->Close();
+		}
 		mCanShowCredit = !mCanShowCredit;
 	}
 }
@@ -90,11 +100,6 @@ void Title::Render()
 	mHCloud[1]->Render(mHCloudPos[1]);
 
 	mTitle->CenterRender(WINSIZEX / 2, WINSIZEY * 0.3f);
-
-	if (mCanShowCredit)
-	{
-		mCreditWindow->Render(ZERO);
-	}
 }
 
 void Title::Release()
