@@ -385,6 +385,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Banner.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DummyEnemy.cpp" />
@@ -401,7 +402,9 @@
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="StageONE.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Title.cpp" />
     <ClCompile Include="UI.cpp" />
+    <ClInclude Include="Banner.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DummyEnemy.h" />
@@ -421,6 +424,7 @@
     <ClInclude Include="Sound.h" />
     <ClInclude Include="StageONE.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="Title.h" />
     <ClInclude Include="UI.h" />
     <None Include="DXUT\Optional\directx.ico" />
     <ClInclude Include="DXUT\Core\DXUT.h" />

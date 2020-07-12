@@ -33,15 +33,15 @@ void Button::Render()
 {
 	if (mIsCrntClick)
 	{
-		IMAGE->Render(mImage.EdgeImage, mPosition);
+		IMAGE->CenterRender(mImage.EdgeImage, mPosition);
 	}
 	else if (mIsHighlight)
 	{
-		IMAGE->Render(mImage.FillImage, mPosition);
+		IMAGE->CenterRender(mImage.FillImage, mPosition);
 	}
 	else
 	{
-		IMAGE->Render(mImage.BackImage, mPosition);
+		IMAGE->CenterRender(mImage.BackImage, mPosition);
 	}
 }
 

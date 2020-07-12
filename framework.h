@@ -65,6 +65,7 @@ struct Collider
 #include "Particle.h"
 #include "UI.h"
 #include "Button.h"
+#include "Banner.h"
 #include "Scence.h"
 #include "Input.h"
 #include "Camera.h"
