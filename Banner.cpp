@@ -14,7 +14,7 @@ void Banner::SetBanner(Texture* image, Vector2 pos)
 	mImage = image; mPosition = pos;
 }
 
-void Banner::AddButton(Button* button)
+void Banner::SetButton(Button* button)
 {
 	mButton = button;
 }

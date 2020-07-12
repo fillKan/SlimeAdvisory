@@ -6,7 +6,7 @@ public:
 	~Banner();
 
 	void SetBanner(Texture* image, Vector2 pos);
-	void AddButton(Button* button);
+	void SetButton(Button* button);
 
 	void Update();
 	void Render();

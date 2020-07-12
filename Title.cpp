@@ -58,7 +58,7 @@ void Title::Init()
 	mCloseCredit->SetButtonScale(RECT{ -64, -19, 64, 25 });
 
 	BANNER->SetBanner(mCreditWindow, ZERO);
-	BANNER->AddButton(mCloseCredit);
+	BANNER->SetButton(mCloseCredit);
 }
 
 void Title::Update()
@@ -108,4 +108,7 @@ void Title::Release()
 	USER_INTERFACE->Release();
 
 	SAFE_DELETE(mCloseCredit);
+
+	BANNER->SetButton(nullptr);
+	BANNER->Close();
 }
