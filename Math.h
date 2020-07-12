@@ -28,21 +28,12 @@ namespace Math
 		return (Math::Distance(pointA, pointB) <= radiusA + radiusB);
 	}
 
-	float DegreeAngle(Vector2 pointA, Vector2 pointB)
-	{
-		float degree = TO_DEGREE * atan2f((pointA.x - pointB.x), (pointA.y - pointB.y)) - GRAPH_CORRECTION;
+	float DegreeAngle(Vector2 pointA, Vector2 pointB);
 
-		return (degree < 0.f) ? -degree : degree;
-	}
+	float RadianAngle(Vector2 pointA, Vector2 pointB);
 
 	bool RectCollision(Object* objectA, Object* objectB);
 
-	float RadianAngle(Vector2 pointA, Vector2 pointB)
-	{
-		float radian = atan2f((pointA.x - pointB.x), (pointA.y - pointB.y)) - GRAPH_CORRECTION;
-
-		return (radian < 0.f) ? -radian : radian;
-	}
 
 	Vector2 RandomCirclePoint(Vector2 pivot);
 
