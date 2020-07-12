@@ -19,6 +19,16 @@ void Banner::AddButton(Button* button)
 	mButton = button;
 }
 
+void Banner::Update()
+{
+
+	if (mButton != nullptr)
+	{
+		mButton->Update();
+	}
+
+}
+
 void Banner::Render()
 {
 	if (mIsShow)

@@ -38,6 +38,8 @@ void MainGame::Update()
 	PARTICLE->Update();
 
 	USER_INTERFACE->Update();
+
+	BANNER->Update();
 }
 
 void MainGame::Render()

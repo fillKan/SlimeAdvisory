@@ -17,6 +17,8 @@ private:
 	Button* mSettingButton;
 	Button* mExitButton;
 
+	Button* mCloseCredit;
+
 	Texture* mTitle;
 	Texture* mBackGround;
 	Texture* mCredit;

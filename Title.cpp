@@ -53,7 +53,12 @@ void Title::Init()
 
 	USER_INTERFACE->AddUI(mExitButton);
 
+	mCloseCredit = new Button(Vector2(WINSIZEX * 0.9f, WINSIZEY * 0.9f));
+	mCloseCredit->SetChangeImage("CreditClose/CreditBack1", "CreditClose/CreditBack2", "CreditClose/CreditBack1");
+	mCloseCredit->SetButtonScale(RECT{ -64, -19, 64, 25 });
+
 	BANNER->SetBanner(mCreditWindow, ZERO);
+	BANNER->AddButton(mCloseCredit);
 }
 
 void Title::Update()
@@ -74,15 +79,11 @@ void Title::Update()
 	}
 	if (mCreditButton->OnClick())
 	{
-		if (!mCanShowCredit)
-		{
-			BANNER->Show();
-		}
-		if (mCanShowCredit)
-		{
-			BANNER->Close();
-		}
-		mCanShowCredit = !mCanShowCredit;
+		BANNER->Show();
+	}
+	if (mCloseCredit->OnClick())
+	{
+		BANNER->Close();
 	}
 }
 
@@ -105,4 +106,6 @@ void Title::Render()
 void Title::Release()
 {
 	USER_INTERFACE->Release();
+
+	SAFE_DELETE(mCloseCredit);
 }

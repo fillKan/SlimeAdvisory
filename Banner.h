@@ -8,6 +8,7 @@ public:
 	void SetBanner(Texture* image, Vector2 pos);
 	void AddButton(Button* button);
 
+	void Update();
 	void Render();
 
 	void Close() { mIsShow = false; }
