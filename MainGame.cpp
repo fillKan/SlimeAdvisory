@@ -52,6 +52,7 @@ void MainGame::Render()
 	PARTICLE->Render();
 
 	USER_INTERFACE->Render();
+	BANNER->Render();
 
 	IMAGE->End();
 }
@@ -61,6 +62,7 @@ void MainGame::Release()
 	 Sound::ReleaseInstance();
 	 Input::ReleaseInstance();
 	Camera::ReleaseInstance();
+	Banner::ReleaseInstance();
 
 	ParticleAdmin::ReleaseInstance();
 	UserInterface::ReleaseInstance();

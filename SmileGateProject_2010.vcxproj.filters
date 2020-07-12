@@ -206,6 +206,9 @@
     <ClCompile Include="Title.cpp">
       <Filter>System\Scence\Title</Filter>
     </ClCompile>
+    <ClCompile Include="Banner.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -272,6 +275,9 @@
     </ClInclude>
     <ClInclude Include="Title.h">
       <Filter>System\Scence\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Banner.h">
+      <Filter>System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

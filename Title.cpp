@@ -72,11 +72,7 @@ void Title::Update()
 	}
 	if (mCreditButton->OnClick())
 	{
-		mCanShowCredit = true;
-	}
-	else if (mCreditButton->TakeOff())
-	{
-		mCanShowCredit = false;
+		mCanShowCredit = !mCanShowCredit;
 	}
 }
 
