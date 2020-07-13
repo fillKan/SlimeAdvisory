@@ -14,7 +14,7 @@ void DummyEnemy::Init()
 
 	mSpeed = 2 + (RANDOM(1, 5) * 0.1f);
 
-	CircleRadius = 64.f;
+	CircleRadius = 32.f;
 
 	mTimer.SetTimer(0.7f, true);
 }

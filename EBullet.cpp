@@ -20,7 +20,7 @@ void EBullet::Init()
 
 	mAnimation.AddFrame("./image/Enemy/Bullet/", "MonsterBullet", 6);
 
-	CircleRadius = 6.f;
+	CircleRadius = 15.f;
 }
 
 void EBullet::Update()

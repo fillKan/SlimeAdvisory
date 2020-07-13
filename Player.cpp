@@ -25,7 +25,7 @@ void Player::Init()
 
 	mAnimation.AddFrame("./image/Player/Default/", "Player", 18);
 
-	CircleRadius = 128.f;
+	CircleRadius = 50.f;
 
 	mSpeed = 9.f;
 
