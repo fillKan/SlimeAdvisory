@@ -1,6 +1,20 @@
 #include "DXUT.h"
 #include "Math.h"
 
+float Math::DegreeAngle(Vector2 pointA, Vector2 pointB)
+{
+	float degree = TO_DEGREE * atan2f((pointA.x - pointB.x), (pointA.y - pointB.y)) - GRAPH_CORRECTION;
+
+	return (degree < 0.f) ? -degree : degree;
+}
+
+float Math::RadianAngle(Vector2 pointA, Vector2 pointB)
+{
+	float radian = atan2f((pointA.x - pointB.x), (pointA.y - pointB.y)) - GRAPH_CORRECTION;
+
+	return (radian < 0.f) ? -radian : radian;
+}
+
 bool Math::RectCollision(Object* objectA, Object* objectB)
 {
 	/*Vector2 ALeftTop   = objectA->collider.leftTop   + objectA->Position;
@@ -26,7 +40,9 @@ Vector2 Math::RandomCirclePoint(Vector2 pivot)
 
 Vector2 Math::AimVector(Vector2 target, Vector2 tracer)
 {
-	return Vector2();
+	Vector2 Aim = target - tracer;
+
+	return Aim / Distance(target, tracer);
 }
 
 Vector2* Math::RadiateVector(Vector2 point, float theta, int num)

@@ -3,30 +3,39 @@
 
 #include "PBulletBreak.h"
 
+PBullet::PBullet(Vector2 pos)
+{
+	Position = pos;
+}
+
+PBullet::~PBullet()
+{
+}
+
 void PBullet::Init()
 {
 	Name = "PBullet";
 	Tag = TAG::PBULLET;
 
-	Position = ZERO;
 
 	mAnimation.AddFrame("./image/Player/Bullet/", "PlayerBullet", 6);
 
 	CircleRadius = 8.f;
 
-	mSpeed = 7.5f;
+	Direction = RIGHT;
+	mSpeed = 15.5f;
 }
 
 void PBullet::Update()
 {
 	Velocity = ZERO;
 
-	Position += (Velocity += RIGHT * mSpeed);
+	Position += (Velocity += Direction * mSpeed);
 }
 
 void PBullet::Render()
 {
-	IMAGE->CenterRender(mAnimation.Play(), Position);
+	IMAGE->CenterRender(mAnimation.Play(), Position, Rotation);
 }
 
 void PBullet::Release()

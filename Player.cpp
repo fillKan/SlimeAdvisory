@@ -49,12 +49,8 @@ void Player::Update()
 		mAttackParticle = PARTICLE->Instantiate(PARTICLES::PATTACK, mAttackPoint);
 	}
 	if (INPUT->GetKey(VK_SPACE) && mTimer.TimeOver())
-	{
-		Object* bullet = new PBullet();
-		
-		OBJECT->AddObject(bullet);
-
-		bullet->Position = mAttackPoint;
+	{		
+		OBJECT->AddObject(new PBullet(mAttackPoint));
 	}
 	if (INPUT->GetKey(VK_UP))
 	{

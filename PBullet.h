@@ -2,6 +2,9 @@
 class PBullet : public Object
 {
 public:
+	 PBullet(Vector2 pos);
+	~PBullet();
+
 	virtual void Init   () override;
 	virtual void Update () override;
 	virtual void Render () override;
