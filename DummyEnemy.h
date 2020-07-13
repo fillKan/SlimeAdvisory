@@ -16,5 +16,7 @@ private:
 	Animation mAnimation;
 
 	float mSpeed;
+
+	Timer mTimer;
 };
 

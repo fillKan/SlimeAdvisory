@@ -110,7 +110,7 @@ void ObjectManager::Update()
 
 	if (mCurObjects.empty()) return;
 
-	CollisionCheck(TAG::PLAYER, TAG::ENEMY);
+	CollisionCheck(TAG::PLAYER, TAG::EBULLET);
 	CollisionCheck(TAG::ENEMY, TAG::PBULLET);
 
 	for (auto iter = mCurObjects.begin(); iter != mCurObjects.end();)

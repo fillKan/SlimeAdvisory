@@ -1,6 +1,8 @@
 #include "DXUT.h"
 #include "EBullet.h"
 
+#include "PBulletBreak.h"
+
 EBullet::EBullet(Vector2 pos, Vector2 dir, float speed) : mSpeed(speed)
 {
 	Position  = pos;
@@ -39,6 +41,12 @@ void EBullet::Release()
 
 void EBullet::OnCollisionEnter(Object* other)
 {
+	if (other->Tag == TAG::PLAYER)
+	{
+		IsDestory = true;
+
+		PARTICLE->Instantiate(PARTICLES::PBULLET_BREAK, Position);
+	}
 }
 
 void EBullet::OnCollisionStay(Object* other)
