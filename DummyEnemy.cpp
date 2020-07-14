@@ -39,7 +39,7 @@ void DummyEnemy::Update()
 	{
 		if (mMinimalTimer.TimeOver())
 		{
-			OBJECT->AddObject(new EBullet(Position, LEFT, 11.5f));
+			OBJECT->AddObject(new EBullet(Position, OBJECT->FindObject(TAG::PLAYER)->Position, 11.5f));
 
 			ShootFire++;
 		}

@@ -2,7 +2,7 @@
 class EBullet : public Object
 {
 public:
-	 EBullet(Vector2 pos, Vector2 dir, float speed);
+	 EBullet(Vector2 pos, Vector2 target, float speed);
 	~EBullet();
 
 	virtual void Init   () override;

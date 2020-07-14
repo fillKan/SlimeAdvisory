@@ -3,10 +3,12 @@
 
 #include "PBulletBreak.h"
 
-EBullet::EBullet(Vector2 pos, Vector2 dir, float speed) : mSpeed(speed)
+EBullet::EBullet(Vector2 pos, Vector2 target, float speed) : mSpeed(speed)
 {
 	Position  = pos;
-	Direction = dir;
+
+	Direction = Math::AimVector(target, pos);
+	Rotation = Math::RadianAngle(pos, target);
 }
 
 EBullet::~EBullet()
@@ -32,7 +34,7 @@ void EBullet::Update()
 
 void EBullet::Render()
 {
-	IMAGE->CenterRender(mAnimation.Play(), Position);
+	IMAGE->CenterRender(mAnimation.Play(), Position, Rotation);
 }
 
 void EBullet::Release()
