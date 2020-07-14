@@ -7,9 +7,6 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-# DXUT Project File
-/DXUT/
-
 # User-specific files
 *.rsuser
 *.suo
