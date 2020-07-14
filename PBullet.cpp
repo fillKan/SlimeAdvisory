@@ -49,6 +49,8 @@ void PBullet::OnCollisionEnter(Object* other)
 		IsDestory = true;
 
 		PARTICLE->Instantiate(PARTICLES::PBULLET_BREAK, Position);
+
+		other->CURHealth -= PBULLET_DMG;
 	}
 }
 

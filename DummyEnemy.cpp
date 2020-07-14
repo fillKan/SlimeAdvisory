@@ -18,6 +18,8 @@ void DummyEnemy::Init()
 
 	mTimer.SetTimer(0.0f);
 	mMinimalTimer.SetTimer(0.2f, true);
+
+	HealthInit(ENEMY_DUMMY);
 }
 
 void DummyEnemy::Update()
@@ -62,10 +64,6 @@ void DummyEnemy::Release()
 
 void DummyEnemy::OnCollisionEnter(Object* other)
 {
-	if (other->Tag == TAG::PBULLET)
-	{
-		IsDestory = true;
-	}
 }
 
 void DummyEnemy::OnCollisionStay(Object* other)
