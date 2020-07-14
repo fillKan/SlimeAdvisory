@@ -12,7 +12,7 @@ void DummyEnemy::Init()
 
 	mAnimation.AddFrame("./image/Enemy/Normal/Attack/", "Monster_attack", 15);
 
-	mSpeed = 2 + (RANDOM(1, 5) * 0.1f);
+	mSpeed = RANDOM(3, 4);
 
 	CircleRadius = 32.f;
 
