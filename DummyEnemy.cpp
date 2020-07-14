@@ -29,7 +29,7 @@ void DummyEnemy::Update()
 	{
 		Vector2 Aim = Math::AimVector(OBJECT->FindObject(TAG::PLAYER)->Position, Position);
 
-		OBJECT->AddObject(new EBullet(Position, Aim, 15.f));
+		OBJECT->AddObject(new EBullet(Position, Aim, 11.5f));
 	}
 }
 
