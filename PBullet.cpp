@@ -20,7 +20,7 @@ void PBullet::Init()
 
 	mAnimation.AddFrame("./image/Player/Bullet/", "PlayerBullet", 6);
 
-	CircleRadius = 8.f;
+	CircleRadius = 15.f;
 
 	Direction = RIGHT;
 	mSpeed = 15.5f;
@@ -49,6 +49,8 @@ void PBullet::OnCollisionEnter(Object* other)
 		IsDestory = true;
 
 		PARTICLE->Instantiate(PARTICLES::PBULLET_BREAK, Position);
+
+		other->CURHealth -= PBULLET_DMG;
 	}
 }
 

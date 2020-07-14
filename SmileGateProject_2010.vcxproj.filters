@@ -81,6 +81,9 @@
     <Filter Include="System\Scence\Title">
       <UniqueIdentifier>{0352f9fc-2903-454f-82d7-2277bd643e4f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Object\Enemy\EBullet">
+      <UniqueIdentifier>{4627e4a9-d89a-4d18-bc78-7be3f45371c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -209,6 +212,9 @@
     <ClCompile Include="Banner.cpp">
       <Filter>System</Filter>
     </ClCompile>
+    <ClCompile Include="EBullet.cpp">
+      <Filter>System\Object\Enemy\EBullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -278,6 +284,9 @@
     </ClInclude>
     <ClInclude Include="Banner.h">
       <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="EBullet.h">
+      <Filter>System\Object\Enemy\EBullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,9 @@
 #pragma once
-class DummyEnemy : public Object
+class EBullet : public Object
 {
 public:
+	 EBullet(Vector2 pos, Vector2 target, float speed);
+	~EBullet();
 
 	virtual void Init   () override;
 	virtual void Update () override;
@@ -13,14 +15,8 @@ public:
 	virtual void OnCollisionExit (Object* other) override;
 
 private:
-	Animation mAnimation;
-
 	float mSpeed;
 
-	Timer mTimer;
-	Timer mMinimalTimer;
-
-	bool CanFire = false;
-	int ShootFire = 0;
+	Animation mAnimation;
 };
 

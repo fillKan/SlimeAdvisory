@@ -1,6 +1,8 @@
 #include "DXUT.h"
 #include "DummyEnemy.h"
 
+#include "EBullet.h"
+
 void DummyEnemy::Init()
 {
 	Name = "DummyEnemy";
@@ -10,9 +12,14 @@ void DummyEnemy::Init()
 
 	mAnimation.AddFrame("./image/Enemy/Normal/Attack/", "Monster_attack", 15);
 
-	mSpeed = 2 + (RANDOM(1, 5) * 0.1f);
+	mSpeed = RANDOM(3, 4);
 
-	CircleRadius = 64.f;
+	CircleRadius = 32.f;
+
+	mTimer.SetTimer(0.0f);
+	mMinimalTimer.SetTimer(0.2f, true);
+
+	HealthInit(ENEMY_DUMMY);
 }
 
 void DummyEnemy::Update()
@@ -20,6 +27,30 @@ void DummyEnemy::Update()
 	Velocity = ZERO;
 
 	Position += (Velocity += LEFT * mSpeed);
+
+	if (!CanFire)
+	{
+		if (mTimer.TimeOver())
+		{
+			mTimer.SetTimer(0.7f);
+
+			CanFire = true;
+		}
+	}
+	if (CanFire)
+	{
+		if (mMinimalTimer.TimeOver())
+		{
+			OBJECT->AddObject(new EBullet(Position, OBJECT->FindObject(TAG::PLAYER)->Position, 11.5f));
+
+			ShootFire++;
+		}
+		if (ShootFire == 3)
+		{
+			ShootFire = 0;
+			CanFire = false;
+		}
+	}
 }
 
 void DummyEnemy::Render()
@@ -33,10 +64,6 @@ void DummyEnemy::Release()
 
 void DummyEnemy::OnCollisionEnter(Object* other)
 {
-	if (other->Tag == TAG::PBULLET)
-	{
-		IsDestory = true;
-	}
 }
 
 void DummyEnemy::OnCollisionStay(Object* other)
