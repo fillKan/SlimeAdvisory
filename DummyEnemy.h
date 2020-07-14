@@ -18,9 +18,5 @@ private:
 	float mSpeed;
 
 	Timer mTimer;
-	Timer mMinimalTimer;
-
-	bool CanFire = false;
-	int ShootFire = 0;
 };
 
