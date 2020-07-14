@@ -19,6 +19,7 @@ using Vector2  = D3DXVECTOR2;
 const float GRAPH_CORRECTION = 45.f;
 const float TO_RADIAN = 0.01745329f;
 const float TO_DEGREE = 57.2957795f;
+const float PI = 3.1415926535f;
 
 const float ENEMY_DUMMY = 100.f;
 const float PBULLET_DMG = 30.f;

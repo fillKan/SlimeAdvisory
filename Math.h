@@ -28,9 +28,9 @@ namespace Math
 		return (Math::Distance(pointA, pointB) <= radiusA + radiusB);
 	}
 
-	float DegreeAngle(Vector2 pointA, Vector2 pointB);
+	float DegreeAngle(Vector2 target, Vector2 tracer);
 
-	float RadianAngle(Vector2 pointA, Vector2 pointB);
+	float RadianAngle(Vector2 target, Vector2 tracer);
 
 	bool RectCollision(Object* objectA, Object* objectB);
 

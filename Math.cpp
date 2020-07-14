@@ -1,18 +1,21 @@
 #include "DXUT.h"
 #include "Math.h"
 
-float Math::DegreeAngle(Vector2 pointA, Vector2 pointB)
+float Math::DegreeAngle(Vector2 target, Vector2 tracer)
 {
-	float degree = TO_DEGREE * atan2f((pointA.x - pointB.x), (pointA.y - pointB.y)) - GRAPH_CORRECTION;
-
-	return (degree < 0.f) ? -degree : degree;
+	return RadianAngle(target, tracer) * TO_DEGREE;
 }
 
-float Math::RadianAngle(Vector2 pointA, Vector2 pointB)
+float Math::RadianAngle(Vector2 target, Vector2 tracer)
 {
-	float radian = atan2f((pointA.x - pointB.x), (pointA.y - pointB.y)) - GRAPH_CORRECTION;
+	Vector2 Aim = target - tracer;
 
-	return (radian < 0.f) ? -radian : radian;
+	// 아크 탄젠트는? 탄젠트의 역함수로 세타값을 그 위치로 바꿔주는? 탄젠트 함수와는 반대로 작동한다~~
+	// 그렇기 때문에? 방향 벡터를 통해서 그 세타값을 반환받는 방식으로 회전을 정한다~~~
+	// 그런데 180도(라디안임)을 더해주는 이유는, DX의 좌표계가 그..일반적인 좌표계랑 다르기 때문에
+	// 반전을 시켜준다는 의미로 일허게한다!!
+
+	return atan2f(Aim.y, Aim.x) + PI;
 }
 
 bool Math::RectCollision(Object* objectA, Object* objectB)
