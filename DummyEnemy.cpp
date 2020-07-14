@@ -16,7 +16,8 @@ void DummyEnemy::Init()
 
 	CircleRadius = 32.f;
 
-	mTimer.SetTimer(0.7f, true);
+	mTimer.SetTimer(0.0f);
+	mMinimalTimer.SetTimer(0.2f, true);
 }
 
 void DummyEnemy::Update()
@@ -25,11 +26,28 @@ void DummyEnemy::Update()
 
 	Position += (Velocity += LEFT * mSpeed);
 
-	if (mTimer.TimeOver())
+	if (!CanFire)
 	{
-		Vector2 Aim = Math::AimVector(OBJECT->FindObject(TAG::PLAYER)->Position, Position);
+		if (mTimer.TimeOver())
+		{
+			mTimer.SetTimer(0.7f);
 
-		OBJECT->AddObject(new EBullet(Position, Aim, 11.5f));
+			CanFire = true;
+		}
+	}
+	if (CanFire)
+	{
+		if (mMinimalTimer.TimeOver())
+		{
+			OBJECT->AddObject(new EBullet(Position, LEFT, 11.5f));
+
+			ShootFire++;
+		}
+		if (ShootFire == 3)
+		{
+			ShootFire = 0;
+			CanFire = false;
+		}
 	}
 }
 
