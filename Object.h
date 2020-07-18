@@ -47,8 +47,8 @@ public:
 
 	bool IsOutMap()
 	{
-		return (Position.x > MAPSIZEMAXX || Position.x < MAPSIZEMINX || 
-				Position.y < MAPSIZEMINY || Position.y > MAPSIZEMAXY);
+		return (Position.x > WINSIZEX + SCREEN_OFFSET || Position.x < -SCREEN_OFFSET ||
+				Position.y > WINSIZEY + SCREEN_OFFSET || Position.y < -SCREEN_OFFSET);
 	}
 
 	void HealthInit(float max);
