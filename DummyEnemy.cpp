@@ -3,16 +3,25 @@
 
 #include "EBullet.h"
 
+DummyEnemy::DummyEnemy(Vector2 pos, float addSpeed) : Object()
+{
+	Position = pos;
+
+	mSpeed = addSpeed * 60;
+}
+
+DummyEnemy::~DummyEnemy()
+{
+}
+
 void DummyEnemy::Init()
 {
 	Name = "DummyEnemy";
 	Tag = TAG::ENEMY;
 
-	Position = Vector2(WINSIZEX, RANDOM(1, WINSIZEY));
-
 	mAnimation.AddFrame("./image/Enemy/Normal/Attack/", "Monster_attack", 15);
 
-	mSpeed = RANDOM(3, 4) * 60;
+	mSpeed += RANDOM(4, 6) * 60;
 
 	CircleRadius = 32.f;
 

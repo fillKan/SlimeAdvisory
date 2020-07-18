@@ -37,7 +37,14 @@ void StageONE::Update()
 {
 	if (mEnemySpawnTimer.TimeOver())
 	{
-		OBJECT->AddObject(new DummyEnemy());
+		int ScrOffset = SCREEN_OFFSET;
+
+		Vector2 Pos;
+				Pos = Vector2(WINSIZEX, RANDOM(ScrOffset, WINSIZEY - ScrOffset));
+
+		OBJECT->AddObject(new DummyEnemy(Pos + (LEFT * 55.f), 2.5f));
+		OBJECT->AddObject(new DummyEnemy(Pos + (DOWN * 80.f), 2.5f));
+		OBJECT->AddObject(new DummyEnemy(Pos + (  UP * 80.f), 2.5f));
 	}
 
 	for (int i = 0; i < 2; ++i)
