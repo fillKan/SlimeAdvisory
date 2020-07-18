@@ -67,17 +67,19 @@ Object* ObjectManager::CloestObject(Vector2 parePos, TAG targetTAG)
 	float compareDistance;
 
 	float   cloestDistance = 160000.f;
-	Object* cloestObj;
+	Object* cloestObj	   = nullptr;
 
 	for (auto iter : mCurObjects)
 	{
-		if (iter->IsActive)
+		if (iter->IsActive && iter->Tag == targetTAG)
 		{
 			compareDistance = Math::Distance(iter->Position, parePos);
 
 			if (compareDistance < cloestDistance)
 			{
+				float temp = compareDistance;
 				compareDistance = cloestDistance;
+				cloestDistance = temp;
 
 				cloestObj = iter;
 			}
