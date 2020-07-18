@@ -12,7 +12,7 @@ void StageONE::Init()
 
 	mBackGround = IMAGE->AddImage("BackGround","./image/BackGround/backgruond.png");
 
-	mEnemySpawnTimer.SetTimer(5.2f, true);
+	mEnemySpawnTimer.SetTimer(2.2f, true);
 
 	OBJECT->AddObject(new Player());
 
@@ -37,7 +37,28 @@ void StageONE::Update()
 {
 	if (mEnemySpawnTimer.TimeOver())
 	{
-		OBJECT->AddObject(new DummyEnemy());
+		int ScrOffset = SCREEN_OFFSET;
+
+		Vector2 Pos;
+				Pos = Vector2(WINSIZEX, RANDOM(ScrOffset, WINSIZEY - ScrOffset));
+
+
+		switch (RANDOM(0, 3))
+		{
+		case 0:
+			OBJECT->AddObject(new DummyEnemy(Pos + (LEFT * 55.f), 2.5f));
+			OBJECT->AddObject(new DummyEnemy(Pos + (DOWN * 80.f), 2.5f));
+			OBJECT->AddObject(new DummyEnemy(Pos + (  UP * 80.f), 2.5f));
+			break;
+
+		case 1:
+			OBJECT->AddObject(new DummyEnemy(Pos, 4.f));
+			break;
+
+		default:
+			OBJECT->AddObject(new DummyEnemy(Pos, 0.f));
+			break;
+		}
 	}
 
 	for (int i = 0; i < 2; ++i)

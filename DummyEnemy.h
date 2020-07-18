@@ -2,6 +2,8 @@
 class DummyEnemy : public Object
 {
 public:
+	 DummyEnemy(Vector2 pos, float addSpeed);
+	~DummyEnemy();
 
 	virtual void Init   () override;
 	virtual void Update () override;
