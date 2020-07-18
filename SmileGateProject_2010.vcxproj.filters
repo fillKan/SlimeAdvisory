@@ -93,6 +93,9 @@
     <Filter Include="System\Skill\Blank">
       <UniqueIdentifier>{3764213e-8863-44d6-a97c-4efc491e3818}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\UI\SkillGauge">
+      <UniqueIdentifier>{f06069a1-e079-4509-b47c-8e1ae98a32bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -233,6 +236,9 @@
     <ClCompile Include="Blank.cpp">
       <Filter>System\Skill\Blank</Filter>
     </ClCompile>
+    <ClCompile Include="SkillGauge.cpp">
+      <Filter>System\UI\SkillGauge</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -314,6 +320,9 @@
     </ClInclude>
     <ClInclude Include="Blank.h">
       <Filter>System\Skill\Blank</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillGauge.h">
+      <Filter>System\UI\SkillGauge</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
