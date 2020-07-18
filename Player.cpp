@@ -6,7 +6,7 @@
 
 #include "PBoost.h"
 
-Player::Player()
+Player::Player() : mCircleShout(0.8f), mBlank(0.8f)
 {
 }
 
@@ -47,6 +47,14 @@ void Player::Update()
 	Velocity = ZERO;
 
 	mTimer.Update();
+	mCircleShout.Update();
+	mBlank.Update();
+
+	if (INPUT->GetKeyDown('Q'))
+	{
+		mCircleShout.CastSkill();
+		mBlank.CastSkill();
+	}
 
 	if (INPUT->GetKeyDown(ATTACKKEY) && mAttackParticle == nullptr)
 	{

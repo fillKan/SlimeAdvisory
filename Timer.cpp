@@ -3,7 +3,9 @@
 
 void Timer::Update()
 {
-	CurTime += DELTA_TIME;
+	float deltaTime = CurTime + DELTA_TIME;
+
+	CurTime = (deltaTime > EndTime) ? EndTime : deltaTime;
 }
 
 void Timer::SetTimer(float end, bool isLoop)
