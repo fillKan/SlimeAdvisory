@@ -68,6 +68,8 @@ public:
 	Object* FindObject  (TAG tag);
 	Object* operator [] (TAG tag)			 { return FindObject(tag); }
 
+	Object* FindPlayer();
+
 	void CollisionCheck(TAG tagA, TAG tagB);
 
 public: 
@@ -76,5 +78,7 @@ public:
 private:
 	list<Object*> mNewObjects;
 	list<Object*> mCurObjects;
+
+	Object* mPlayer;
 };
 #define OBJECT ObjectManager::Instance()

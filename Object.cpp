@@ -1,6 +1,8 @@
 #include "DXUT.h"
 #include "Object.h"
 
+#include "Player.h"
+
 Object::Object() : Parent(nullptr), Child(nullptr), Name(""), Tag(TAG::NONE), IsDestory(false), IsActive(true), IsPrevCollision(false), IsCrntCollision(false), Rotation(0.0f), Position(ZERO), Scale(ONE), Velocity(ZERO), Direction(ZERO), CircleRadius(0.f)
 {
 }
@@ -30,6 +32,10 @@ void ObjectManager::AddObject(Object* object)
 {
 	object->Init();
 
+	if (object->Tag == TAG::PLAYER)
+	{
+		mPlayer = object;
+	}
 	mNewObjects.emplace_back(object);
 }
 
@@ -49,6 +55,11 @@ Object* ObjectManager::FindObject(TAG tag)
 		if (iter->Tag == tag) return iter;
 	}
 	return nullptr;
+}
+
+Object* ObjectManager::FindPlayer()
+{
+	return mPlayer;
 }
 
 void ObjectManager::CollisionCheck(TAG tagA, TAG tagB)
