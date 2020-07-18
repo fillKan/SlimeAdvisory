@@ -62,6 +62,30 @@ Object* ObjectManager::FindPlayer()
 	return mPlayer;
 }
 
+Object* ObjectManager::CloestObject(Vector2 parePos, TAG targetTAG)
+{
+	float compareDistance;
+
+	float   cloestDistance = 160000.f;
+	Object* cloestObj;
+
+	for (auto iter : mCurObjects)
+	{
+		if (iter->IsActive)
+		{
+			compareDistance = Math::Distance(iter->Position, parePos);
+
+			if (compareDistance < cloestDistance)
+			{
+				compareDistance = cloestDistance;
+
+				cloestObj = iter;
+			}
+		}
+	}
+	return cloestObj;
+}
+
 void ObjectManager::CollisionCheck(TAG tagA, TAG tagB)
 {
 	if (mCurObjects.empty()) return;
