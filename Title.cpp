@@ -85,6 +85,10 @@ void Title::Update()
 	{
 		BANNER->Close();
 	}
+	if (mExitButton->OnClick())
+	{
+		exit(EXIT_SUCCESS);
+	}
 }
 
 void Title::Render()
