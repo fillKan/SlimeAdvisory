@@ -16,13 +16,21 @@ void SteamPack::Update()
 {
 	if (mIsCast)
 	{
+		float* CurrentHP = &(OBJECT->FindPlayer()->CURHealth);
+		float*	   MaxHP = &(OBJECT->FindPlayer()->MAXHealth);
+
 		mDurateTimer.Update();
 
-		OBJECT->FindPlayer()->CURHealth += mHPS * DELTA_TIME;
+		*CurrentHP += mHPS * DELTA_TIME;
 
-		if (mDurateTimer.TimeOver())
+		if (mDurateTimer.TimeOver() || *MaxHP <= *CurrentHP)
 		{
 			mIsCast = false;
+
+			if (*MaxHP <= *CurrentHP)
+			{
+				*CurrentHP = *MaxHP;
+			}
 		}
 	}
 	else
