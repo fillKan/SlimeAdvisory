@@ -69,7 +69,7 @@ public:
 	Object* operator [] (TAG tag)			 { return FindObject(tag); }
 
 	Object* FindPlayer();
-	Object* CloestObject(Vector2 parePos, TAG targetTAG);
+	Object* ForwardCloest(Vector2 parePos, TAG targetTAG);
 
 	void CollisionCheck(TAG tagA, TAG tagB);
 

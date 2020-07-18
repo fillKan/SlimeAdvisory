@@ -62,7 +62,7 @@ Object* ObjectManager::FindPlayer()
 	return mPlayer;
 }
 
-Object* ObjectManager::CloestObject(Vector2 parePos, TAG targetTAG)
+Object* ObjectManager::ForwardCloest(Vector2 parePos, TAG targetTAG)
 {
 	float compareDistance;
 
@@ -73,15 +73,18 @@ Object* ObjectManager::CloestObject(Vector2 parePos, TAG targetTAG)
 	{
 		if (iter->IsActive && iter->Tag == targetTAG)
 		{
-			compareDistance = Math::Distance(iter->Position, parePos);
-
-			if (compareDistance < cloestDistance)
+			if (iter->Position.x > parePos.x)
 			{
-				float temp = compareDistance;
-				compareDistance = cloestDistance;
-				cloestDistance = temp;
+				compareDistance = Math::Distance(iter->Position, parePos);
 
-				cloestObj = iter;
+				if (compareDistance < cloestDistance)
+				{
+					float temp = compareDistance;
+					compareDistance = cloestDistance;
+					cloestDistance = temp;
+
+					cloestObj = iter;
+				}
 			}
 		}
 	}

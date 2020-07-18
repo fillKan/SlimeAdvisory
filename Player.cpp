@@ -52,7 +52,7 @@ void Player::Update()
 	}
 	if (INPUT->GetKey(VK_SPACE) && mTimer.TimeOver())
 	{
-		Object* cloestObj = OBJECT->CloestObject(Position, TAG::ENEMY);
+		Object* cloestObj = OBJECT->ForwardCloest(Position, TAG::ENEMY);
 
 		Vector2 dir = RIGHT;
 		float rot = 0.f;
