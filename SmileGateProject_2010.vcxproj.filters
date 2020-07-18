@@ -96,6 +96,9 @@
     <Filter Include="System\UI\SkillGauge">
       <UniqueIdentifier>{f06069a1-e079-4509-b47c-8e1ae98a32bd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Skill\SteamPack">
+      <UniqueIdentifier>{44fe0685-302d-437f-bdf3-1ec03df93f5b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -239,6 +242,9 @@
     <ClCompile Include="SkillGauge.cpp">
       <Filter>System\UI\SkillGauge</Filter>
     </ClCompile>
+    <ClCompile Include="SteamPack.cpp">
+      <Filter>System\Skill\SteamPack</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -323,6 +329,9 @@
     </ClInclude>
     <ClInclude Include="SkillGauge.h">
       <Filter>System\UI\SkillGauge</Filter>
+    </ClInclude>
+    <ClInclude Include="SteamPack.h">
+      <Filter>System\Skill\SteamPack</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
