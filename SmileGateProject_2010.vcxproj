@@ -386,6 +386,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Banner.cpp" />
+    <ClCompile Include="Blank.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CircleShout.cpp" />
@@ -408,6 +409,7 @@
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClInclude Include="Banner.h" />
+    <ClInclude Include="Blank.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CircleShout.h" />
