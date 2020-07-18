@@ -7,7 +7,7 @@
 #include "PBoost.h"
 #include "SkillGauge.h"
 
-Player::Player() : mCircleShout(0.8f), mBlank(0.8f)
+Player::Player() : mCircleShout(0.8f), mBlank(0.8f), mSteamPack(3.5f, 4.f, 6.f)
 {
 }
 
@@ -48,6 +48,13 @@ void Player::Init()
 						 IMAGE->AddImage("SkillGauge", "./image/UI/SkillGauge.png"));
 
 	USER_INTERFACE->AddUI(skillGauge);
+
+	skillGauge = new SkillGauge(Vector2(520.f, 120.f));
+	skillGauge->SkillLink(&mSteamPack);
+	skillGauge->SetImage(IMAGE->AddImage("ESkillGauge", "./image/UI/ESkillGauge.png"),
+						 IMAGE->AddImage("SkillGauge", "./image/UI/SkillGauge.png"));
+
+	USER_INTERFACE->AddUI(skillGauge);
 }
 
 void Player::Update()
@@ -57,11 +64,16 @@ void Player::Update()
 	mTimer.Update();
 	mCircleShout.Update();
 	mBlank.Update();
+	mSteamPack.Update();
 
 	if (INPUT->GetKeyDown('Q'))
 	{
 		mCircleShout.CastSkill();
 		mBlank.CastSkill();
+	}
+	if (INPUT->GetKeyDown('E'))
+	{
+		mSteamPack.CastSkill();
 	}
 
 	if (INPUT->GetKeyDown(ATTACKKEY) && mAttackParticle == nullptr)

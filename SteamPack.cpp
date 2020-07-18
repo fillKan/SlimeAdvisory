@@ -48,5 +48,7 @@ void SteamPack::CastSkill()
 	if (mTimer.TimeOver())
 	{
 		mIsCast = true;
+
+		mDurateTimer.SetTimer(mSecond);
 	}
 }
