@@ -70,6 +70,7 @@ struct Collider
 #include "Sound.h"
 #include "Image.h"
 #include "Particle.h"
+#include "Skill.h"
 #include "UI.h"
 #include "Button.h"
 #include "Banner.h"

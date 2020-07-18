@@ -84,6 +84,9 @@
     <Filter Include="System\Object\Enemy\EBullet">
       <UniqueIdentifier>{4627e4a9-d89a-4d18-bc78-7be3f45371c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Skill">
+      <UniqueIdentifier>{3a06a408-3e64-4ba0-a9b9-232ab2b39e4b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -215,6 +218,9 @@
     <ClCompile Include="EBullet.cpp">
       <Filter>System\Object\Enemy\EBullet</Filter>
     </ClCompile>
+    <ClCompile Include="Skill.cpp">
+      <Filter>System\Skill</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -287,6 +293,9 @@
     </ClInclude>
     <ClInclude Include="EBullet.h">
       <Filter>System\Object\Enemy\EBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>System\Skill</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
