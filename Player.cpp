@@ -68,7 +68,7 @@ void Player::Update()
 	{
 		mAttackParticle = PARTICLE->Instantiate(PARTICLES::PATTACK, mAttackPoint);
 	}
-	if (INPUT->GetKey(VK_SPACE) && mTimer.TimeOver())
+	if (INPUT->GetKey(ATTACKKEY) && mTimer.TimeOver())
 	{
 		Object* cloestObj = OBJECT->ForwardCloest(Position, TAG::ENEMY);
 
@@ -83,19 +83,19 @@ void Player::Update()
 		}
 		OBJECT->AddObject(new PBullet(mAttackPoint, dir, rot));
 	}
-	if (INPUT->GetKey(VK_UP))
+	if (GetAsyncKeyState('W'))
 	{
 		if (Position.y > 0) Velocity += UP * mSpeed;
 	}
-	else if (INPUT->GetKey(VK_DOWN))
+	else if (GetAsyncKeyState('S'))
 	{
 		if (Position.y < WINSIZEY) Velocity += DOWN * mSpeed;
 	}
-	if (INPUT->GetKey(VK_RIGHT))
+	if (GetAsyncKeyState('D'))
 	{
 		if (Position.x < WINSIZEX) Velocity += RIGHT * mSpeed;
 	}
-	else if (INPUT->GetKey(VK_LEFT))
+	else if (GetAsyncKeyState('A'))
 	{
 		if (Position.x > 0) Velocity += LEFT * mSpeed;
 	}
