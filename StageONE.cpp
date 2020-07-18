@@ -12,7 +12,7 @@ void StageONE::Init()
 
 	mBackGround = IMAGE->AddImage("BackGround","./image/BackGround/backgruond.png");
 
-	mEnemySpawnTimer.SetTimer(2.2f, true);
+	mEnemySpawnTimer.SetTimer(1.85f, true);
 
 	OBJECT->AddObject(new Player());
 
