@@ -5,6 +5,7 @@
 #include "DummyEnemy.h"
 
 #include "PBoost.h"
+#include "SkillGauge.h"
 
 Player::Player() : mCircleShout(0.8f), mBlank(0.8f)
 {
@@ -40,6 +41,13 @@ void Player::Init()
 	mBoostEffect->Parent = this;
 
 	HealthInit(10.f);
+
+	SkillGauge* skillGauge = new SkillGauge(Vector2(420.f, 120.f));
+	skillGauge->SkillLink(&mBlank);
+	skillGauge->SetImage(IMAGE->AddImage("ESkillGauge", "./image/UI/ESkillGauge.png"), 
+						 IMAGE->AddImage("SkillGauge", "./image/UI/SkillGauge.png"));
+
+	USER_INTERFACE->AddUI(skillGauge);
 }
 
 void Player::Update()
