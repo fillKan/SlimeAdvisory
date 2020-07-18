@@ -57,6 +57,20 @@ Object* ObjectManager::FindObject(TAG tag)
 	return nullptr;
 }
 
+deque<Object*> ObjectManager::FindObjects(TAG tag)
+{
+	deque<Object*> objects;
+
+	for (auto iter : mCurObjects)
+	{
+		if (iter->Tag == tag)
+		{
+			objects.push_back(iter);
+		}
+	}
+	return objects;
+}
+
 Object* ObjectManager::FindPlayer()
 {
 	return mPlayer;

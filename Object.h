@@ -68,6 +68,8 @@ public:
 	Object* FindObject  (TAG tag);
 	Object* operator [] (TAG tag)			 { return FindObject(tag); }
 
+	deque<Object*> FindObjects (TAG tag);
+
 	Object* FindPlayer();
 	Object* ForwardCloest(Vector2 parePos, TAG targetTAG);
 

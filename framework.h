@@ -9,6 +9,7 @@
 #include <time.h>
 #include <list>
 #include <map>
+#include <deque>
 
 using namespace std;
 
