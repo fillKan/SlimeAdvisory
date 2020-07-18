@@ -19,23 +19,24 @@ void PHealthBar::Init()
 	mImage.FillImage = IMAGE->AddImage("PHealthBar" ,  "./image/UI/PHealthBar.png");
 
 	mImage.SetRect(mRenderType, mFillAmount);
+
+	mPlayer = OBJECT->FindPlayer();
 }
 
 void PHealthBar::Update()
 {
-	if (INPUT->GetKey('Q'))
+	if (mPlayer == nullptr)
 	{
-		mImage.SetRect(mRenderType, (mFillAmount -= 0.005f));
+		mPlayer = OBJECT->FindPlayer();
 	}
-	else if(INPUT->GetKey('E'))
-	{
-		mImage.SetRect(mRenderType, (mFillAmount += 0.005f));
-	}
+	mFillAmount = (mPlayer->CURHealth / mPlayer->MAXHealth);
+
+	mImage.SetRect(mRenderType, mFillAmount);
 }
 
 void PHealthBar::Render()
 {
-	mImage.Render(ONE * 90.f);
+	mImage.Render(ONE * 55.f);
 }
 
 void PHealthBar::Release()

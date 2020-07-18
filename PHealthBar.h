@@ -13,5 +13,7 @@ public:
 private:
 
 	float mFillAmount;
+
+	Object* mPlayer;
 };
 

@@ -38,6 +38,8 @@ void Player::Init()
 
 	this->Child = mBoostEffect;
 				  mBoostEffect->Parent = this;
+
+	HealthInit(10.f);
 }
 
 void Player::Update()
@@ -91,6 +93,10 @@ void Player::Release()
 
 void Player::OnCollisionEnter(Object* other)
 {
+	if (CURHealth <= 0)
+	{
+		CURHealth = MAXHealth;
+	}
 }
 
 void Player::OnCollisionStay(Object* other)
