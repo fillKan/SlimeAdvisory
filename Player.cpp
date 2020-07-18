@@ -52,7 +52,18 @@ void Player::Update()
 	}
 	if (INPUT->GetKey(VK_SPACE) && mTimer.TimeOver())
 	{
-		OBJECT->AddObject(new PBullet(mAttackPoint));
+		Object* cloestObj = OBJECT->ForwardCloest(Position, TAG::ENEMY);
+
+		Vector2 dir = RIGHT;
+		float rot = 0.f;
+
+		if (cloestObj != nullptr)
+		{
+			dir = Math::AimVector(cloestObj->Position, mAttackPoint);
+
+			rot = Math::RadianAngle(mAttackPoint, cloestObj->Position);
+		}
+		OBJECT->AddObject(new PBullet(mAttackPoint, dir, rot));
 	}
 	if (INPUT->GetKey(VK_UP))
 	{
