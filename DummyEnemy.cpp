@@ -29,9 +29,9 @@ void DummyEnemy::Update()
 
 	if (mTimer.TimeOver())
 	{
-		mTimer.SetTimer(0.7f, true);
+		mTimer.SetTimer(0.9f, true);
 
-		OBJECT->AddObject(new EBullet(Position, OBJECT->FindObject(TAG::PLAYER)->Position, 11.5f));
+		OBJECT->AddObject(new EBullet(Position, OBJECT->FindObject(TAG::PLAYER)->Position, 10.5f));
 	}
 }
 
