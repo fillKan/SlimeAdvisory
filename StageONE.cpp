@@ -35,6 +35,8 @@ void StageONE::Init()
 
 void StageONE::Update()
 {
+	mEnemySpawnTimer.Update();
+
 	if (mEnemySpawnTimer.TimeOver())
 	{
 		int ScrOffset = SCREEN_OFFSET;

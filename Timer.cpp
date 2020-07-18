@@ -1,29 +1,26 @@
 #include "DXUT.h"
 #include "Timer.h"
 
+void Timer::Update()
+{
+	CurTime += DELTA_TIME;
+}
+
 void Timer::SetTimer(float end, bool isLoop)
 {
 	CurTime = 0.f;
 	EndTime = end;
 
 	IsLoop = isLoop;
-	IsActive = true;
 }
 
 bool Timer::TimeOver()
 {
-	if (IsActive)
+	if (CurTime >= EndTime)
 	{
-		CurTime += DELTA_TIME;
+		if (IsLoop) CurTime = 0.f;
 
-		if (CurTime >= EndTime)
-		{
-			if (IsLoop) CurTime = 0.f;
-
-			else IsActive = false;
-
-			return true;
-		}
+		return true;
 	}
 	return false;
 }

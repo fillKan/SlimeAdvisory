@@ -46,6 +46,8 @@ void Player::Update()
 {
 	Velocity = ZERO;
 
+	mTimer.Update();
+
 	if (INPUT->GetKeyDown(ATTACKKEY) && mAttackParticle == nullptr)
 	{
 		mAttackParticle = PARTICLE->Instantiate(PARTICLES::PATTACK, mAttackPoint);

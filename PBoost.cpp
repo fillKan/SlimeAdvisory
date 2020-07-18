@@ -27,6 +27,8 @@ void PBoost::Init()
 
 void PBoost::Update()
 {
+	mTimer.Update();
+
 	if (INPUT->GetKeyDown(ATTACKKEY))
 	{
 		mCurrentState = PLAY_STATE::BEGIN;

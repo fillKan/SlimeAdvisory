@@ -26,6 +26,8 @@ void PBulletBreak::Init()
 
 void PBulletBreak::Update()
 {
+	mTimer.Update();
+
 	mCanDestroy = mTimer.TimeOver();
 }
 

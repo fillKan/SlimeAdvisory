@@ -36,6 +36,7 @@ void DummyEnemy::Update()
 
 	Position += (Velocity += LEFT * mSpeed * DELTA_TIME);
 
+	mTimer.Update();
 	if (mTimer.TimeOver())
 	{
 		mTimer.SetTimer(0.9f, true);

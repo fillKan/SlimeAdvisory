@@ -35,6 +35,8 @@ void PAttack::Update()
 	}
 	else if (INPUT->GetKey(ATTACKKEY))
 	{
+		mTimer.Update();
+
 		if (mTimer.TimeOver())
 		{
 			mCurrentState = PLAY_STATE::ING;
@@ -50,6 +52,8 @@ void PAttack::Update()
 	}
 	if (mCurrentState == PLAY_STATE::END)
 	{
+		mTimer.Update();
+
 		if (mTimer.TimeOver())
 		{
 			mCurrentState = PLAY_STATE::NONE;

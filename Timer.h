@@ -6,9 +6,10 @@ public:
 	float EndTime;
 
 	bool IsLoop;
-	bool IsActive;
 
 public:
+	void Update();
+
 	void SetTimer(float end, bool isLoop = false);
 	bool TimeOver();
 };
