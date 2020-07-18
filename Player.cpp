@@ -85,19 +85,19 @@ void Player::Update()
 	}
 	if (INPUT->GetKey(VK_UP))
 	{
-		if (Position.y > 0) Velocity = UP * mSpeed;
+		if (Position.y > 0) Velocity += UP * mSpeed;
 	}
 	else if (INPUT->GetKey(VK_DOWN))
 	{
-		if (Position.y < WINSIZEY) Velocity = DOWN * mSpeed;
+		if (Position.y < WINSIZEY) Velocity += DOWN * mSpeed;
 	}
 	if (INPUT->GetKey(VK_RIGHT))
 	{
-		if (Position.x < WINSIZEX) Velocity = RIGHT * mSpeed;
+		if (Position.x < WINSIZEX) Velocity += RIGHT * mSpeed;
 	}
 	else if (INPUT->GetKey(VK_LEFT))
 	{
-		if (Position.x > 0) Velocity = LEFT * mSpeed;
+		if (Position.x > 0) Velocity += LEFT * mSpeed;
 	}
 	Position += Velocity;
 
