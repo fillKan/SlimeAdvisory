@@ -2,6 +2,7 @@
 
 class PBoost;
 #include "CircleShout.h"
+#include "Blank.h"
 
 class Player : public Object
 {
@@ -34,5 +35,6 @@ private:
 	const Vector2		 BOOST_OFFSET = Vector2(-90.f, 20.f);
 
 	CircleShout mCircleShout;
+	Blank mBlank;
 };
 

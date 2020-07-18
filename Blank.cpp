@@ -22,6 +22,13 @@ void Blank::CastSkill()
 {
 	if (mTimer.TimeOver())
 	{
-		// To Do. . .
+		deque<Object*> EBullets = OBJECT->FindObjects(TAG::EBULLET);
+
+		for (auto iter : EBullets)
+		{
+			iter->IsDestory = true;
+
+			PARTICLE->Instantiate(PARTICLES::PBULLET_BREAK, iter->Position);
+		}
 	}
 }
