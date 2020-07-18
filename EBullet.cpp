@@ -30,7 +30,7 @@ void EBullet::Update()
 {
 	Velocity = ZERO;
 
-	Position += (Velocity += mSpeed * Direction);
+	Position += (Velocity += mSpeed * Direction * DELTA_TIME);
 }
 
 void EBullet::Render()

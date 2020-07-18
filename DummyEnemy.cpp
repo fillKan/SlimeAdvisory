@@ -12,7 +12,7 @@ void DummyEnemy::Init()
 
 	mAnimation.AddFrame("./image/Enemy/Normal/Attack/", "Monster_attack", 15);
 
-	mSpeed = RANDOM(3, 4);
+	mSpeed = RANDOM(3, 4) * 60;
 
 	CircleRadius = 32.f;
 
@@ -25,13 +25,13 @@ void DummyEnemy::Update()
 {
 	Velocity = ZERO;
 
-	Position += (Velocity += LEFT * mSpeed);
+	Position += (Velocity += LEFT * mSpeed * DELTA_TIME);
 
 	if (mTimer.TimeOver())
 	{
 		mTimer.SetTimer(0.9f, true);
 
-		OBJECT->AddObject(new EBullet(Position, OBJECT->FindObject(TAG::PLAYER)->Position, 10.5f));
+		OBJECT->AddObject(new EBullet(Position, OBJECT->FindObject(TAG::PLAYER)->Position, 630.f));
 	}
 }
 
