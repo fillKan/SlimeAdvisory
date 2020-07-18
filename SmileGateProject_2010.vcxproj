@@ -388,6 +388,7 @@
     <ClCompile Include="Banner.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CircleShout.cpp" />
     <ClCompile Include="DummyEnemy.cpp" />
     <ClCompile Include="EBullet.cpp" />
     <ClCompile Include="Image.cpp" />
@@ -409,6 +410,7 @@
     <ClInclude Include="Banner.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CircleShout.h" />
     <ClInclude Include="DummyEnemy.h" />
     <ClInclude Include="EBullet.h" />
     <ClInclude Include="Image.h" />

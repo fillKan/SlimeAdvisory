@@ -1,6 +1,7 @@
 #pragma once
 
 class PBoost;
+#include "CircleShout.h"
 
 class Player : public Object
 {
@@ -31,5 +32,7 @@ private:
 
 	const Vector2 ATK_PARTICLE_OFFSET = Vector2(130.5f, 20.5f);
 	const Vector2		 BOOST_OFFSET = Vector2(-90.f, 20.f);
+
+	CircleShout mCircleShout;
 };
 

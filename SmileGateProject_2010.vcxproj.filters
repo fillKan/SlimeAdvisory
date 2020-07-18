@@ -87,6 +87,9 @@
     <Filter Include="System\Skill">
       <UniqueIdentifier>{3a06a408-3e64-4ba0-a9b9-232ab2b39e4b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Skill\CircleShout">
+      <UniqueIdentifier>{36c347eb-bfb9-4f85-807b-87f5238bcbc1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -221,6 +224,9 @@
     <ClCompile Include="Skill.cpp">
       <Filter>System\Skill</Filter>
     </ClCompile>
+    <ClCompile Include="CircleShout.cpp">
+      <Filter>System\Skill\CircleShout</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -296,6 +302,9 @@
     </ClInclude>
     <ClInclude Include="Skill.h">
       <Filter>System\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleShout.h">
+      <Filter>System\Skill\CircleShout</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
