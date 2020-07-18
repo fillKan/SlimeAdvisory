@@ -3,9 +3,13 @@
 
 #include "PBulletBreak.h"
 
-PBullet::PBullet(Vector2 pos)
+PBullet::PBullet(Vector2 pos, Vector2 dir, float rot)
 {
 	Position = pos;
+
+	Direction = dir;
+
+	Rotation = rot;
 }
 
 PBullet::~PBullet()
@@ -22,15 +26,14 @@ void PBullet::Init()
 
 	CircleRadius = 15.f;
 
-	Direction = RIGHT;
-	mSpeed = 15.5f;
+	mSpeed = 930.f;
 }
 
 void PBullet::Update()
 {
 	Velocity = ZERO;
 
-	Position += (Velocity += Direction * mSpeed);
+	Position += (Velocity += Direction * mSpeed * DELTA_TIME);
 }
 
 void PBullet::Render()

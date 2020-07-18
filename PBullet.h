@@ -2,7 +2,7 @@
 class PBullet : public Object
 {
 public:
-	 PBullet(Vector2 pos);
+	 PBullet(Vector2 pos, Vector2 dir, float rot);
 	~PBullet();
 
 	virtual void Init   () override;
