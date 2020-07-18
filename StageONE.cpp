@@ -42,9 +42,23 @@ void StageONE::Update()
 		Vector2 Pos;
 				Pos = Vector2(WINSIZEX, RANDOM(ScrOffset, WINSIZEY - ScrOffset));
 
-		OBJECT->AddObject(new DummyEnemy(Pos + (LEFT * 55.f), 2.5f));
-		OBJECT->AddObject(new DummyEnemy(Pos + (DOWN * 80.f), 2.5f));
-		OBJECT->AddObject(new DummyEnemy(Pos + (  UP * 80.f), 2.5f));
+
+		switch (RANDOM(0, 3))
+		{
+		case 0:
+			OBJECT->AddObject(new DummyEnemy(Pos + (LEFT * 55.f), 2.5f));
+			OBJECT->AddObject(new DummyEnemy(Pos + (DOWN * 80.f), 2.5f));
+			OBJECT->AddObject(new DummyEnemy(Pos + (  UP * 80.f), 2.5f));
+			break;
+
+		case 1:
+			OBJECT->AddObject(new DummyEnemy(Pos, 4.f));
+			break;
+
+		default:
+			OBJECT->AddObject(new DummyEnemy(Pos, 0.f));
+			break;
+		}
 	}
 
 	for (int i = 0; i < 2; ++i)
