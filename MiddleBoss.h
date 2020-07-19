@@ -15,9 +15,15 @@ public:
 	virtual void OnCollisionExit (Object* other) override;
 
 private:
+	void StartTimer(float sec)
+	{
+		mNextPatternDelay.SetTimer(sec);
+		mCURPattern = MBOSS_PATTERN::NONE;
+	}
+
 	void ThrowDie()
 	{
-		int die = rand() % ((int)MBOSS_PATTERN::END) + 1;
+		int die = rand() % ((int)MBOSS_PATTERN::END);
 
 		mCURPattern = (MBOSS_PATTERN)die;
 	}

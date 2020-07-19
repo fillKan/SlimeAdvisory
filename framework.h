@@ -15,7 +15,9 @@ using namespace std;
 
 enum class MBOSS_PATTERN
 {
-	NONE, APPER, DASH, SUMMON_LACKEY, END
+	NONE = -1,
+	APPER = 0,
+	DASH, SUMMON_LACKEY, END
 };
 
 using Matrix   = D3DXMATRIX;

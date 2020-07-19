@@ -12,6 +12,7 @@ MiddleBoss::MiddleBoss(Vector2 pos, Vector2 summonPoint) : Object(), mSummonPoin
 	mCURPattern = MBOSS_PATTERN::APPER;
 
 	mDashTimer.SetTimer(0.f);
+	mNextPatternDelay.SetTimer(0.f);
 }
 
 MiddleBoss::~MiddleBoss()
@@ -35,6 +36,17 @@ void MiddleBoss::Update()
 
 	Vector2 Pos;
 
+	if (mCURPattern == MBOSS_PATTERN::NONE)
+	{
+		mNextPatternDelay.Update();
+
+		if (mNextPatternDelay.TimeOver())
+		{
+			ThrowDie();
+
+			mNextPatternDelay.EndTime = 0.f;
+		}
+	}
 	switch (mCURPattern)
 	{
 	case MBOSS_PATTERN::APPER:
@@ -50,7 +62,7 @@ void MiddleBoss::Update()
 		}
 		else
 		{
-			ThrowDie();
+			StartTimer(0.4f);
 		}
 		break;
 	case MBOSS_PATTERN::SUMMON_LACKEY:
@@ -59,7 +71,6 @@ void MiddleBoss::Update()
 		switch (RANDOM(0, 3))
 		{
 		case 0:
-			OBJECT->AddObject(new DummyEnemy(Pos + (LEFT * 55.f), 2.5f));
 			OBJECT->AddObject(new DummyEnemy(Pos + (DOWN * 80.f), 2.5f));
 			OBJECT->AddObject(new DummyEnemy(Pos + (UP * 80.f), 2.5f));
 			break;
@@ -72,6 +83,7 @@ void MiddleBoss::Update()
 			OBJECT->AddObject(new DummyEnemy(Pos, 0.f));
 			break;
 		}
+		StartTimer(0.8f);
 		break;
 
 	case MBOSS_PATTERN::DASH:
@@ -93,7 +105,7 @@ void MiddleBoss::Update()
 				mDashTimer.EndTime = 0.f;
 				mDashTimer.CurTime = 0.f;
 
-				ThrowDie();
+				StartTimer(1.2f);
 			}
 			else
 			{
@@ -111,7 +123,7 @@ void MiddleBoss::Update()
 
 				OBJECT->AddObject(new EBullet(Position, circlePoint, 330.f));
 			}
-			ThrowDie();
+			StartTimer(0.5f);
 		}
 		break;
 	default:
