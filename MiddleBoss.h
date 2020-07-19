@@ -15,8 +15,18 @@ public:
 	virtual void OnCollisionExit (Object* other) override;
 
 private:
+	void ThrowDie()
+	{
+		int die = RANDOM((int)MBOSS_PATTERN::APPER + 1, (int)MBOSS_PATTERN::END - 1);
+
+		mCURPattern = (MBOSS_PATTERN)die;
+	}
+
+private:
 	Texture* mSprite;
 
 	Vector2 mSummonPoint;
+
+	MBOSS_PATTERN mCURPattern;
 };
 

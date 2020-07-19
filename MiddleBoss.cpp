@@ -5,6 +5,8 @@ MiddleBoss::MiddleBoss(Vector2 pos, Vector2 summonPoint) : Object(), mSummonPoin
 {
 	Position = pos;
 	Velocity = pos;
+
+	mCURPattern = MBOSS_PATTERN::APPER;
 }
 
 MiddleBoss::~MiddleBoss()
@@ -24,11 +26,26 @@ void MiddleBoss::Init()
 
 void MiddleBoss::Update()
 {
-	if (Velocity.x > mSummonPoint.x)
+	switch (mCURPattern)
 	{
-		Math::Lerp(&Velocity, Position, mSummonPoint, 1.5f);
+	case MBOSS_PATTERN::APPER:
+		if (Velocity.x > mSummonPoint.x)
+		{
+			Math::Lerp(&Velocity, Position, mSummonPoint, 1.5f);
 
-		Position = Velocity;
+			Position = Velocity;
+		}
+		else
+		{
+			ThrowDie();
+		}
+		break;
+	case MBOSS_PATTERN::DASH:
+
+		break;
+	default:
+
+		break;
 	}
 }
 

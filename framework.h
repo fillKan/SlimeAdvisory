@@ -13,6 +13,11 @@
 
 using namespace std;
 
+enum class MBOSS_PATTERN
+{
+	APPER, DASH, END
+};
+
 using Matrix   = D3DXMATRIX;
 using Matrix16 = D3DXMATRIXA16;
 using Vector2  = D3DXVECTOR2;
