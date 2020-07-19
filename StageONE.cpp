@@ -32,13 +32,13 @@ void StageONE::Init()
 	mMCloudPos[0] = ZERO; mMCloudPos[1] = Vector2(WINSIZEX, 0);
 	mSCloudPos[0] = ZERO; mSCloudPos[1] = Vector2(WINSIZEX, 0);
 
-	mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX / 2 + 200.f, WINSIZEY / 2),240.f);
+	mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, SCREEN_OFFSET));
 	OBJECT->AddObject(mMiddleBoss);
 
-	mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX / 2 + 200.f, WINSIZEY / 2), 120.f);
+	mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY / 2), Vector2(WINSIZEX - 350.f, WINSIZEY / 2));
 	OBJECT->AddObject(mMiddleBoss);
 
-	mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX / 2 + 200.f, WINSIZEY / 2), 0.f);
+	mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY - SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, WINSIZEY - SCREEN_OFFSET));
 	OBJECT->AddObject(mMiddleBoss);
 }
 
