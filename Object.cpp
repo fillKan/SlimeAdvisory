@@ -26,6 +26,8 @@ ObjectManager::~ObjectManager()
 		SAFE_DELETE(iter);
 	}
 	mCurObjects.clear();
+
+	SAFE_DELETE(mPlayer);
 }
 
 void ObjectManager::AddObject(Object* object)
@@ -156,7 +158,6 @@ void ObjectManager::Update()
 		{
 			mCurObjects.emplace_back(iter);
 
-			// 더이상 mNewObjects에서는 사용하지 않는다! 머 그런 의미
 			SAFE_RELEASE(iter);
 		}
 	}
@@ -169,10 +170,14 @@ void ObjectManager::Update()
 
 	for (auto iter = mCurObjects.begin(); iter != mCurObjects.end();)
 	{
+		if ((*iter)->IsActive) (*iter)->Update();
+
 		if ((*iter)->IsDestory || (*iter)->IsOutMap() || (*iter)->CURHealth <= 0.f)
 		{
-			SAFE_DELETE(*iter);
-
+			if ((*iter)->Tag != TAG::PLAYER)
+			{
+				SAFE_DELETE(*iter);
+			}
 			// list는 Bidirectionaliterator(순서대로 차근차근 접근)이기 때문에, 
 			// 쏙! 하고 지워버리면 iterator의 다음 요소에대한 정보가 증발해버린다
 			// 때문에 erase의 반환값을 사용한다. erase의 반환값은 삭제한 요소의 다음 요소이다
@@ -182,7 +187,6 @@ void ObjectManager::Update()
 		}
 		else
 		{
-			if ((*iter)->IsActive) (*iter)->Update();
 			//안됨(*iter++)->Update();
 			// Array[i++].Update();
 

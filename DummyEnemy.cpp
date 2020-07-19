@@ -41,7 +41,12 @@ void DummyEnemy::Update()
 	{
 		mTimer.SetTimer(0.9f, true);
 
-		OBJECT->AddObject(new EBullet(Position, OBJECT->FindObject(TAG::PLAYER)->Position, 630.f));
+		Object* player = OBJECT->FindPlayer();
+
+		if (player)
+		{
+			OBJECT->AddObject(new EBullet(Position, player->Position, 630.f));
+		}
 	}
 }
 

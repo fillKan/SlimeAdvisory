@@ -59,6 +59,11 @@ void Player::Init()
 
 void Player::Update()
 {
+	if (CURHealth <= 0)
+	{
+		SCENCE->LoadScence("Title");
+	}
+
 	Velocity = ZERO;
 
 	mTimer.Update();
@@ -134,10 +139,6 @@ void Player::Release()
 
 void Player::OnCollisionEnter(Object* other)
 {
-	if (CURHealth <= 0)
-	{
-		CURHealth = MAXHealth;
-	}
 }
 
 void Player::OnCollisionStay(Object* other)
