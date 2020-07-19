@@ -1,7 +1,7 @@
 #include "DXUT.h"
 #include "MiddleBoss.h"
 
-MiddleBoss::MiddleBoss(Vector2 pos) : Object()
+MiddleBoss::MiddleBoss(Vector2 pos, float degree) : Object(), degree(degree)
 {
 	Position = pos;
 }
@@ -14,15 +14,24 @@ void MiddleBoss::Init()
 {
 	Tag = TAG::ENEMY;
 
-	CircleRadius = 3.f;
+	CircleRadius = 30.f;
 
 	mSprite = IMAGE->AddImage("MiddleBoss", "./image/Enemy/MiddleBoss/MiddleBoss.png");
 
-	HealthInit(20.f);
+	HealthInit(300.f);
+
+	Velocity = Vector2(Math::CosGraph(60.f, degree), Math::SinGraph(60.f, degree));
+
+	Position += Velocity * 2.3f;
 }
 
 void MiddleBoss::Update()
 {
+	Velocity = Vector2(Math::CosGraph(180.f, degree), Math::SinGraph(180.f, degree));
+
+	Position += Velocity * DELTA_TIME * 2.3f;
+
+	degree += 2.5f;
 }
 
 void MiddleBoss::Render()

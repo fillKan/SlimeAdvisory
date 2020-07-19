@@ -2,7 +2,7 @@
 class MiddleBoss : public Object
 {
 public:
-	 MiddleBoss(Vector2 pos);
+	 MiddleBoss(Vector2 pos, float degree);
 	~MiddleBoss();
 
 	virtual void Init   () override;
@@ -16,5 +16,7 @@ public:
 
 private:
 	Texture* mSprite;
+
+	float degree;
 };
 

@@ -31,6 +31,15 @@ void StageONE::Init()
 	mHCloudPos[0] = ZERO; mHCloudPos[1] = Vector2(WINSIZEX, 0);
 	mMCloudPos[0] = ZERO; mMCloudPos[1] = Vector2(WINSIZEX, 0);
 	mSCloudPos[0] = ZERO; mSCloudPos[1] = Vector2(WINSIZEX, 0);
+
+	mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX / 2 + 200.f, WINSIZEY / 2),240.f);
+	OBJECT->AddObject(mMiddleBoss);
+
+	mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX / 2 + 200.f, WINSIZEY / 2), 120.f);
+	OBJECT->AddObject(mMiddleBoss);
+
+	mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX / 2 + 200.f, WINSIZEY / 2), 0.f);
+	OBJECT->AddObject(mMiddleBoss);
 }
 
 void StageONE::Update()
@@ -45,29 +54,29 @@ void StageONE::Update()
 				Pos = Vector2(WINSIZEX, RANDOM(ScrOffset, WINSIZEY - ScrOffset));
 
 
-		switch (RANDOM(0, 3))
-		{
-		case 0:
-			OBJECT->AddObject(new DummyEnemy(Pos + (LEFT * 55.f), 2.5f));
-			OBJECT->AddObject(new DummyEnemy(Pos + (DOWN * 80.f), 2.5f));
-			OBJECT->AddObject(new DummyEnemy(Pos + (  UP * 80.f), 2.5f));
-			break;
+		//switch (RANDOM(0, 3))
+		//{
+		//case 0:
+		//	OBJECT->AddObject(new DummyEnemy(Pos + (LEFT * 55.f), 2.5f));
+		//	OBJECT->AddObject(new DummyEnemy(Pos + (DOWN * 80.f), 2.5f));
+		//	OBJECT->AddObject(new DummyEnemy(Pos + (  UP * 80.f), 2.5f));
+		//	break;
 
-		case 1:
-			OBJECT->AddObject(new DummyEnemy(Pos, 4.f));
-			break;
+		//case 1:
+		//	OBJECT->AddObject(new DummyEnemy(Pos, 4.f));
+		//	break;
 
-		default:
-			OBJECT->AddObject(new DummyEnemy(Pos, 0.f));
-			break;
-		}
+		//default:
+		//	OBJECT->AddObject(new DummyEnemy(Pos, 0.f));
+		//	break;
+		//}
 	}
 
 	for (int i = 0; i < 2; ++i)
 	{
-		mHCloudPos[i] += LEFT *   HUGE_CLOUD_SPEED;
-		mMCloudPos[i] += LEFT * MIDDLE_CLOUD_SPEED;
-		mSCloudPos[i] += LEFT *  SMALL_CLOUD_SPEED;
+		mHCloudPos[i] += LEFT *   HUGE_CLOUD_SPEED * 3.f;
+		mMCloudPos[i] += LEFT * MIDDLE_CLOUD_SPEED * 3.f;
+		mSCloudPos[i] += LEFT *  SMALL_CLOUD_SPEED * 3.f;
 
 		if (mHCloudPos[i].x <= -WINSIZEX) { mHCloudPos[i].x = WINSIZEX; }
 		if (mMCloudPos[i].x <= -WINSIZEX) { mMCloudPos[i].x = WINSIZEX; }
