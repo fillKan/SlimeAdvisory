@@ -57,7 +57,7 @@ public:
 class ObjectManager : public Singleton<ObjectManager>
 {
 public:
-	 ObjectManager() {};
+	 ObjectManager();
 	~ObjectManager();
 
 	void AddObject(Object* object);

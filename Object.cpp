@@ -11,6 +11,10 @@ Object::~Object()
 {
 }
 
+ObjectManager::ObjectManager() : mPlayer(nullptr)
+{
+}
+
 ObjectManager::~ObjectManager()
 {
 	Release();
@@ -203,19 +207,30 @@ void ObjectManager::Release()
 {
 	for (auto iter : mNewObjects)
 	{
+		if (iter->Tag == TAG::PLAYER)
+		{
+			mPlayer = nullptr;
+		}
 		SAFE_DELETE(iter);
 	}
 	mNewObjects.clear();
 
 	for (auto iter : mCurObjects)
 	{
+		if (iter->Tag == TAG::PLAYER)
+		{
+			mPlayer = nullptr;
+		}
 		iter->Release();
 
 		SAFE_DELETE(iter);
 	}
 	mCurObjects.clear();
 
-	SAFE_DELETE(mPlayer);
+	if (mPlayer != nullptr)
+	{
+		SAFE_DELETE(mPlayer);
+	}
 }
 
 void Object::HealthInit(float max)

@@ -14,6 +14,8 @@ Player::Player() : mCircleShout(0.8f), mBlank(0.8f), mSteamPack(3.5f, 5.f, 2.25f
 Player::~Player()
 {
 	mAnimation.Clear();
+
+	mAttackParticle->SetDestroy(true);
 }
 
 void Player::Init()

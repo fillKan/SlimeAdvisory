@@ -15,6 +15,8 @@ public:
 	virtual void Render () PURE;
 	virtual void Release() PURE;
 
+	void SetDestroy(bool isDestroy) { mCanDestroy = isDestroy; }
+
 	bool CanDestroy() { return mCanDestroy; }
 
 	virtual Particle* Instantiate(Vector2 pos) PURE;
