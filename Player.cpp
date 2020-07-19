@@ -15,7 +15,10 @@ Player::~Player()
 {
 	mAnimation.Clear();
 
-	mAttackParticle->SetDestroy(true);
+	if (mAttackParticle != nullptr)
+	{
+		mAttackParticle->SetDestroy(true);
+	}
 }
 
 void Player::Init()
