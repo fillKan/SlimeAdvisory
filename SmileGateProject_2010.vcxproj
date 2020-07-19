@@ -394,6 +394,7 @@
     <ClCompile Include="EBullet.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="MiddleBoss.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="PAttack.cpp" />
     <ClCompile Include="PBoost.cpp" />
@@ -420,6 +421,7 @@
     <ClInclude Include="Image.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="MiddleBoss.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="PAttack.h" />
