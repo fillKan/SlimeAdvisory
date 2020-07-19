@@ -13,21 +13,7 @@ Object::~Object()
 
 ObjectManager::~ObjectManager()
 {
-	for (auto iter : mNewObjects)
-	{
-		SAFE_DELETE(iter);
-	}
-	mNewObjects.clear();
-
-	for (auto iter : mCurObjects)
-	{
-		iter->Release();
-
-		SAFE_DELETE(iter);
-	}
-	mCurObjects.clear();
-
-	SAFE_DELETE(mPlayer);
+	Release();
 }
 
 void ObjectManager::AddObject(Object* object)
@@ -211,6 +197,25 @@ void ObjectManager::Render()
 			}
 		}
 	}
+}
+
+void ObjectManager::Release()
+{
+	for (auto iter : mNewObjects)
+	{
+		SAFE_DELETE(iter);
+	}
+	mNewObjects.clear();
+
+	for (auto iter : mCurObjects)
+	{
+		iter->Release();
+
+		SAFE_DELETE(iter);
+	}
+	mCurObjects.clear();
+
+	SAFE_DELETE(mPlayer);
 }
 
 void Object::HealthInit(float max)

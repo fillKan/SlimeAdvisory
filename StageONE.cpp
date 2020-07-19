@@ -92,4 +92,7 @@ void StageONE::Render()
 void StageONE::Release()
 {
 	USER_INTERFACE->Release();
+	OBJECT->Release();
+	//파티클을 지우지 않는것이 아직은 더 자연스러운것 같다
+	//PARTICLE->Release();
 }

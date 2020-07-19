@@ -76,8 +76,9 @@ public:
 	void CollisionCheck(TAG tagA, TAG tagB);
 
 public: 
-	void Update();
-	void Render();
+	void Update ();
+	void Render ();
+	void Release();
 private:
 	list<Object*> mNewObjects;
 	list<Object*> mCurObjects;
