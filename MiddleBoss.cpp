@@ -55,8 +55,21 @@ void MiddleBoss::Update()
 		}
 		else if (!mDashTimer.TimeOver())
 		{
-			Position += Direction * DELTA_TIME * 450.f;
+			Velocity = (Direction * DELTA_TIME * 550.f) + Position;
 
+			if (Velocity.x > WINSIZEX || Velocity.x < 0 ||
+				Velocity.y > WINSIZEY || Velocity.y < 0)
+			{
+				// 돌진. 중단.
+				mDashTimer.EndTime = 0.f;
+				mDashTimer.CurTime = 0.f;
+
+				ThrowDie();
+			}
+			else
+			{
+				Position = Velocity;
+			}
 			mDashTimer.Update();
 		}
 		else if (mDashTimer.TimeOver())
