@@ -1,12 +1,16 @@
 #include "DXUT.h"
 #include "MiddleBoss.h"
 
+#include "EBullet.h"
+
 MiddleBoss::MiddleBoss(Vector2 pos, Vector2 summonPoint) : Object(), mSummonPoint(summonPoint)
 {
 	Position = pos;
 	Velocity = pos;
 
 	mCURPattern = MBOSS_PATTERN::APPER;
+
+	mDashTimer.SetTimer(0.f);
 }
 
 MiddleBoss::~MiddleBoss()
@@ -29,7 +33,7 @@ void MiddleBoss::Update()
 	switch (mCURPattern)
 	{
 	case MBOSS_PATTERN::APPER:
-		if (Velocity.x > mSummonPoint.x)
+		if ((int)Velocity.x > (int)mSummonPoint.x)
 		{
 			Math::Lerp(&Velocity, Position, mSummonPoint, 1.5f);
 
@@ -40,11 +44,35 @@ void MiddleBoss::Update()
 			ThrowDie();
 		}
 		break;
+	case MBOSS_PATTERN::AAA:
 	case MBOSS_PATTERN::DASH:
+		if (mDashTimer.EndTime == 0.f)
+		{
+			Direction = Math::AimVector(OBJECT->FindPlayer()->Position, Position);
+			Rotation = Math::RadianAngle(OBJECT->FindPlayer()->Position, Position);
 
+			mDashTimer.SetTimer(1.2f);
+		}
+		else if (!mDashTimer.TimeOver())
+		{
+			Position += Direction * DELTA_TIME * 450.f;
+
+			mDashTimer.Update();
+		}
+		else if (mDashTimer.TimeOver())
+		{
+			mDashTimer.EndTime = 0.f;
+
+			for (int i = 0; i < 360; i += 15)
+			{
+				Vector2 circlePoint = Vector2(cosf(i), sinf(i)) + Position;
+
+				OBJECT->AddObject(new EBullet(Position, circlePoint, 330.f));
+			}
+			ThrowDie();
+		}
 		break;
 	default:
-
 		break;
 	}
 }

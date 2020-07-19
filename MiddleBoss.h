@@ -17,7 +17,7 @@ public:
 private:
 	void ThrowDie()
 	{
-		int die = RANDOM((int)MBOSS_PATTERN::APPER + 1, (int)MBOSS_PATTERN::END - 1);
+		int die = rand() % ((int)MBOSS_PATTERN::END - 1) + (int)MBOSS_PATTERN::APPER;
 
 		mCURPattern = (MBOSS_PATTERN)die;
 	}
@@ -28,5 +28,7 @@ private:
 	Vector2 mSummonPoint;
 
 	MBOSS_PATTERN mCURPattern;
+
+	Timer mDashTimer;
 };
 
