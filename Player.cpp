@@ -7,7 +7,7 @@
 #include "PBoost.h"
 #include "SkillGauge.h"
 
-Player::Player() : mCircleShout(0.8f), mBlank(0.8f), mSteamPack(3.5f, 4.f, 6.f)
+Player::Player() : mCircleShout(0.8f), mBlank(0.8f), mSteamPack(3.5f, 5.f, 2.25f)
 {
 }
 
@@ -49,7 +49,7 @@ void Player::Init()
 
 	USER_INTERFACE->AddUI(skillGauge);
 
-	skillGauge = new SkillGauge(Vector2(520.f, 120.f));
+	skillGauge = new SkillGauge(Vector2(500.f, 120.f));
 	skillGauge->SkillLink(&mSteamPack);
 	skillGauge->SetImage(IMAGE->AddImage("ESkillGauge", "./image/UI/ESkillGauge.png"),
 						 IMAGE->AddImage("SkillGauge", "./image/UI/SkillGauge.png"));

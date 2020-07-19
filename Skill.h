@@ -14,7 +14,7 @@ public:
 	{
 		mTimer.CurTime = percent * mTimer.EndTime;
 	}
-	float GProgress() 
+	virtual float GProgress() 
 	{
 		return mTimer.CurTime / mTimer.EndTime;
 	}

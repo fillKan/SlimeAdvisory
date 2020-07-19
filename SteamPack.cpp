@@ -43,6 +43,15 @@ void SteamPack::Render()
 {
 }
 
+float SteamPack::GProgress()
+{
+	if (mIsCast)
+	{
+		return 1 - mDurateTimer.CurTime / mDurateTimer.EndTime;
+	}
+	return mTimer.CurTime / mTimer.EndTime;
+}
+
 void SteamPack::CastSkill()
 {
 	if (mTimer.TimeOver())

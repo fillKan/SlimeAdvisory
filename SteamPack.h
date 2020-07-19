@@ -8,6 +8,7 @@ public:
 	virtual void Update() override;
 	virtual void Render() override;
 
+	virtual float GProgress() override;
 	virtual void CastSkill() override;
 
 private:
