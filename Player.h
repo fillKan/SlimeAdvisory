@@ -3,6 +3,7 @@
 class PBoost;
 #include "CircleShout.h"
 #include "Blank.h"
+#include "SteamPack.h"
 
 class Player : public Object
 {
@@ -36,5 +37,6 @@ private:
 
 	CircleShout mCircleShout;
 	Blank mBlank;
+	SteamPack mSteamPack;
 };
 
