@@ -33,6 +33,10 @@ void MiddleBoss::Update()
 	switch (mCURPattern)
 	{
 	case MBOSS_PATTERN::APPER:
+		Rotation = 0.f;
+
+		CURHealth = (CURHealth + 20.f > MAXHealth) ? MAXHealth : CURHealth + 20.f;
+
 		if ((int)Velocity.x > (int)mSummonPoint.x)
 		{
 			Math::Lerp(&Velocity, Position, mSummonPoint, 1.5f);
