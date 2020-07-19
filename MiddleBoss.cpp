@@ -2,6 +2,7 @@
 #include "MiddleBoss.h"
 
 #include "EBullet.h"
+#include "DummyEnemy.h"
 
 MiddleBoss::MiddleBoss(Vector2 pos, Vector2 summonPoint) : Object(), mSummonPoint(summonPoint)
 {
@@ -30,6 +31,10 @@ void MiddleBoss::Init()
 
 void MiddleBoss::Update()
 {
+	int ScrOffset = SCREEN_OFFSET;
+
+	Vector2 Pos;
+
 	switch (mCURPattern)
 	{
 	case MBOSS_PATTERN::APPER:
@@ -48,7 +53,27 @@ void MiddleBoss::Update()
 			ThrowDie();
 		}
 		break;
-	case MBOSS_PATTERN::AAA:
+	case MBOSS_PATTERN::SUMMON_LACKEY:
+		Pos = Vector2(WINSIZEX, RANDOM(ScrOffset, WINSIZEY - ScrOffset));
+
+		switch (RANDOM(0, 3))
+		{
+		case 0:
+			OBJECT->AddObject(new DummyEnemy(Pos + (LEFT * 55.f), 2.5f));
+			OBJECT->AddObject(new DummyEnemy(Pos + (DOWN * 80.f), 2.5f));
+			OBJECT->AddObject(new DummyEnemy(Pos + (UP * 80.f), 2.5f));
+			break;
+
+		case 1:
+			OBJECT->AddObject(new DummyEnemy(Pos, 4.f));
+			break;
+
+		default:
+			OBJECT->AddObject(new DummyEnemy(Pos, 0.f));
+			break;
+		}
+		break;
+
 	case MBOSS_PATTERN::DASH:
 		if (mDashTimer.EndTime == 0.f)
 		{
