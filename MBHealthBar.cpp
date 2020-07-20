@@ -20,6 +20,8 @@ void MBHealthBar::Init()
 
 void MBHealthBar::Update()
 {
+	mSumCURHP = 0.f;
+
 	char name[8];
 	Object* findBoss;
 
@@ -36,7 +38,7 @@ void MBHealthBar::Update()
 	}
 	mFillAmount = mSumCURHP / (MBOSS_MAXHP * 3);
 
-	mImage.RenderRect = { 1, 43, (LONG)(470 * mFillAmount), 91 };
+	mImage.SetRect(mRenderType, mFillAmount);
 
 	mSumCURHP = 0.f;
 }
