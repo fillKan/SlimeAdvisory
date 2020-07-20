@@ -47,14 +47,14 @@ void Player::Init()
 
 	HealthInit(10.f);
 
-	SkillGauge* skillGauge = new SkillGauge(Vector2(420.f, 120.f));
+	SkillGauge* skillGauge = new SkillGauge(Vector2(55.f, 210.f));
 	skillGauge->SkillLink(&mBlank);
 	skillGauge->SetImage(IMAGE->AddImage("ESkillGauge", "./image/UI/ESkillGauge.png"), 
 						 IMAGE->AddImage("SkillGauge", "./image/UI/SkillGauge.png"));
 
 	USER_INTERFACE->AddUI(skillGauge);
 
-	skillGauge = new SkillGauge(Vector2(500.f, 120.f));
+	skillGauge = new SkillGauge(Vector2(135.f, 210.f));
 	skillGauge->SkillLink(&mSteamPack);
 	skillGauge->SetImage(IMAGE->AddImage("ESkillGauge", "./image/UI/ESkillGauge.png"),
 						 IMAGE->AddImage("SkillGauge", "./image/UI/SkillGauge.png"));
