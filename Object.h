@@ -75,6 +75,8 @@ public:
 
 	void CollisionCheck(TAG tagA, TAG tagB);
 
+	UINT KilledEnemy() { return mPlayerKillEnemy; }
+
 public: 
 	void Update ();
 	void Render ();
@@ -84,5 +86,7 @@ private:
 	list<Object*> mCurObjects;
 
 	Object* mPlayer;
+
+	UINT mPlayerKillEnemy = 0;
 };
 #define OBJECT ObjectManager::Instance()

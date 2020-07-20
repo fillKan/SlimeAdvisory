@@ -99,6 +99,15 @@
     <Filter Include="System\Skill\SteamPack">
       <UniqueIdentifier>{44fe0685-302d-437f-bdf3-1ec03df93f5b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Object\MiddleBoss">
+      <UniqueIdentifier>{0c24a201-d28e-478e-a802-d6dd8fd70c58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Object\MiddleBoss\MBullet">
+      <UniqueIdentifier>{16c2a2a8-a4ef-4508-aab1-ebd0f72bb74e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\UI\MBHealthBar">
+      <UniqueIdentifier>{31432038-2771-4708-a4ea-cbbb41d9804c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -245,6 +254,15 @@
     <ClCompile Include="SteamPack.cpp">
       <Filter>System\Skill\SteamPack</Filter>
     </ClCompile>
+    <ClCompile Include="MiddleBoss.cpp">
+      <Filter>System\Object\MiddleBoss</Filter>
+    </ClCompile>
+    <ClCompile Include="MBullet.cpp">
+      <Filter>System\Object\MiddleBoss\MBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="MBHealthBar.cpp">
+      <Filter>System\UI\MBHealthBar</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -332,6 +350,15 @@
     </ClInclude>
     <ClInclude Include="SteamPack.h">
       <Filter>System\Skill\SteamPack</Filter>
+    </ClInclude>
+    <ClInclude Include="MiddleBoss.h">
+      <Filter>System\Object\MiddleBoss</Filter>
+    </ClInclude>
+    <ClInclude Include="MBullet.h">
+      <Filter>System\Object\MiddleBoss\MBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="MBHealthBar.h">
+      <Filter>System\UI\MBHealthBar</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

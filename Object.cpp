@@ -164,6 +164,10 @@ void ObjectManager::Update()
 
 		if ((*iter)->IsDestory || (*iter)->IsOutMap() || (*iter)->CURHealth <= 0.f)
 		{
+			if ((*iter)->Tag == TAG::ENEMY)
+			{
+				mPlayerKillEnemy++;
+			}
 			if ((*iter)->Tag != TAG::PLAYER)
 			{
 				SAFE_DELETE(*iter);

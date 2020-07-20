@@ -4,12 +4,10 @@
 #include "Player.h"
 #include "DummyEnemy.h"
 
+#include "MBHealthBar.h"
+
 void StageONE::Init()
 {
-	mButton = new Button(Vector2(WINSIZEX - 160, 20));
-	mButton->SetChangeImage("DaengDaengYi1", "DaengDaengYi3", "DaengDaengYi2");
-	mButton->SetButtonScale(RECT{ 0, 0, 128, 128 });
-
 	mBackGround = IMAGE->AddImage("BackGround","./image/BackGround/backgruond.png");
 
 	mEnemySpawnTimer.SetTimer(1.85f, true);
@@ -17,7 +15,6 @@ void StageONE::Init()
 	OBJECT->AddObject(new Player());
 
 	USER_INTERFACE->AddUI(new PHealthBar());
-	USER_INTERFACE->AddUI(mButton);
 
 	mHCloud[0] = IMAGE->AddImage("CloudHuge", "./image/BackGround/Cloud/Cloud1.png");
 	mHCloud[1] = mHCloud[0];
@@ -37,13 +34,12 @@ void StageONE::Update()
 {
 	mEnemySpawnTimer.Update();
 
-	if (mEnemySpawnTimer.TimeOver())
+	if (mEnemySpawnTimer.TimeOver() && !mHasSummonMBoss)
 	{
 		int ScrOffset = SCREEN_OFFSET;
 
 		Vector2 Pos;
 				Pos = Vector2(WINSIZEX, RANDOM(ScrOffset, WINSIZEY - ScrOffset));
-
 
 		switch (RANDOM(0, 3))
 		{
@@ -63,11 +59,27 @@ void StageONE::Update()
 		}
 	}
 
+	if (OBJECT->KilledEnemy() > MBOSS_APPER_NEED && !mHasSummonMBoss)
+	{
+		mHasSummonMBoss = true;
+
+		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, SCREEN_OFFSET), "MBoss1");
+		OBJECT->AddObject(mMiddleBoss);
+
+		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY / 2), Vector2(WINSIZEX - 350.f, WINSIZEY / 2), "MBoss2");
+		OBJECT->AddObject(mMiddleBoss);
+
+		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY - SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, WINSIZEY - SCREEN_OFFSET), "MBoss3");
+		OBJECT->AddObject(mMiddleBoss);
+
+		USER_INTERFACE->AddUI(new MBHealthBar());
+	}
+
 	for (int i = 0; i < 2; ++i)
 	{
-		mHCloudPos[i] += LEFT *   HUGE_CLOUD_SPEED;
-		mMCloudPos[i] += LEFT * MIDDLE_CLOUD_SPEED;
-		mSCloudPos[i] += LEFT *  SMALL_CLOUD_SPEED;
+		mHCloudPos[i] += LEFT *   HUGE_CLOUD_SPEED * 3.f;
+		mMCloudPos[i] += LEFT * MIDDLE_CLOUD_SPEED * 3.f;
+		mSCloudPos[i] += LEFT *  SMALL_CLOUD_SPEED * 3.f;
 
 		if (mHCloudPos[i].x <= -WINSIZEX) { mHCloudPos[i].x = WINSIZEX; }
 		if (mMCloudPos[i].x <= -WINSIZEX) { mMCloudPos[i].x = WINSIZEX; }

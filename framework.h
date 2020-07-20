@@ -13,6 +13,12 @@
 
 using namespace std;
 
+enum class MBOSS_PATTERN
+{
+	NONE = -1,
+	APPER, BOMBING, DASH, END
+};
+
 using Matrix   = D3DXMATRIX;
 using Matrix16 = D3DXMATRIXA16;
 using Vector2  = D3DXVECTOR2;
@@ -26,6 +32,9 @@ const float SCREEN_OFFSET = 120.f;
 
 const float ENEMY_DUMMY = 100.f;
 const float PBULLET_DMG = 30.f;
+const float MBOSS_MAXHP = 550.f;
+
+const UINT MBOSS_APPER_NEED = 15;
 
 const LPCWSTR TITLE = L"AAA";
 
