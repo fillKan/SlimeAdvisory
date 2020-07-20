@@ -28,8 +28,6 @@ public:
 	float CURHealth = 1.f;
 
 	Vector2 Position;
-	Vector2 Scale;
-	Vector2 Velocity;
 	Vector2 Direction;
 
 public:
@@ -82,8 +80,7 @@ public:
 	void Render ();
 	void Release();
 private:
-	list<Object*> mNewObjects;
-	list<Object*> mCurObjects;
+	list<Object*> mObjects;
 
 	Object* mPlayer;
 
