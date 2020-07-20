@@ -14,11 +14,11 @@ void PBulletBreak::Init()
 {
 	if (RANDOM(0, 1) == 1)
 	{
-		mAnimation.AddFrame("./image/Particle/PBulletBreak/", "ExplosiveEffect1_", 9);
+		mAnimation.SetFrame("./image/Particle/PBulletBreak/", "ExplosiveEffect1_", 9);
 	}
 	else
 	{
-		mAnimation.AddFrame("./image/Particle/PBulletBreak2/", "ExplosiveEffect2_", 9);
+		mAnimation.SetFrame("./image/Particle/PBulletBreak2/", "ExplosiveEffect2_", 9);
 	}
 
 	mTimer.SetTimer(0.9f);

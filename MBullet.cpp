@@ -19,7 +19,7 @@ void MBullet::Init()
 {
 	Tag = TAG::EBULLET;
 
-	mAnimation.AddFrame("./image/Enemy/MiddleBoss/Bullet/", "stage_1_boss_bullet_",6);
+	mAnimation.SetFrame("./image/Enemy/MiddleBoss/Bullet/", "stage_1_boss_bullet_",6);
 
 	CircleRadius = 30.f;
 }

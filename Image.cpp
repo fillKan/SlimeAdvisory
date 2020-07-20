@@ -153,7 +153,7 @@ void ImageManager::ResetDevice()
 	mSprite->OnResetDevice();
 }
 
-void Animation::AddFrame(const string& path, const string& name, int frame)
+void Animation::SetFrame(const string& path, const string& name, int frame)
 {
 	char _path[256];
 	char _name[64];
