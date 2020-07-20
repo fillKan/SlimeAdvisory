@@ -34,6 +34,8 @@ const float ENEMY_DUMMY = 100.f;
 const float PBULLET_DMG = 30.f;
 const float MBOSS_MAXHP = 550.f;
 
+const UINT MBOSS_APPER_NEED = 15;
+
 const LPCWSTR TITLE = L"AAA";
 
 const int WINSIZEX = 1600;

@@ -8,10 +8,6 @@
 
 void StageONE::Init()
 {
-	mButton = new Button(Vector2(WINSIZEX - 160, 20));
-	mButton->SetChangeImage("DaengDaengYi1", "DaengDaengYi3", "DaengDaengYi2");
-	mButton->SetButtonScale(RECT{ 0, 0, 128, 128 });
-
 	mBackGround = IMAGE->AddImage("BackGround","./image/BackGround/backgruond.png");
 
 	mEnemySpawnTimer.SetTimer(1.85f, true);
@@ -19,7 +15,6 @@ void StageONE::Init()
 	OBJECT->AddObject(new Player());
 
 	USER_INTERFACE->AddUI(new PHealthBar());
-	USER_INTERFACE->AddUI(mButton);
 
 	mHCloud[0] = IMAGE->AddImage("CloudHuge", "./image/BackGround/Cloud/Cloud1.png");
 	mHCloud[1] = mHCloud[0];
@@ -33,48 +28,51 @@ void StageONE::Init()
 	mHCloudPos[0] = ZERO; mHCloudPos[1] = Vector2(WINSIZEX, 0);
 	mMCloudPos[0] = ZERO; mMCloudPos[1] = Vector2(WINSIZEX, 0);
 	mSCloudPos[0] = ZERO; mSCloudPos[1] = Vector2(WINSIZEX, 0);
-
-	mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, SCREEN_OFFSET), "MBoss1");
-	OBJECT->AddObject(mMiddleBoss);
-
-	mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY / 2), Vector2(WINSIZEX - 350.f, WINSIZEY / 2), "MBoss2");
-	OBJECT->AddObject(mMiddleBoss);
-
-	mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY - SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, WINSIZEY - SCREEN_OFFSET), "MBoss3");
-	OBJECT->AddObject(mMiddleBoss);
-
-	USER_INTERFACE->AddUI(new MBHealthBar());
-
 }
 
 void StageONE::Update()
 {
 	mEnemySpawnTimer.Update();
 
-	if (mEnemySpawnTimer.TimeOver())
+	if (mEnemySpawnTimer.TimeOver() && !mHasSummonMBoss)
 	{
 		int ScrOffset = SCREEN_OFFSET;
 
 		Vector2 Pos;
 				Pos = Vector2(WINSIZEX, RANDOM(ScrOffset, WINSIZEY - ScrOffset));
 
+		switch (RANDOM(0, 3))
+		{
+		case 0:
+			OBJECT->AddObject(new DummyEnemy(Pos + (LEFT * 55.f), 2.5f));
+			OBJECT->AddObject(new DummyEnemy(Pos + (DOWN * 80.f), 2.5f));
+			OBJECT->AddObject(new DummyEnemy(Pos + (  UP * 80.f), 2.5f));
+			break;
 
-		//switch (RANDOM(0, 3))
-		//{
-		//case 0:
-		//	OBJECT->AddObject(new DummyEnemy(Pos + (LEFT * 55.f), 2.5f));
-		//	OBJECT->AddObject(new DummyEnemy(Pos + (DOWN * 80.f), 2.5f));
-		//	OBJECT->AddObject(new DummyEnemy(Pos + (  UP * 80.f), 2.5f));
-		//	break;
+		case 1:
+			OBJECT->AddObject(new DummyEnemy(Pos, 4.f));
+			break;
 
-		//case 1:
-		//	OBJECT->AddObject(new DummyEnemy(Pos, 4.f));
-		//	break;
+		default:
+			OBJECT->AddObject(new DummyEnemy(Pos, 0.f));
+			break;
+		}
+	}
 
-		//default:
-		//	OBJECT->AddObject(new DummyEnemy(Pos, 0.f));
-		//	break;
-		//}
+	if (OBJECT->KilledEnemy() > MBOSS_APPER_NEED && !mHasSummonMBoss)
+	{
+		mHasSummonMBoss = true;
+
+		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, SCREEN_OFFSET), "MBoss1");
+		OBJECT->AddObject(mMiddleBoss);
+
+		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY / 2), Vector2(WINSIZEX - 350.f, WINSIZEY / 2), "MBoss2");
+		OBJECT->AddObject(mMiddleBoss);
+
+		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY - SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, WINSIZEY - SCREEN_OFFSET), "MBoss3");
+		OBJECT->AddObject(mMiddleBoss);
+
+		USER_INTERFACE->AddUI(new MBHealthBar());
 	}
 
 	for (int i = 0; i < 2; ++i)

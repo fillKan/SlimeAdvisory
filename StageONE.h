@@ -15,8 +15,6 @@ private:
 
 	Timer mEnemySpawnTimer;
 
-	Button* mButton;
-
 	Texture* mBackGround;
 
 	Texture* mHCloud[2];
@@ -32,5 +30,6 @@ private:
 	const float  SMALL_CLOUD_SPEED = 0.4f;
 
 	MiddleBoss* mMiddleBoss;
+	bool mHasSummonMBoss = false;
 };
 
