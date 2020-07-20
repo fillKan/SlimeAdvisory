@@ -9,8 +9,8 @@ void Camera::Update()
 
 		if (mCanMove)
 		{
-			Math::Lerp(&mPosition, mPosition, mTraceObject->Position, 2.f);
-			Math::Lerp(&mScale, mScale, mMaxScale, 2.f);
+			//Math::Lerp(&mPosition, mPosition, mTraceObject->Position, 2.f);
+			//Math::Lerp(&mScale, mScale, mMaxScale, 2.f);
 		}
 	}
 
