@@ -1,7 +1,7 @@
 #include "DXUT.h"
 #include "PHealthBar.h"
 
-PHealthBar::PHealthBar() : UI(UI_RENDER_TYPE::DECREASEBOX_SIDE)
+PHealthBar::PHealthBar() : UI(UI_RENDER_TYPE::DECREASEBOX_SIDE), mPlayer(nullptr)
 {
 }
 
@@ -25,10 +25,6 @@ void PHealthBar::Init()
 
 void PHealthBar::Update()
 {
-	if (mPlayer == nullptr)
-	{
-		mPlayer = OBJECT->FindPlayer();
-	}
 	mFillAmount = (mPlayer->CURHealth / mPlayer->MAXHealth);
 
 	mImage.SetRect(mRenderType, mFillAmount);
