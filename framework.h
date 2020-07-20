@@ -63,16 +63,6 @@ const D3DXVECTOR2    UP = D3DXVECTOR2( 0,-1);
 
 #define RANDOM(min, max) (rand() % ((max) + 1)) + min
 
-struct Collider
-{
-	Vector2 leftTop, rightDown;
-
-	void Init(Vector2 lTop = ZERO, Vector2 rDown = ZERO)
-	{
-		leftTop = lTop; rightDown = rDown;
-	}
-};
-
 #include "Math.h"
 #include "Singleton.h"
 #include "Timer.h"

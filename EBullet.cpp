@@ -21,16 +21,14 @@ void EBullet::Init()
 	Name = "EBullet";
 	Tag = TAG::EBULLET;
 
-	mAnimation.AddFrame("./image/Enemy/Bullet/", "MonsterBullet", 6);
+	mAnimation.SetFrame("./image/Enemy/Bullet/", "MonsterBullet", 6);
 
 	CircleRadius = 15.f;
 }
 
 void EBullet::Update()
 {
-	Velocity = ZERO;
-
-	Position += (Velocity += mSpeed * Direction * DELTA_TIME);
+	Position += mSpeed * Direction * DELTA_TIME;
 }
 
 void EBullet::Render()

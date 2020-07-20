@@ -21,7 +21,7 @@ struct Animation
 {
 	vector<Texture*> Frames;
 
-	void AddFrame(const string& path, const string& name, int frame);
+	void SetFrame(const string& path, const string& name, int frame);
 	void Clear();
 	void Rewind() { currentFrame = 0; }
 

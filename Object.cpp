@@ -3,7 +3,7 @@
 
 #include "Player.h"
 
-Object::Object() : Parent(nullptr), Child(nullptr), Name(""), Tag(TAG::NONE), IsDestory(false), IsActive(true), IsPrevCollision(false), IsCrntCollision(false), Rotation(0.0f), Position(ZERO), Scale(ONE), Velocity(ZERO), Direction(ZERO), CircleRadius(0.f)
+Object::Object() : Parent(nullptr), Child(nullptr), Name(""), Tag(TAG::NONE), IsDestory(false), IsActive(true), IsPrevCollision(false), IsCrntCollision(false), Rotation(0.0f), Position(ZERO), Direction(ZERO), CircleRadius(0.f)
 {
 }
 
@@ -28,12 +28,12 @@ void ObjectManager::AddObject(Object* object)
 	{
 		mPlayer = object;
 	}
-	mNewObjects.emplace_back(object);
+	mObjects.emplace_back(object);
 }
 
 Object* ObjectManager::FindObject(const string& name)
 {
-	for (auto iter : mCurObjects)
+	for (auto iter : mObjects)
 	{
 		if (iter->Name == name) return iter;
 	}
@@ -42,7 +42,7 @@ Object* ObjectManager::FindObject(const string& name)
 
 Object* ObjectManager::FindObject(TAG tag)
 {
-	for (auto iter : mCurObjects)
+	for (auto iter : mObjects)
 	{
 		if (iter->Tag == tag) return iter;
 	}
@@ -53,7 +53,7 @@ deque<Object*> ObjectManager::FindObjects(TAG tag)
 {
 	deque<Object*> objects;
 
-	for (auto iter : mCurObjects)
+	for (auto iter : mObjects)
 	{
 		if (iter->Tag == tag)
 		{
@@ -75,7 +75,7 @@ Object* ObjectManager::ForwardCloest(Vector2 parePos, TAG targetTAG)
 	float   cloestDistance = 160000.f;
 	Object* cloestObj	   = nullptr;
 
-	for (auto iter : mCurObjects)
+	for (auto iter : mObjects)
 	{
 		if (iter->IsActive && iter->Tag == targetTAG)
 		{
@@ -99,13 +99,13 @@ Object* ObjectManager::ForwardCloest(Vector2 parePos, TAG targetTAG)
 
 void ObjectManager::CollisionCheck(TAG tagA, TAG tagB)
 {
-	if (mCurObjects.empty()) return;
+	if (mObjects.empty()) return;
 
-	for (auto& iterA = mCurObjects.begin(); iterA != mCurObjects.end(); iterA++)
+	for (auto& iterA = mObjects.begin(); iterA != mObjects.end(); iterA++)
 	{
 		if ((*iterA)->Tag != tagA) continue;
 
-		for (auto& iterB = mCurObjects.begin(); iterB != mCurObjects.end(); iterB++)
+		for (auto& iterB = mObjects.begin(); iterB != mObjects.end(); iterB++)
 		{
 			if ((*iterB)->Tag != tagB) continue;
 
@@ -142,23 +142,12 @@ void ObjectManager::CollisionCheck(TAG tagA, TAG tagB)
 
 void ObjectManager::Update()
 {
-	if (!mNewObjects.empty())
-	{
-		for (auto iter : mNewObjects)
-		{
-			mCurObjects.emplace_back(iter);
-
-			SAFE_RELEASE(iter);
-		}
-	}
-	mNewObjects.clear();
-
-	if (mCurObjects.empty()) return;
+	if (mObjects.empty()) return;
 
 	CollisionCheck(TAG::PLAYER, TAG::EBULLET);
 	CollisionCheck(TAG::ENEMY, TAG::PBULLET);
 
-	for (auto iter = mCurObjects.begin(); iter != mCurObjects.end();)
+	for (auto iter = mObjects.begin(); iter != mObjects.end();)
 	{
 		if ((*iter)->IsActive) (*iter)->Update();
 
@@ -172,18 +161,10 @@ void ObjectManager::Update()
 			{
 				SAFE_DELETE(*iter);
 			}
-			// list는 Bidirectionaliterator(순서대로 차근차근 접근)이기 때문에, 
-			// 쏙! 하고 지워버리면 iterator의 다음 요소에대한 정보가 증발해버린다
-			// 때문에 erase의 반환값을 사용한다. erase의 반환값은 삭제한 요소의 다음 요소이다
-			iter = mCurObjects.erase(iter);
-			// mCurObjects.erase(iter++); 이런식으로 사용하는 것을 상상할 수도 있는데, 
-			// 이미 iter는 erase함수를 통해 갈곳을 잃었기 때문에 엄한곳만 가리키게된다
+			iter = mObjects.erase(iter);
 		}
 		else
 		{
-			//안됨(*iter++)->Update();
-			// Array[i++].Update();
-
 			iter++;
 		}
 	}
@@ -191,9 +172,9 @@ void ObjectManager::Update()
 
 void ObjectManager::Render()
 {
-	if (!mCurObjects.empty())
+	if (!mObjects.empty())
 	{
-		for (auto iter : mCurObjects)
+		for (auto iter : mObjects)
 		{
 			if (iter->IsActive && !iter->Parent)
 			{
@@ -209,17 +190,7 @@ void ObjectManager::Render()
 
 void ObjectManager::Release()
 {
-	for (auto iter : mNewObjects)
-	{
-		if (iter->Tag == TAG::PLAYER)
-		{
-			mPlayer = nullptr;
-		}
-		SAFE_DELETE(iter);
-	}
-	mNewObjects.clear();
-
-	for (auto iter : mCurObjects)
+	for (auto iter : mObjects)
 	{
 		if (iter->Tag == TAG::PLAYER)
 		{
@@ -229,7 +200,7 @@ void ObjectManager::Release()
 
 		SAFE_DELETE(iter);
 	}
-	mCurObjects.clear();
+	mObjects.clear();
 
 	if (mPlayer != nullptr)
 	{

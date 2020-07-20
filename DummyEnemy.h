@@ -19,6 +19,6 @@ private:
 
 	float mSpeed;
 
-	Timer mTimer;
+	Timer mATKcool;
 };
 

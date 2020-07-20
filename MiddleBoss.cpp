@@ -8,14 +8,12 @@
 MiddleBoss::MiddleBoss(Vector2 pos, Vector2 summonPoint, const string& name) : Object(), mSummonPoint(summonPoint)
 {
 	Position = pos;
-	Velocity = pos;
 
 	Name = name;
 
-	mCURPattern = MBOSS_PATTERN::APPER;
+	mCURAction = MBOSS_PATTERN::APPER;
 
-	mDashTimer.SetTimer(0.f);
-	mNextPatternDelay.SetTimer(0.f);
+	mWaitingAction.SetTimer(0.f);
 }
 
 MiddleBoss::~MiddleBoss()
@@ -42,96 +40,34 @@ void MiddleBoss::Update()
 
 	Vector2 Pos;
 
-	if (mCURPattern == MBOSS_PATTERN::NONE)
+	if (mCURAction == MBOSS_PATTERN::NONE)
 	{
-		mNextPatternDelay.Update();
+			mWaitingAction.Update();
 
-		if (mNextPatternDelay.TimeOver())
+		if (mWaitingAction.TimeOver())
 		{
-			ThrowDie();
+			int die = rand() % ((int)MBOSS_PATTERN::END - 1) + 1;
+
+			mCURAction = (MBOSS_PATTERN)die;
 		}
 	}
-	switch (mCURPattern)
+	switch (mCURAction)
 	{
-	case MBOSS_PATTERN::APPER:
-
-		if (mLerpAmount == 0.f)
-		{
-			mInitPos = Position;
-		}
-		if (mLerpAmount < 1.f)
-		{
-			Position = Math::Lerp(mInitPos, mSummonPoint, (mLerpAmount += DELTA_TIME));
-		}
-		else
-		{
-			StartTimer(0.6f);
-
-			mLerpAmount = 0.f;
-		}
-		break;
-	
-	case MBOSS_PATTERN::BOMBING:
-
-		if (mLerpAmount == 0.f)
-		{
-			mInitPos = Position;
-		}
-		if (mLerpAmount < 1.f)
-		{
-			Position = Math::Lerp(mInitPos, mBombingPoint, (mLerpAmount += DELTA_TIME));
-		}
-		else
-		{
-			OBJECT->AddObject(new MBullet(Position, &(OBJECT->FindPlayer()->Position), 3.5f));
-
-			StartTimer(1.3f);
-
-			mBombingPoint = Vector2(RANDOM(1, WINSIZEX - 1), RANDOM(1, WINSIZEY - 1));
-
-			mLerpAmount = 0.f;
-		}
+	case MBOSS_PATTERN::APPER: 
+		Apper();
+		
 		break;
 
-	case MBOSS_PATTERN::DASH:
-		if (mDashTimer.EndTime == 0.f)
-		{
-			Direction = Math::AimVector(OBJECT->FindPlayer()->Position, Position);
-
-			mDashTimer.SetTimer(1.2f);
-		}
-		else if (!mDashTimer.TimeOver())
-		{
-			Velocity = (Direction * DELTA_TIME * 550.f) + Position;
-
-			if (Velocity.x > WINSIZEX || Velocity.x < 0 ||
-				Velocity.y > WINSIZEY || Velocity.y < 0)
-			{
-				// 돌진. 중단.
-				mDashTimer.EndTime = 0.f;
-				mDashTimer.CurTime = 0.f;
-
-				StartTimer(0.2f);
-			}
-			else
-			{
-				Position = Velocity;
-			}
-			mDashTimer.Update();
-		}
-		else if (mDashTimer.TimeOver())
-		{
-			mDashTimer.EndTime = 0.f;
-
-			for (int i = 0; i < 360; i += 15)
-			{
-				Vector2 circlePoint = Vector2(cosf(i), sinf(i)) + Position;
-
-				OBJECT->AddObject(new EBullet(Position, circlePoint, 330.f));
-			}
-			StartTimer(0.2f);
-		}
+	case MBOSS_PATTERN::BOMBING: 
+		Bombing();
+		
 		break;
+
+	case MBOSS_PATTERN::DASH: 
+		Dash();
+		
+		break;
+
 	default:
 		break;
 	}
@@ -156,4 +92,72 @@ void MiddleBoss::OnCollisionStay(Object* other)
 
 void MiddleBoss::OnCollisionExit(Object* other)
 {
+}
+
+void MiddleBoss::Apper()
+{
+	if (mLerpAmount == 0.f)
+	{
+		mInitPos = Position;
+	}
+	if (mLerpAmount < 1.f)
+	{
+		Position = Math::Lerp(mInitPos, mSummonPoint, (mLerpAmount += DELTA_TIME));
+	}
+	else
+	{
+		WaitForNextAcion(0.6f);
+
+		mLerpAmount = 0.f;
+	}
+}
+
+void MiddleBoss::Bombing()
+{
+	if (mLerpAmount == 0.f)
+	{
+		mInitPos = Position;
+	}
+	if (mLerpAmount < 1.f)
+	{
+		Position = Math::Lerp(mInitPos, mBombingPoint, (mLerpAmount += DELTA_TIME));
+	}
+	else
+	{
+		OBJECT->AddObject(new MBullet(Position, &(OBJECT->FindPlayer()->Position), 3.5f));
+
+		WaitForNextAcion(1.3f);
+
+		mBombingPoint = Vector2(RANDOM(1, WINSIZEX - 1), RANDOM(1, WINSIZEY - 1));
+
+		mLerpAmount = 0.f;
+	}
+}
+
+void MiddleBoss::Dash()
+{	
+	if (mLerpAmount == 0.f)
+	{
+		mDashPoint = OBJECT->FindPlayer()->Position;
+
+		Direction = Math::AimVector(mDashPoint, Position);
+
+		mInitPos = Position;
+	}
+	if (mLerpAmount < 1.f)
+	{
+		Position = Math::Lerp(mInitPos, mDashPoint + (Direction * 4.5f), mLerpAmount += DELTA_TIME);
+	}
+	else
+	{
+		mLerpAmount = 0.f;
+
+		for (int i = 0; i < 360; i += 15)
+		{
+			Vector2 circlePoint = Vector2(cosf(i), sinf(i)) + Position;
+
+			OBJECT->AddObject(new EBullet(Position, circlePoint, 330.f));
+		}
+		WaitForNextAcion(0.2f);
+	}
 }

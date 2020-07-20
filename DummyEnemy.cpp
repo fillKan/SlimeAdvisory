@@ -19,28 +19,26 @@ void DummyEnemy::Init()
 	Name = "DummyEnemy";
 	Tag = TAG::ENEMY;
 
-	mAnimation.AddFrame("./image/Enemy/Normal/Attack/", "Monster_attack", 15);
+	mAnimation.SetFrame("./image/Enemy/Normal/Attack/", "Monster_attack", 15);
 
 	mSpeed += RANDOM(4, 6) * 60;
 
 	CircleRadius = 32.f;
 
-	mTimer.SetTimer(0.0f);
+	mATKcool.SetTimer(0.9f, true);
+	mATKcool.CurTime = 0.9f;
 
 	HealthInit(ENEMY_DUMMY);
 }
 
 void DummyEnemy::Update()
 {
-	Velocity = ZERO;
+	Position += LEFT * mSpeed * DELTA_TIME;
 
-	Position += (Velocity += LEFT * mSpeed * DELTA_TIME);
+	mATKcool.Update();
 
-	mTimer.Update();
-	if (mTimer.TimeOver())
+	if (mATKcool.TimeOver())
 	{
-		mTimer.SetTimer(0.9f, true);
-
 		Object* player = OBJECT->FindPlayer();
 
 		if (player)

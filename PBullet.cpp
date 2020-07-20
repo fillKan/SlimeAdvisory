@@ -22,7 +22,7 @@ void PBullet::Init()
 	Tag = TAG::PBULLET;
 
 
-	mAnimation.AddFrame("./image/Player/Bullet/", "PlayerBullet", 6);
+	mAnimation.SetFrame("./image/Player/Bullet/", "PlayerBullet", 6);
 
 	CircleRadius = 15.f;
 
@@ -31,9 +31,7 @@ void PBullet::Init()
 
 void PBullet::Update()
 {
-	Velocity = ZERO;
-
-	Position += (Velocity += Direction * mSpeed * DELTA_TIME);
+	Position += Direction * mSpeed * DELTA_TIME;
 }
 
 void PBullet::Render()

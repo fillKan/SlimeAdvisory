@@ -13,13 +13,13 @@ PAttack::~PAttack()
 
 void PAttack::Init()
 {
-	mAnimation.AddFrame("./image/Particle/PAttack/", "PlayerAttackEffect", 6);
+	mAnimation.SetFrame("./image/Particle/PAttack/", "PlayerAttackEffect", 6);
 	mAnimation.delay = 0.025f;
 
-	mAttackBegin.AddFrame("./image/Particle/PAttackBegin/", "PlayerAttackStart", 3);
+	mAttackBegin.SetFrame("./image/Particle/PAttackBegin/", "PlayerAttackStart", 3);
 	mAttackBegin.delay = 0.05f;
 
-	mAttackEnd.AddFrame("./image/Particle/PAttackEnd/", "PlayerAttackEnd", 3);
+	mAttackEnd.SetFrame("./image/Particle/PAttackEnd/", "PlayerAttackEnd", 3);
 	mAttackEnd.delay = 0.05f;
 }
 

@@ -9,6 +9,8 @@
 
 Player::Player() : mCircleShout(0.8f), mBlank(0.8f), mSteamPack(3.5f, 5.f, 2.25f)
 {
+	mAttackParticle = nullptr;
+	mBoostEffect    = nullptr;
 }
 
 Player::~Player()
@@ -29,13 +31,13 @@ void Player::Init()
 	Position = Vector2(WINSIZEX / 2, WINSIZEY / 2);
 	mAttackPoint = (Position + Vector2(130.5f, 20.5f));
 
-	mAnimation.AddFrame("./image/Player/Default/", "Player", 18);
+	mAnimation.SetFrame("./image/Player/Default/", "Player", 18);
 
 	CircleRadius = 50.f;
 
 	mSpeed = 12.f;
 
-	mTimer.SetTimer(0.15f, true);
+	mATKcool.SetTimer(0.15f, true);
 
 	mAttackParticle = nullptr;
 
@@ -69,9 +71,7 @@ void Player::Update()
 		SCENCE->LoadScence("Title");
 	}
 
-	Velocity = ZERO;
-
-	mTimer.Update();
+	mATKcool.Update();
 	mCircleShout.Update();
 	mBlank.Update();
 	mSteamPack.Update();
@@ -90,7 +90,7 @@ void Player::Update()
 	{
 		mAttackParticle = PARTICLE->Instantiate(PARTICLES::PATTACK, mAttackPoint);
 	}
-	if (INPUT->GetKey(ATTACKKEY) && mTimer.TimeOver())
+	if (INPUT->GetKey(ATTACKKEY) && mATKcool.TimeOver())
 	{
 		Object* cloestObj = OBJECT->ForwardCloest(Position, TAG::ENEMY);
 
@@ -105,23 +105,25 @@ void Player::Update()
 		}
 		OBJECT->AddObject(new PBullet(mAttackPoint, dir, rot));
 	}
+	Vector2 velocity = ZERO;
+
 	if (GetAsyncKeyState('W'))
 	{
-		if (Position.y > 0) Velocity += UP * mSpeed;
+		if (Position.y > 0) velocity += UP * mSpeed;
 	}
 	else if (GetAsyncKeyState('S'))
 	{
-		if (Position.y < WINSIZEY) Velocity += DOWN * mSpeed;
+		if (Position.y < WINSIZEY) velocity += DOWN * mSpeed;
 	}
 	if (GetAsyncKeyState('D'))
 	{
-		if (Position.x < WINSIZEX) Velocity += RIGHT * mSpeed;
+		if (Position.x < WINSIZEX) velocity += RIGHT * mSpeed;
 	}
 	else if (GetAsyncKeyState('A'))
 	{
-		if (Position.x > 0) Velocity += LEFT * mSpeed;
+		if (Position.x > 0) velocity += LEFT * mSpeed;
 	}
-	Position += Velocity;
+	Position += velocity;
 
 	mAttackPoint = (Position + ATK_PARTICLE_OFFSET);
 

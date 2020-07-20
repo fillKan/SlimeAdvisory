@@ -16,11 +16,11 @@ PBoost::~PBoost()
 
 void PBoost::Init()
 {
-	mBeginAnim.AddFrame("./image/Player/Boost/Begin/", "PlayerAttackBoostStart", 3);
+	mBeginAnim.SetFrame("./image/Player/Boost/Begin/", "PlayerAttackBoostStart", 3);
 
-	mIngAnim.AddFrame("./image/Player/Boost/Ing/", "PlayerAttackBoost", 12);
+	mIngAnim.SetFrame("./image/Player/Boost/Ing/", "PlayerAttackBoost", 12);
 
-	mEndAnim.AddFrame("./image/Player/Boost/End/", "PlayerAttackBoostEnd", 3);
+	mEndAnim.SetFrame("./image/Player/Boost/End/", "PlayerAttackBoostEnd", 3);
 
 	mCurrentState = PLAY_STATE::NONE;
 }

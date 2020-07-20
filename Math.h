@@ -37,18 +37,7 @@ namespace Math
 
 	float RadianAngle(Vector2 target, Vector2 tracer);
 
-	bool RectCollision(Object* objectA, Object* objectB);
-
-
 	Vector2 RandomCirclePoint(Vector2 pivot);
 
 	Vector2  AimVector(Vector2 target, Vector2 tracer);
-
-	Vector2* RadiateVector(Vector2 point, float theta, int num);
-
-	Vector2  ThetaVector(float theta);
-
-	Vector2  Accelerate(Vector2 velocity, float accel, float speed);
-
-	Vector2  BezierCurve(Vector2 lBot, Vector2 lTop, Vector2 rBot, Vector2 rTop, float& time, float speed, bool reverse);
 };
