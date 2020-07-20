@@ -54,7 +54,6 @@ void MiddleBoss::Update()
 	switch (mCURPattern)
 	{
 	case MBOSS_PATTERN::APPER:
-		Rotation = 0.f;
 
 		if (mLerpAmount == 0.f)
 		{
@@ -66,7 +65,7 @@ void MiddleBoss::Update()
 		}
 		else
 		{
-			StartTimer(0.4f);
+			StartTimer(0.6f);
 
 			mLerpAmount = 0.f;
 		}
@@ -98,7 +97,6 @@ void MiddleBoss::Update()
 		if (mDashTimer.EndTime == 0.f)
 		{
 			Direction = Math::AimVector(OBJECT->FindPlayer()->Position, Position);
-			Rotation = Math::RadianAngle(OBJECT->FindPlayer()->Position, Position);
 
 			mDashTimer.SetTimer(1.2f);
 		}
