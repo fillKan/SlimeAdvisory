@@ -4,6 +4,8 @@
 #include "Player.h"
 #include "DummyEnemy.h"
 
+#include "MBHealthBar.h"
+
 void StageONE::Init()
 {
 	mButton = new Button(Vector2(WINSIZEX - 160, 20));
@@ -40,6 +42,9 @@ void StageONE::Init()
 
 	mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY - SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, WINSIZEY - SCREEN_OFFSET), "MBoss3");
 	OBJECT->AddObject(mMiddleBoss);
+
+	USER_INTERFACE->AddUI(new MBHealthBar());
+
 }
 
 void StageONE::Update()

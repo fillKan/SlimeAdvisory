@@ -105,6 +105,9 @@
     <Filter Include="System\Object\MiddleBoss\MBullet">
       <UniqueIdentifier>{16c2a2a8-a4ef-4508-aab1-ebd0f72bb74e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\UI\MBHealthBar">
+      <UniqueIdentifier>{31432038-2771-4708-a4ea-cbbb41d9804c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -257,6 +260,9 @@
     <ClCompile Include="MBullet.cpp">
       <Filter>System\Object\MiddleBoss\MBullet</Filter>
     </ClCompile>
+    <ClCompile Include="MBHealthBar.cpp">
+      <Filter>System\UI\MBHealthBar</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -350,6 +356,9 @@
     </ClInclude>
     <ClInclude Include="MBullet.h">
       <Filter>System\Object\MiddleBoss\MBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="MBHealthBar.h">
+      <Filter>System\UI\MBHealthBar</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

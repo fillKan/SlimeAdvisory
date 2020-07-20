@@ -8,9 +8,9 @@ struct Image
 {
 	RECT RenderRect;
 
-	Texture* FillImage;
-	Texture* EdgeImage;
-	Texture* BackImage;
+	Texture* FillImage = nullptr;
+	Texture* EdgeImage = nullptr;
+	Texture* BackImage = nullptr;
 
 	UI_RENDER_TYPE RenderType = UI_RENDER_TYPE::NONE;
 

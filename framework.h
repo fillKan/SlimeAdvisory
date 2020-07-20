@@ -32,6 +32,7 @@ const float SCREEN_OFFSET = 120.f;
 
 const float ENEMY_DUMMY = 100.f;
 const float PBULLET_DMG = 30.f;
+const float MBOSS_MAXHP = 550.f;
 
 const LPCWSTR TITLE = L"AAA";
 

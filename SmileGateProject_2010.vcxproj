@@ -394,6 +394,7 @@
     <ClCompile Include="EBullet.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="MBHealthBar.cpp" />
     <ClCompile Include="MBullet.cpp" />
     <ClCompile Include="MiddleBoss.cpp" />
     <ClCompile Include="Particle.cpp" />
@@ -422,6 +423,7 @@
     <ClInclude Include="Image.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="MBHealthBar.h" />
     <ClInclude Include="MBullet.h" />
     <ClInclude Include="MiddleBoss.h" />
     <ClInclude Include="Object.h" />
