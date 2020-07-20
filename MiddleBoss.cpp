@@ -62,30 +62,10 @@ void MiddleBoss::Update()
 		}
 		else
 		{
-			StartTimer(0.4f);
+			StartTimer(0.2f);
 		}
 		break;
-	case MBOSS_PATTERN::SUMMON_LACKEY:
-		Pos = Vector2(WINSIZEX, RANDOM(ScrOffset, WINSIZEY - ScrOffset));
-
-		switch (RANDOM(0, 3))
-		{
-		case 0:
-			OBJECT->AddObject(new DummyEnemy(Pos + (DOWN * 80.f), 2.5f));
-			OBJECT->AddObject(new DummyEnemy(Pos + (UP * 80.f), 2.5f));
-			break;
-
-		case 1:
-			OBJECT->AddObject(new DummyEnemy(Pos, 4.f));
-			break;
-
-		default:
-			OBJECT->AddObject(new DummyEnemy(Pos, 0.f));
-			break;
-		}
-		StartTimer(0.8f);
-		break;
-
+	
 	case MBOSS_PATTERN::DASH:
 		if (mDashTimer.EndTime == 0.f)
 		{
@@ -105,7 +85,7 @@ void MiddleBoss::Update()
 				mDashTimer.EndTime = 0.f;
 				mDashTimer.CurTime = 0.f;
 
-				StartTimer(1.2f);
+				StartTimer(0.2f);
 			}
 			else
 			{
@@ -123,7 +103,7 @@ void MiddleBoss::Update()
 
 				OBJECT->AddObject(new EBullet(Position, circlePoint, 330.f));
 			}
-			StartTimer(0.5f);
+			StartTimer(0.2f);
 		}
 		break;
 	default:
