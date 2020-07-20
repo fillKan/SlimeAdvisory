@@ -15,29 +15,27 @@ public:
 	virtual void OnCollisionExit (Object* other) override;
 
 private:
-	void StartTimer(float sec)
+	void WaitForNextAcion(float sec)
 	{
-		mNextPatternDelay.SetTimer(sec);
-		mCURPattern = MBOSS_PATTERN::NONE;
+		mWaitingAction.SetTimer(sec);
+
+		mCURAction = MBOSS_PATTERN::NONE;
 	}
 
-	void ThrowDie()
-	{
-		int die = rand() % ((int)MBOSS_PATTERN::END - 1) + 1;
-
-		mCURPattern = (MBOSS_PATTERN)die;
-	}
+	void Apper();
+	void Bombing();
+	void Dash();
 
 private:
 	Texture* mSprite;
 
 	Vector2 mSummonPoint;
 	Vector2 mBombingPoint;
+	Vector2 mDashPoint;
 
-	MBOSS_PATTERN mCURPattern;
+	MBOSS_PATTERN mCURAction;
 
-	Timer mDashTimer;
-	Timer mNextPatternDelay;
+	Timer mWaitingAction;
 
 	float mLerpAmount = 0.f;
 	Vector2 mInitPos;
