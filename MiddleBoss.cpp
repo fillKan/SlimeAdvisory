@@ -3,6 +3,7 @@
 
 #include "EBullet.h"
 #include "DummyEnemy.h"
+#include "MBullet.h"
 
 MiddleBoss::MiddleBoss(Vector2 pos, Vector2 summonPoint) : Object(), mSummonPoint(summonPoint)
 {
@@ -26,6 +27,8 @@ void MiddleBoss::Init()
 	CircleRadius = 50.f;
 
 	mSprite = IMAGE->AddImage("MiddleBoss", "./image/Enemy/MiddleBoss/MiddleBoss.png");
+
+	OBJECT->AddObject(new MBullet(Position, &(OBJECT->FindPlayer()->Position), 3.5f));
 
 	HealthInit(550.f);
 }

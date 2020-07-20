@@ -1,11 +1,14 @@
 #include "DXUT.h"
 #include "MBullet.h"
+#include "EBullet.h"
 
 MBullet::MBullet(Vector2 pos, Vector2* target, float lifeTime) : mTarget(target)
 {
+	Position = pos;
+
 	mLifeTimer.SetTimer(lifeTime);
 
-	mSpeed = 50.f;
+	mSpeed = 500.f;
 }
 
 MBullet::~MBullet()
@@ -26,7 +29,8 @@ void MBullet::Update()
 	mLifeTimer.Update();
 
 	Direction = Math::AimVector(*mTarget, Position);
-	Rotation = atan2f(Direction.y, Direction.x);
+
+	Rotation = atan2f(Direction.y, Direction.x) - PI;
 
 	Position += Direction * mSpeed * DELTA_TIME;
 
@@ -35,6 +39,8 @@ void MBullet::Update()
 		IsDestory = true;
 
 		PARTICLE->Instantiate(PARTICLES::PBULLET_BREAK, Position);
+
+		OBJECT->AddObject(new EBullet(Position, OBJECT->FindPlayer()->Position, mSpeed * 1.6f));
 	}
 }
 
@@ -54,6 +60,8 @@ void MBullet::OnCollisionEnter(Object* other)
 		IsDestory = true;
 
 		PARTICLE->Instantiate(PARTICLES::PBULLET_BREAK, Position);
+
+		other->CURHealth -= 2.f;
 	}
 }
 
