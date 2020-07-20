@@ -25,7 +25,7 @@ private:
 
 	float mSpeed;
 
-	Timer mTimer;
+	Timer mATKcool;
 
 	Vector2 mAttackPoint;
 
@@ -36,7 +36,7 @@ private:
 	const Vector2		 BOOST_OFFSET = Vector2(-90.f, 20.f);
 
 	CircleShout mCircleShout;
-	Blank mBlank;
-	SteamPack mSteamPack;
+	Blank		mBlank;
+	SteamPack   mSteamPack;
 };
 
