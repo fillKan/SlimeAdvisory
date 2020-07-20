@@ -23,7 +23,7 @@ private:
 
 	void ThrowDie()
 	{
-		int die = rand() % ((int)MBOSS_PATTERN::END);
+		int die = rand() % ((int)MBOSS_PATTERN::END - 1) + 1;
 
 		mCURPattern = (MBOSS_PATTERN)die;
 	}
@@ -32,10 +32,14 @@ private:
 	Texture* mSprite;
 
 	Vector2 mSummonPoint;
+	Vector2 mBombingPoint;
 
 	MBOSS_PATTERN mCURPattern;
 
 	Timer mDashTimer;
 	Timer mNextPatternDelay;
+
+	float mLerpAmount = 0.f;
+	Vector2 mInitPos;
 };
 

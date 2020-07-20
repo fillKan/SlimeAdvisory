@@ -28,9 +28,10 @@ void MiddleBoss::Init()
 
 	mSprite = IMAGE->AddImage("MiddleBoss", "./image/Enemy/MiddleBoss/MiddleBoss.png");
 
-	OBJECT->AddObject(new MBullet(Position, &(OBJECT->FindPlayer()->Position), 3.5f));
-
 	HealthInit(550.f);
+
+	mBombingPoint = Vector2(RANDOM(1, WINSIZEX - 1), RANDOM(1, WINSIZEY - 1));
+
 }
 
 void MiddleBoss::Update()
@@ -46,8 +47,6 @@ void MiddleBoss::Update()
 		if (mNextPatternDelay.TimeOver())
 		{
 			ThrowDie();
-
-			mNextPatternDelay.EndTime = 0.f;
 		}
 	}
 	switch (mCURPattern)
@@ -55,20 +54,44 @@ void MiddleBoss::Update()
 	case MBOSS_PATTERN::APPER:
 		Rotation = 0.f;
 
-		CURHealth = (CURHealth + 20.f > MAXHealth) ? MAXHealth : CURHealth + 20.f;
-
-		if ((int)Velocity.x > (int)mSummonPoint.x)
+		if (mLerpAmount == 0.f)
 		{
-			Math::Lerp(&Velocity, Position, mSummonPoint, 1.5f);
-
-			Position = Velocity;
+			mInitPos = Position;
+		}
+		if (mLerpAmount < 1.f)
+		{
+			Position = Math::Lerp(mInitPos, mSummonPoint, (mLerpAmount += DELTA_TIME));
 		}
 		else
 		{
-			StartTimer(0.2f);
+			StartTimer(0.4f);
+
+			mLerpAmount = 0.f;
 		}
 		break;
 	
+	case MBOSS_PATTERN::BOMBING:
+
+		if (mLerpAmount == 0.f)
+		{
+			mInitPos = Position;
+		}
+		if (mLerpAmount < 1.f)
+		{
+			Position = Math::Lerp(mInitPos, mBombingPoint, (mLerpAmount += DELTA_TIME));
+		}
+		else
+		{
+			OBJECT->AddObject(new MBullet(Position, &(OBJECT->FindPlayer()->Position), 3.5f));
+
+			StartTimer(1.3f);
+
+			mBombingPoint = Vector2(RANDOM(1, WINSIZEX - 1), RANDOM(1, WINSIZEY - 1));
+
+			mLerpAmount = 0.f;
+		}
+		break;
+
 	case MBOSS_PATTERN::DASH:
 		if (mDashTimer.EndTime == 0.f)
 		{

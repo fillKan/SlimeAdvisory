@@ -61,7 +61,7 @@ void MBullet::OnCollisionEnter(Object* other)
 
 		PARTICLE->Instantiate(PARTICLES::PBULLET_BREAK, Position);
 
-		other->CURHealth -= 2.f;
+		//other->CURHealth -= 2.f;
 	}
 }
 
