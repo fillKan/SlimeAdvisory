@@ -5,10 +5,12 @@
 #include "DummyEnemy.h"
 #include "MBullet.h"
 
-MiddleBoss::MiddleBoss(Vector2 pos, Vector2 summonPoint) : Object(), mSummonPoint(summonPoint)
+MiddleBoss::MiddleBoss(Vector2 pos, Vector2 summonPoint, const string& name) : Object(), mSummonPoint(summonPoint)
 {
 	Position = pos;
 	Velocity = pos;
+
+	Name = name;
 
 	mCURPattern = MBOSS_PATTERN::APPER;
 

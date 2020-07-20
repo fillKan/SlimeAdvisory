@@ -2,7 +2,7 @@
 class MiddleBoss : public Object
 {
 public:
-	 MiddleBoss(Vector2 pos, Vector2 summonPoint);
+	 MiddleBoss(Vector2 pos, Vector2 summonPoint, const string& name);
 	~MiddleBoss();
 
 	virtual void Init   () override;
