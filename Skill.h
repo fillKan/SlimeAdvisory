@@ -10,7 +10,7 @@ public:
 
 	virtual void CastSkill() PURE;
 
-	void  SProgress(float percent)
+	void SProgress(float percent)
 	{
 		mTimer.CurTime = percent * mTimer.EndTime;
 	}
