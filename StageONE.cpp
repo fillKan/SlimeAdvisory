@@ -32,7 +32,7 @@ void StageONE::Update()
 {
 	mEnemySpawnTimer.Update();
 
-	if (mEnemySpawnTimer.TimeOver() && !mIsSummonMBoss)
+	if (mEnemySpawnTimer.TimeOver() && (!mIsSummonMBoss || mIsLeaveMBoss))
 	{
 		int ScrOffset = SCREEN_OFFSET;
 
