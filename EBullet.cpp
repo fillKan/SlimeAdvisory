@@ -48,7 +48,7 @@ void EBullet::OnCollisionEnter(Object* other)
 
 		PARTICLE->Instantiate(PARTICLES::PBULLET_BREAK, Position);
 
-		//other->CURHealth -= 1.f;
+		other->CURHealth -= 1.f;
 	}
 }
 

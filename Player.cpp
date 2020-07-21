@@ -7,7 +7,7 @@
 #include "PBoost.h"
 #include "SkillGauge.h"
 
-Player::Player() : mCircleShout(0.8f), mBlank(0.8f), mSteamPack(3.5f, 5.f, 2.25f)
+Player::Player() : mCircleShout(1.3f), mBlank(1.3f), mSteamPack(2.75f, 6.f, 2.f)
 {
 	mAttackParticle = nullptr;
 	mBoostEffect    = nullptr;
@@ -35,11 +35,9 @@ void Player::Init()
 
 	CircleRadius = 50.f;
 
-	mSpeed = 12.f;
+	mSpeed = 15.f;
 
 	mATKcool.SetTimer(0.15f, true);
-
-	mAttackParticle = nullptr;
 
 	mBoostEffect = new PBoost();
 	OBJECT->AddObject(mBoostEffect);
