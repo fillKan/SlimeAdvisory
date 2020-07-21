@@ -89,7 +89,11 @@ void StageONE::Update()
 
 void StageONE::Render()
 {
-	mBackGround->Render(ZERO);
+	if (mHasSummonMBoss)
+	{
+		IMAGE->Render(mBackGround, ZERO, D3DCOLOR_XRGB(255, 86, 135));
+	}
+	else mBackGround->Render(ZERO);
 
 	mSCloud[0]->Render(mSCloudPos[0]);
 	mSCloud[1]->Render(mSCloudPos[1]);
