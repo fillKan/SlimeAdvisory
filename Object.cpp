@@ -153,7 +153,7 @@ void ObjectManager::Update()
 
 		if ((*iter)->IsDestory || (*iter)->IsOutMap() || (*iter)->CURHealth <= 0.f)
 		{
-			if ((*iter)->Tag == TAG::ENEMY)
+			if ((*iter)->Tag == TAG::ENEMY && (*iter)->CURHealth <= 0.f)
 			{
 				mPlayerKillEnemy++;
 			}

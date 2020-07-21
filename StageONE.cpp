@@ -59,7 +59,7 @@ void StageONE::Update()
 		}
 	}
 
-	if (OBJECT->KilledEnemy() > MBOSS_APPER_NEED && !mHasSummonMBoss)
+	if (OBJECT->KilledEnemy() >= MBOSS_APPER_NEED && !mHasSummonMBoss)
 	{
 		mHasSummonMBoss = true;
 
