@@ -51,15 +51,15 @@ void Player::Init()
 
 	SkillGauge* skillGauge = new SkillGauge(Vector2(55.f, 210.f));
 	skillGauge->SkillLink(&mBlank);
-	skillGauge->SetImage(IMAGE->AddImage("ESkillGauge", "./image/UI/ESkillGauge.png"), 
-						 IMAGE->AddImage("SkillGauge", "./image/UI/SkillGauge.png"));
+	skillGauge->SetImage(IMAGE->AddImage("ESkillGauge", "./image/UI/SkillGaugeBlank.png"), 
+						 IMAGE->AddImage("SkillGauge", "./image/UI/SSkillGauge.png"));
 
 	USER_INTERFACE->AddUI(skillGauge);
 
-	skillGauge = new SkillGauge(Vector2(135.f, 210.f));
+	skillGauge = new SkillGauge(Vector2(125.f, 210.f));
 	skillGauge->SkillLink(&mSteamPack);
-	skillGauge->SetImage(IMAGE->AddImage("ESkillGauge", "./image/UI/ESkillGauge.png"),
-						 IMAGE->AddImage("SkillGauge", "./image/UI/SkillGauge.png"));
+	skillGauge->SetImage(IMAGE->GetImage("ESkillGauge"),
+						 IMAGE->GetImage("SkillGauge"));
 
 	USER_INTERFACE->AddUI(skillGauge);
 }
