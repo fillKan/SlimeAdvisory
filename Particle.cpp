@@ -24,6 +24,8 @@ void ParticleAdmin::AddParticle(PARTICLES key, Particle* value)
 
 	if (find == mLibrary.end())
 	{
+		value->Init();
+
 		mLibrary.insert(make_pair(key, value));
 	}
 }
