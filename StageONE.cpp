@@ -34,7 +34,7 @@ void StageONE::Update()
 {
 	mEnemySpawnTimer.Update();
 
-	if (mEnemySpawnTimer.TimeOver() && !mHasSummonMBoss)
+	if (mEnemySpawnTimer.TimeOver() && !mIsSummonMBoss)
 	{
 		int ScrOffset = SCREEN_OFFSET;
 
@@ -59,18 +59,20 @@ void StageONE::Update()
 		}
 	}
 
-	if (OBJECT->KilledEnemy() >= MBOSS_APPER_NEED && !mHasSummonMBoss)
+	if (OBJECT->KilledEnemy() >= MBOSS_APPER_NEED && !mIsSummonMBoss)
 	{
-		mHasSummonMBoss = true;
+		mIsSummonMBoss = true;
 
-		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, SCREEN_OFFSET), (MBOSS_NAME + "1"));
-		OBJECT->AddObject(mMiddleBoss);
+		MiddleBoss* mboss;
 
-		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY / 2), Vector2(WINSIZEX - 350.f, WINSIZEY / 2), (MBOSS_NAME + "2"));
-		OBJECT->AddObject(mMiddleBoss);
+		mboss = new MiddleBoss(Vector2(WINSIZEX, SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, SCREEN_OFFSET), (MBOSS_NAME + "1"));
+		OBJECT->AddObject(mboss);
 
-		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY - SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, WINSIZEY - SCREEN_OFFSET), (MBOSS_NAME + "3"));
-		OBJECT->AddObject(mMiddleBoss);
+		mboss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY / 2), Vector2(WINSIZEX - 350.f, WINSIZEY / 2), (MBOSS_NAME + "2"));
+		OBJECT->AddObject(mboss);
+
+		mboss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY - SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, WINSIZEY - SCREEN_OFFSET), (MBOSS_NAME + "3"));
+		OBJECT->AddObject(mboss);
 
 		USER_INTERFACE->AddUI(new MBHealthBar());
 	}
@@ -89,7 +91,7 @@ void StageONE::Update()
 
 void StageONE::Render()
 {
-	if (mHasSummonMBoss)
+	if (mIsSummonMBoss && !mIsLeaveMBoss)
 	{
 		if (mColorLerpAmount < 1.f)
 		{
@@ -101,6 +103,16 @@ void StageONE::Render()
 		IMAGE->Render(mBackGround, ZERO, D3DCOLOR_XRGB(255, (UINT)G, (UINT)B));
 	}
 	else mBackGround->Render(ZERO);
+
+	if (mIsSummonMBoss)
+	{
+		Object** bosses = OBJECT->FindBosses();
+
+		for (int i = 0; i < MBOSS_COUNT; ++i)
+		{
+			if (!(mIsLeaveMBoss = (bosses[i] == nullptr))) break;
+		}
+	}
 
 	mSCloud[0]->Render(mSCloudPos[0]);
 	mSCloud[1]->Render(mSCloudPos[1]);

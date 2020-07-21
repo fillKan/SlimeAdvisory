@@ -29,8 +29,8 @@ private:
 	const float MIDDLE_CLOUD_SPEED = 0.8f;
 	const float  SMALL_CLOUD_SPEED = 0.4f;
 
-	MiddleBoss* mMiddleBoss;
-	bool mHasSummonMBoss = false;
+	bool mIsSummonMBoss = false;
+	bool mIsLeaveMBoss = false;
 
 	const float BOSS_COLOR_R = 255.f;
 	const float BOSS_COLOR_G =  86.f;
