@@ -57,7 +57,9 @@ void Player::Init()
 
 #pragma endregion
 
-	SkillGauge* skillGauge = new SkillGauge(Vector2(55.f, 210.f));
+	SkillGauge* skillGauge;
+
+	skillGauge = new SkillGauge(Vector2(55.f, 210.f));
 	skillGauge->SkillLink(&mBlank);
 	skillGauge->SetImage(IMAGE->AddImage("ESkillGauge", "./image/UI/SkillGaugeBlank.png"), 
 						 IMAGE->AddImage("SkillGauge", "./image/UI/SSkillGauge.png"));
