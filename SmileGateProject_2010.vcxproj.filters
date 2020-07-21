@@ -108,6 +108,9 @@
     <Filter Include="System\UI\MBHealthBar">
       <UniqueIdentifier>{31432038-2771-4708-a4ea-cbbb41d9804c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Skill\BlankShout">
+      <UniqueIdentifier>{1e584e84-f04e-413e-800f-1eb14b39bf91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -263,9 +266,11 @@
     <ClCompile Include="MBHealthBar.cpp">
       <Filter>System\UI\MBHealthBar</Filter>
     </ClCompile>
+    <ClCompile Include="BlankShout.cpp">
+      <Filter>System\Skill\BlankShout</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h" />
     <ClInclude Include="MainGame.h">
       <Filter>MainGame</Filter>
     </ClInclude>
@@ -360,6 +365,10 @@
     <ClInclude Include="MBHealthBar.h">
       <Filter>System\UI\MBHealthBar</Filter>
     </ClInclude>
+    <ClInclude Include="BlankShout.h">
+      <Filter>System\Skill\BlankShout</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
