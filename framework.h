@@ -48,6 +48,9 @@ const int MAPSIZEMINY = -1600;
 
 const int ATTACKKEY = VK_SPACE;
 
+const int    MBOSS_COUNT = 3;
+const string MBOSS_NAME  = "MBoss";
+
 const D3DXVECTOR2  ZERO = D3DXVECTOR2( 0, 0);
 const D3DXVECTOR2   ONE = D3DXVECTOR2( 1, 1);
 const D3DXVECTOR2 RIGHT = D3DXVECTOR2( 1, 0);

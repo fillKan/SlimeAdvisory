@@ -24,14 +24,14 @@ void MBHealthBar::Update()
 
 	Object** findBoss = OBJECT->FindBosses();
 
-	for (int i = 0; i < 3; ++i)
+	for (int i = 0; i < MBOSS_COUNT; ++i)
 	{
 		if (findBoss[i] != nullptr)
 		{
 			mSumCURHP += findBoss[i]->CURHealth;
 		}
 	}
-	mFillAmount = mSumCURHP / (MBOSS_MAXHP * 3);
+	mFillAmount = mSumCURHP / (MBOSS_MAXHP * MBOSS_COUNT);
 
 	mImage.SetRect(mRenderType, mFillAmount);
 

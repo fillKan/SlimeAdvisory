@@ -63,13 +63,13 @@ void StageONE::Update()
 	{
 		mHasSummonMBoss = true;
 
-		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, SCREEN_OFFSET), "MBoss1");
+		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, SCREEN_OFFSET), (MBOSS_NAME + "1"));
 		OBJECT->AddObject(mMiddleBoss);
 
-		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY / 2), Vector2(WINSIZEX - 350.f, WINSIZEY / 2), "MBoss2");
+		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY / 2), Vector2(WINSIZEX - 350.f, WINSIZEY / 2), (MBOSS_NAME + "2"));
 		OBJECT->AddObject(mMiddleBoss);
 
-		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY - SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, WINSIZEY - SCREEN_OFFSET), "MBoss3");
+		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY - SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, WINSIZEY - SCREEN_OFFSET), (MBOSS_NAME + "3"));
 		OBJECT->AddObject(mMiddleBoss);
 
 		USER_INTERFACE->AddUI(new MBHealthBar());

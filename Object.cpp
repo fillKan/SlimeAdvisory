@@ -65,14 +65,14 @@ deque<Object*> ObjectManager::FindObjects(TAG tag)
 
 Object** ObjectManager::FindBosses()
 {
-	char name[8];
-	Object* findBoss[3] = { nullptr };
+	char number[2];
+	Object* findBoss[MBOSS_COUNT] = { nullptr };
 
-	for (int i = 1; i <= 3; ++i)
+	for (int i = 1; i <= MBOSS_COUNT; ++i)
 	{
-		sprintf(name, "MBoss%d", i);
+		sprintf(number, "%d", i);
 
-		findBoss[i - 1] = OBJECT->FindObject(name);
+		findBoss[i - 1] = OBJECT->FindObject(MBOSS_NAME + number);
 	}
 	return findBoss;
 }
