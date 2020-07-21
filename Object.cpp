@@ -28,12 +28,9 @@ void ObjectManager::AddObject(Object* object)
 	{
 		mPlayer = object;
 	}
-	if (object->Name.length() > MBOSS_NAME.length())
+	if (IsBoss(object->Name))
 	{
-		if (object->Name.substr(0, 5) == MBOSS_NAME)
-		{
-			mBosses[atoi(&(object->Name.back())) - 1] = object;
-		}
+		mBosses[atoi(&(object->Name.back())) - 1] = object;
 	}
 	mObjects.emplace_back(object);
 }
@@ -169,12 +166,9 @@ void ObjectManager::Update()
 			{
 				mPlayerKillEnemy++;
 			}
-			if ((*iter)->Name.length() > MBOSS_NAME.length())
+			if (IsBoss((*iter)->Name))
 			{
-				if ((*iter)->Name.substr(0, 5) == MBOSS_NAME)
-				{
-					mBosses[atoi(&((*iter)->Name.back())) - 1] = nullptr;
-				}
+				mBosses[atoi(&((*iter)->Name.back())) - 1] = nullptr;
 			}
 			if ((*iter)->Tag != TAG::PLAYER)
 			{
@@ -225,6 +219,15 @@ void ObjectManager::Release()
 	{
 		SAFE_DELETE(mPlayer);
 	}
+}
+
+bool ObjectManager::IsBoss(const string& objectName)
+{
+	if (objectName.length() > MBOSS_NAME.length())
+	{
+		return (objectName.substr(0, 5) == MBOSS_NAME);
+	}
+	return false;
 }
 
 void Object::HealthInit(float max)

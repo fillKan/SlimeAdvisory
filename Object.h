@@ -80,6 +80,10 @@ public:
 	void Update ();
 	void Render ();
 	void Release();
+
+private:
+	bool IsBoss(const string& objectName);
+
 private:
 	list<Object*> mObjects;
 
