@@ -7,7 +7,7 @@
 #include "PBoost.h"
 #include "SkillGauge.h"
 
-Player::Player() : mCircleShout(1.3f), mBlank(1.3f), mSteamPack(2.75f, 6.f, 2.f)
+Player::Player() : mBlankShout(1.3f), mSteamPack(2.75f, 6.f, 2.f)
 {
 	mEnergyCube  = nullptr;
 	mBoostEffect = nullptr;
@@ -60,7 +60,7 @@ void Player::Init()
 	SkillGauge* skillGauge;
 
 	skillGauge = new SkillGauge(Vector2(55.f, 210.f));
-	skillGauge->SkillLink(&mBlank);
+	skillGauge->SkillLink(&mBlankShout);
 	skillGauge->SetImage(IMAGE->AddImage("ESkillGauge", "./image/UI/SkillGaugeBlank.png"), 
 						 IMAGE->AddImage("SkillGauge", "./image/UI/SSkillGauge.png"));
 
@@ -84,14 +84,13 @@ void Player::Update()
 	}
 
 	mATKcool.Update();
-	mCircleShout.Update();
-	mBlank.Update();
-	mSteamPack.Update();
+
+	 mSteamPack.Update();
+	mBlankShout.Update();
 
 	if (INPUT->GetKeyDown('Q'))
 	{
-		mCircleShout.CastSkill();
-		mBlank.CastSkill();
+		mBlankShout.CastSkill();
 	}
 	if (INPUT->GetKeyDown('E'))
 	{
