@@ -12,6 +12,9 @@ public:
 	virtual void Release() override;
 
 private:
+	float ColorLerp(bool isOrigin, float accel);
+
+private:
 
 	Timer mEnemySpawnTimer;
 

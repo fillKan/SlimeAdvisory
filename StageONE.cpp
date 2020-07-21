@@ -96,19 +96,8 @@ void StageONE::Render()
 		G = Math::Lerp(255.f, BOSS_COLOR_G, mColorLerpAmount);
 		B = Math::Lerp(255.f, BOSS_COLOR_B, mColorLerpAmount);
 
-		if (mColorLerpAmount < 1.f && !mIsLeaveMBoss)
-		{
-			mColorLerpAmount += DELTA_TIME * 1.4f;
-		}
-		else if (mColorLerpAmount > 0.f && mIsLeaveMBoss)
-		{
-			mColorLerpAmount -= DELTA_TIME * 1.4f;
+		mColorLerpAmount = ColorLerp(mIsLeaveMBoss, 1.4f);
 
-			if (mColorLerpAmount < 0.f)
-			{
-				mColorLerpAmount = 0.f;
-			}
-		}
 		IMAGE->Render(mBackGround, ZERO, D3DCOLOR_XRGB(255, (UINT)G, (UINT)B));
 	}
 
@@ -142,3 +131,19 @@ void StageONE::Release()
 	//파티클을 지우지 않는것이 아직은 더 자연스러운것 같다
 	//PARTICLE->Release();
 }
+
+float StageONE::ColorLerp(bool isOrigin, float accel)
+{
+	float returnValue = 0.f;
+
+	if (!isOrigin)
+	{
+		returnValue = min(1.f, mColorLerpAmount + (DELTA_TIME * accel));
+	}
+	else
+	{
+		returnValue = max(0.f, mColorLerpAmount - (DELTA_TIME * accel));
+	}
+	return returnValue;
+}
+
