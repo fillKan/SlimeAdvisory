@@ -53,6 +53,9 @@ public:
 	void	   Render(Texture* texture, Vector2 pos, float rot = 0.0f);
 	void CenterRender(Texture* texture, Vector2 pos, float rot = 0.0f);
 
+	void	   Render(Texture* texture, Vector2 pos, D3DCOLOR color);
+	void CenterRender(Texture* texture, Vector2 pos, D3DCOLOR color);
+
 	LPD3DXSPRITE GetSprite() { return mSprite; }
 
 	void Begin();
