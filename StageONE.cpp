@@ -91,29 +91,27 @@ void StageONE::Update()
 
 void StageONE::Render()
 {
-	if (mIsSummonMBoss && !mIsLeaveMBoss)
+	if (mIsSummonMBoss)
 	{
-		if (mColorLerpAmount < 1.f)
-		{
-			G = Math::Lerp(255.f, BOSS_COLOR_G, mColorLerpAmount);
-			B = Math::Lerp(255.f, BOSS_COLOR_B, mColorLerpAmount);
+		G = Math::Lerp(255.f, BOSS_COLOR_G, mColorLerpAmount);
+		B = Math::Lerp(255.f, BOSS_COLOR_B, mColorLerpAmount);
 
+		if (mColorLerpAmount < 1.f && !mIsLeaveMBoss)
+		{
 			mColorLerpAmount += DELTA_TIME * 1.4f;
 		}
-		IMAGE->Render(mBackGround, ZERO, D3DCOLOR_XRGB(255, (UINT)G, (UINT)B));
-	}
-
-	else if (mIsSummonMBoss && mIsLeaveMBoss)
-	{
-		if (mColorLerpAmount > 0.f)
+		else if (mColorLerpAmount > 0.f && mIsLeaveMBoss)
 		{
-			G = Math::Lerp(255.f, BOSS_COLOR_G, mColorLerpAmount);
-			B = Math::Lerp(255.f, BOSS_COLOR_B, mColorLerpAmount);
-
 			mColorLerpAmount -= DELTA_TIME * 1.4f;
+
+			if (mColorLerpAmount < 0.f)
+			{
+				mColorLerpAmount = 0.f;
+			}
 		}
 		IMAGE->Render(mBackGround, ZERO, D3DCOLOR_XRGB(255, (UINT)G, (UINT)B));
 	}
+
 	else mBackGround->Render(ZERO);
 
 	if (mIsSummonMBoss)
