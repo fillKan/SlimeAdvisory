@@ -83,6 +83,7 @@ public:
 
 private:
 	bool IsBoss(const string& objectName);
+	int CharToInt(const char character);
 
 private:
 	list<Object*> mObjects;

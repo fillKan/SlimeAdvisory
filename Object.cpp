@@ -30,7 +30,7 @@ void ObjectManager::AddObject(Object* object)
 	}
 	if (IsBoss(object->Name))
 	{
-		mBosses[atoi(&(object->Name.back())) - 1] = object;
+		mBosses[CharToInt(object->Name.back()) - 1] = object;
 	}
 	mObjects.emplace_back(object);
 }
@@ -168,7 +168,7 @@ void ObjectManager::Update()
 			}
 			if (IsBoss((*iter)->Name))
 			{
-				mBosses[atoi(&((*iter)->Name.back())) - 1] = nullptr;
+				mBosses[CharToInt((*iter)->Name.back()) - 1] = nullptr;
 			}
 			if ((*iter)->Tag != TAG::PLAYER)
 			{
@@ -228,6 +228,11 @@ bool ObjectManager::IsBoss(const string& objectName)
 		return (objectName.substr(0, 5) == MBOSS_NAME);
 	}
 	return false;
+}
+
+int ObjectManager::CharToInt(const char character)
+{
+	return atoi(&character);
 }
 
 void Object::HealthInit(float max)
