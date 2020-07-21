@@ -28,6 +28,13 @@ void ObjectManager::AddObject(Object* object)
 	{
 		mPlayer = object;
 	}
+	if (object->Name.length() > MBOSS_NAME.length())
+	{
+		if (object->Name.substr(0, 5) == MBOSS_NAME)
+		{
+			mBosses[atoi(&(object->Name.back())) - 1] = object;
+		}
+	}
 	mObjects.emplace_back(object);
 }
 
@@ -65,16 +72,7 @@ deque<Object*> ObjectManager::FindObjects(TAG tag)
 
 Object** ObjectManager::FindBosses()
 {
-	char number[2];
-	Object* findBoss[MBOSS_COUNT] = { nullptr };
-
-	for (int i = 1; i <= MBOSS_COUNT; ++i)
-	{
-		sprintf(number, "%d", i);
-
-		findBoss[i - 1] = OBJECT->FindObject(MBOSS_NAME + number);
-	}
-	return findBoss;
+ 	return mBosses;
 }
 
 Object* ObjectManager::FindPlayer()
@@ -170,6 +168,13 @@ void ObjectManager::Update()
 			if ((*iter)->Tag == TAG::ENEMY && (*iter)->CURHealth <= 0.f)
 			{
 				mPlayerKillEnemy++;
+			}
+			if ((*iter)->Name.length() > MBOSS_NAME.length())
+			{
+				if ((*iter)->Name.substr(0, 5) == MBOSS_NAME)
+				{
+					mBosses[atoi(&((*iter)->Name.back())) - 1] = nullptr;
+				}
 			}
 			if ((*iter)->Tag != TAG::PLAYER)
 			{

@@ -84,6 +84,7 @@ private:
 	list<Object*> mObjects;
 
 	Object* mPlayer;
+	Object* mBosses[3] = { nullptr };
 
 	UINT mPlayerKillEnemy = 0;
 };
