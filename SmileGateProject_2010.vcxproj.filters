@@ -87,12 +87,6 @@
     <Filter Include="System\Skill">
       <UniqueIdentifier>{3a06a408-3e64-4ba0-a9b9-232ab2b39e4b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="System\Skill\CircleShout">
-      <UniqueIdentifier>{36c347eb-bfb9-4f85-807b-87f5238bcbc1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="System\Skill\Blank">
-      <UniqueIdentifier>{3764213e-8863-44d6-a97c-4efc491e3818}</UniqueIdentifier>
-    </Filter>
     <Filter Include="System\UI\SkillGauge">
       <UniqueIdentifier>{f06069a1-e079-4509-b47c-8e1ae98a32bd}</UniqueIdentifier>
     </Filter>
@@ -107,6 +101,9 @@
     </Filter>
     <Filter Include="System\UI\MBHealthBar">
       <UniqueIdentifier>{31432038-2771-4708-a4ea-cbbb41d9804c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Skill\BlankShout">
+      <UniqueIdentifier>{1e584e84-f04e-413e-800f-1eb14b39bf91}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -242,12 +239,6 @@
     <ClCompile Include="Skill.cpp">
       <Filter>System\Skill</Filter>
     </ClCompile>
-    <ClCompile Include="CircleShout.cpp">
-      <Filter>System\Skill\CircleShout</Filter>
-    </ClCompile>
-    <ClCompile Include="Blank.cpp">
-      <Filter>System\Skill\Blank</Filter>
-    </ClCompile>
     <ClCompile Include="SkillGauge.cpp">
       <Filter>System\UI\SkillGauge</Filter>
     </ClCompile>
@@ -263,9 +254,11 @@
     <ClCompile Include="MBHealthBar.cpp">
       <Filter>System\UI\MBHealthBar</Filter>
     </ClCompile>
+    <ClCompile Include="BlankShout.cpp">
+      <Filter>System\Skill\BlankShout</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h" />
     <ClInclude Include="MainGame.h">
       <Filter>MainGame</Filter>
     </ClInclude>
@@ -339,12 +332,6 @@
     <ClInclude Include="Skill.h">
       <Filter>System\Skill</Filter>
     </ClInclude>
-    <ClInclude Include="CircleShout.h">
-      <Filter>System\Skill\CircleShout</Filter>
-    </ClInclude>
-    <ClInclude Include="Blank.h">
-      <Filter>System\Skill\Blank</Filter>
-    </ClInclude>
     <ClInclude Include="SkillGauge.h">
       <Filter>System\UI\SkillGauge</Filter>
     </ClInclude>
@@ -360,6 +347,10 @@
     <ClInclude Include="MBHealthBar.h">
       <Filter>System\UI\MBHealthBar</Filter>
     </ClInclude>
+    <ClInclude Include="BlankShout.h">
+      <Filter>System\Skill\BlankShout</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">

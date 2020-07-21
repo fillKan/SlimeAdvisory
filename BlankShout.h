@@ -1,9 +1,9 @@
 #pragma once
-class Blank : public Skill
+class BlankShout : public Skill
 {
 public:
-	 Blank(float coolTime);
-	~Blank();
+	 BlankShout(float coolTime);
+	~BlankShout();
 
 	virtual void Update() override;
 	virtual void Render() override;
