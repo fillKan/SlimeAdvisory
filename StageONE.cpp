@@ -93,10 +93,10 @@ void StageONE::Render()
 	{
 		if (mColorLerpAmount < 1.f)
 		{
-			G = Math::Lerp(255.f,  86.f, mColorLerpAmount);
-			B = Math::Lerp(255.f, 135.f, mColorLerpAmount);
+			G = Math::Lerp(255.f, BOSS_COLOR_G, mColorLerpAmount);
+			B = Math::Lerp(255.f, BOSS_COLOR_B, mColorLerpAmount);
 
-			mColorLerpAmount += DELTA_TIME;
+			mColorLerpAmount += DELTA_TIME * 1.4f;
 		}
 		IMAGE->Render(mBackGround, ZERO, D3DCOLOR_XRGB(255, (UINT)G, (UINT)B));
 	}

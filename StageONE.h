@@ -32,7 +32,10 @@ private:
 	MiddleBoss* mMiddleBoss;
 	bool mHasSummonMBoss = false;
 
-	const D3DCOLOR BOSS_FIGHT_COLOR = D3DCOLOR_XRGB(255,  86, 135);
+	const float BOSS_COLOR_R = 255.f;
+	const float BOSS_COLOR_G =  86.f;
+	const float BOSS_COLOR_B = 135.f;
+
 	float R, G, B;
 	float mColorLerpAmount = 0.f;
 };
