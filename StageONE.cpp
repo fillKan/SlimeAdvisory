@@ -26,6 +26,13 @@ void StageONE::Init()
 	mHCloudPos[0] = ZERO; mHCloudPos[1] = Vector2(WINSIZEX, 0);
 	mMCloudPos[0] = ZERO; mMCloudPos[1] = Vector2(WINSIZEX, 0);
 	mSCloudPos[0] = ZERO; mSCloudPos[1] = Vector2(WINSIZEX, 0);
+
+	 mIsLeaveMBoss = false;
+	mIsSummonMBoss = false;
+
+	mColorLerpAmount = 0.f;
+
+	OBJECT->SetKilledEnemy(0);
 }
 
 void StageONE::Update()
@@ -57,7 +64,7 @@ void StageONE::Update()
 		}
 	}
 
-	if (OBJECT->KilledEnemy() >= MBOSS_APPER_NEED && !mIsSummonMBoss)
+	if (OBJECT->GetKilledEnemy() >= MBOSS_APPER_NEED && !mIsSummonMBoss)
 	{
 		mIsSummonMBoss = true;
 

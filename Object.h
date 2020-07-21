@@ -74,7 +74,8 @@ public:
 
 	void CollisionCheck(TAG tagA, TAG tagB);
 
-	UINT KilledEnemy() { return mPlayerKillEnemy; }
+	UINT GetKilledEnemy()		   { return mPlayerKillEnemy; }
+	void SetKilledEnemy(UINT kill) { mPlayerKillEnemy = kill; }
 
 public: 
 	void Update ();
