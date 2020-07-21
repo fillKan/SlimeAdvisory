@@ -91,7 +91,14 @@ void StageONE::Render()
 {
 	if (mHasSummonMBoss)
 	{
-		IMAGE->Render(mBackGround, ZERO, D3DCOLOR_XRGB(255, 86, 135));
+		if (mColorLerpAmount < 1.f)
+		{
+			G = Math::Lerp(255.f,  86.f, mColorLerpAmount);
+			B = Math::Lerp(255.f, 135.f, mColorLerpAmount);
+
+			mColorLerpAmount += DELTA_TIME;
+		}
+		IMAGE->Render(mBackGround, ZERO, D3DCOLOR_XRGB(255, (UINT)G, (UINT)B));
 	}
 	else mBackGround->Render(ZERO);
 
