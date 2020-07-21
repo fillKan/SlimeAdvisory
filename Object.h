@@ -68,6 +68,7 @@ public:
 
 	deque<Object*> FindObjects (TAG tag);
 
+	Object** FindBosses();
 	Object* FindPlayer();
 	Object* ForwardCloest(Vector2 parePos, TAG targetTAG);
 

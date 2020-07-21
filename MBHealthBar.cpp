@@ -22,18 +22,13 @@ void MBHealthBar::Update()
 {
 	mSumCURHP = 0.f;
 
-	char name[8];
-	Object* findBoss;
+	Object** findBoss = OBJECT->FindBosses();
 
-	for (int i = 1; i <= 3; ++i)
+	for (int i = 0; i < 3; ++i)
 	{
-		sprintf(name, "MBoss%d", i);
-		
-		findBoss = OBJECT->FindObject(name);
-
-		if (findBoss != nullptr)
+		if (findBoss[i] != nullptr)
 		{
-			mSumCURHP += findBoss->CURHealth;
+			mSumCURHP += findBoss[i]->CURHealth;
 		}
 	}
 	mFillAmount = mSumCURHP / (MBOSS_MAXHP * 3);

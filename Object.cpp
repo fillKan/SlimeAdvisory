@@ -63,6 +63,20 @@ deque<Object*> ObjectManager::FindObjects(TAG tag)
 	return objects;
 }
 
+Object** ObjectManager::FindBosses()
+{
+	char name[8];
+	Object* findBoss[3] = { nullptr };
+
+	for (int i = 1; i <= 3; ++i)
+	{
+		sprintf(name, "MBoss%d", i);
+
+		findBoss[i - 1] = OBJECT->FindObject(name);
+	}
+	return findBoss;
+}
+
 Object* ObjectManager::FindPlayer()
 {
 	return mPlayer;
