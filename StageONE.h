@@ -1,6 +1,7 @@
 #pragma once
 #include "PHealthBar.h"
 
+#include "MBHealthBar.h"
 #include "MiddleBoss.h"
 
 class StageONE : public Scence
@@ -27,6 +28,8 @@ private:
 	Vector2 mHCloudPos[2];
 	Vector2 mMCloudPos[2];
 	Vector2 mSCloudPos[2];
+
+	MBHealthBar* mMBHealthBar;
 
 	const float   HUGE_CLOUD_SPEED = 1.4f;
 	const float MIDDLE_CLOUD_SPEED = 0.8f;

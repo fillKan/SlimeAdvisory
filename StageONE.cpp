@@ -4,8 +4,6 @@
 #include "Player.h"
 #include "DummyEnemy.h"
 
-#include "MBHealthBar.h"
-
 void StageONE::Init()
 {
 	mBackGround = IMAGE->AddImage("BackGround","./image/BackGround/backgruond.png");
@@ -74,7 +72,16 @@ void StageONE::Update()
 		mboss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY - SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, WINSIZEY - SCREEN_OFFSET), (MBOSS_NAME + "3"));
 		OBJECT->AddObject(mboss);
 
-		USER_INTERFACE->AddUI(new MBHealthBar());
+		mMBHealthBar = new MBHealthBar();
+
+		USER_INTERFACE->AddUI(mMBHealthBar);
+	}
+
+	if (mIsLeaveMBoss && mMBHealthBar != nullptr)
+	{
+		USER_INTERFACE->DelUI(mMBHealthBar);
+
+		mMBHealthBar = nullptr;
 	}
 
 	for (int i = 0; i < 2; ++i)
