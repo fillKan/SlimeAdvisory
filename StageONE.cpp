@@ -4,8 +4,6 @@
 #include "Player.h"
 #include "DummyEnemy.h"
 
-#include "MBHealthBar.h"
-
 void StageONE::Init()
 {
 	mBackGround = IMAGE->AddImage("BackGround","./image/BackGround/backgruond.png");
@@ -34,7 +32,7 @@ void StageONE::Update()
 {
 	mEnemySpawnTimer.Update();
 
-	if (mEnemySpawnTimer.TimeOver() && !mHasSummonMBoss)
+	if (mEnemySpawnTimer.TimeOver() && !mIsSummonMBoss)
 	{
 		int ScrOffset = SCREEN_OFFSET;
 
@@ -59,20 +57,31 @@ void StageONE::Update()
 		}
 	}
 
-	if (OBJECT->KilledEnemy() >= MBOSS_APPER_NEED && !mHasSummonMBoss)
+	if (OBJECT->KilledEnemy() >= MBOSS_APPER_NEED && !mIsSummonMBoss)
 	{
-		mHasSummonMBoss = true;
+		mIsSummonMBoss = true;
 
-		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, SCREEN_OFFSET), (MBOSS_NAME + "1"));
-		OBJECT->AddObject(mMiddleBoss);
+		MiddleBoss* mboss;
 
-		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY / 2), Vector2(WINSIZEX - 350.f, WINSIZEY / 2), (MBOSS_NAME + "2"));
-		OBJECT->AddObject(mMiddleBoss);
+		mboss = new MiddleBoss(Vector2(WINSIZEX, SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, SCREEN_OFFSET), (MBOSS_NAME + "1"));
+		OBJECT->AddObject(mboss);
 
-		mMiddleBoss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY - SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, WINSIZEY - SCREEN_OFFSET), (MBOSS_NAME + "3"));
-		OBJECT->AddObject(mMiddleBoss);
+		mboss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY / 2), Vector2(WINSIZEX - 350.f, WINSIZEY / 2), (MBOSS_NAME + "2"));
+		OBJECT->AddObject(mboss);
 
-		USER_INTERFACE->AddUI(new MBHealthBar());
+		mboss = new MiddleBoss(Vector2(WINSIZEX, WINSIZEY - SCREEN_OFFSET), Vector2(WINSIZEX - 350.f, WINSIZEY - SCREEN_OFFSET), (MBOSS_NAME + "3"));
+		OBJECT->AddObject(mboss);
+
+		mMBHealthBar = new MBHealthBar();
+
+		USER_INTERFACE->AddUI(mMBHealthBar);
+	}
+
+	if (mIsLeaveMBoss && mMBHealthBar != nullptr)
+	{
+		USER_INTERFACE->DelUI(mMBHealthBar);
+
+		mMBHealthBar = nullptr;
 	}
 
 	for (int i = 0; i < 2; ++i)
@@ -89,18 +98,27 @@ void StageONE::Update()
 
 void StageONE::Render()
 {
-	if (mHasSummonMBoss)
+	if (mIsSummonMBoss)
 	{
-		if (mColorLerpAmount < 1.f)
-		{
-			G = Math::Lerp(255.f, BOSS_COLOR_G, mColorLerpAmount);
-			B = Math::Lerp(255.f, BOSS_COLOR_B, mColorLerpAmount);
+		G = Math::Lerp(255.f, BOSS_COLOR_G, mColorLerpAmount);
+		B = Math::Lerp(255.f, BOSS_COLOR_B, mColorLerpAmount);
 
-			mColorLerpAmount += DELTA_TIME * 1.4f;
-		}
+		mColorLerpAmount = ColorLerp(mIsLeaveMBoss, 1.4f);
+
 		IMAGE->Render(mBackGround, ZERO, D3DCOLOR_XRGB(255, (UINT)G, (UINT)B));
 	}
+
 	else mBackGround->Render(ZERO);
+
+	if (mIsSummonMBoss)
+	{
+		Object** bosses = OBJECT->FindBosses();
+
+		for (int i = 0; i < MBOSS_COUNT; ++i)
+		{
+			if (!(mIsLeaveMBoss = (bosses[i] == nullptr))) break;
+		}
+	}
 
 	mSCloud[0]->Render(mSCloudPos[0]);
 	mSCloud[1]->Render(mSCloudPos[1]);
@@ -120,3 +138,19 @@ void StageONE::Release()
 	//파티클을 지우지 않는것이 아직은 더 자연스러운것 같다
 	//PARTICLE->Release();
 }
+
+float StageONE::ColorLerp(bool isOrigin, float accel)
+{
+	float returnValue = 0.f;
+
+	if (!isOrigin)
+	{
+		returnValue = min(1.f, mColorLerpAmount + (DELTA_TIME * accel));
+	}
+	else
+	{
+		returnValue = max(0.f, mColorLerpAmount - (DELTA_TIME * accel));
+	}
+	return returnValue;
+}
+

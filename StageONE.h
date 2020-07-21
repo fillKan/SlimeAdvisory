@@ -1,6 +1,7 @@
 #pragma once
 #include "PHealthBar.h"
 
+#include "MBHealthBar.h"
 #include "MiddleBoss.h"
 
 class StageONE : public Scence
@@ -10,6 +11,9 @@ public:
 	virtual void Update () override;
 	virtual void Render () override;
 	virtual void Release() override;
+
+private:
+	float ColorLerp(bool isOrigin, float accel);
 
 private:
 
@@ -25,12 +29,14 @@ private:
 	Vector2 mMCloudPos[2];
 	Vector2 mSCloudPos[2];
 
+	MBHealthBar* mMBHealthBar;
+
 	const float   HUGE_CLOUD_SPEED = 1.4f;
 	const float MIDDLE_CLOUD_SPEED = 0.8f;
 	const float  SMALL_CLOUD_SPEED = 0.4f;
 
-	MiddleBoss* mMiddleBoss;
-	bool mHasSummonMBoss = false;
+	bool mIsSummonMBoss = false;
+	bool mIsLeaveMBoss = false;
 
 	const float BOSS_COLOR_R = 255.f;
 	const float BOSS_COLOR_G =  86.f;
