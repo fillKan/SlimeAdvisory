@@ -40,7 +40,7 @@ void MBHealthBar::Update()
 
 void MBHealthBar::Render()
 {
-	mImage.Render(Vector2(500, 20));
+	mImage.Render(Vector2(550, 20));
 }
 
 void MBHealthBar::Release()
