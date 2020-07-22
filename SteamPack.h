@@ -18,5 +18,8 @@ private:
 	float mSecond;
 
 	Timer mDurateTimer;
+
+	float mMAXhealAmount;
+	float mSumhealAmount;
 };
 

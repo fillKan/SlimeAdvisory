@@ -6,6 +6,8 @@ SteamPack::SteamPack(float coolTime, float heal, float second) : Skill(coolTime)
 	mDurateTimer.SetTimer(second);
 
 	mIsCast = false;
+
+	mMAXhealAmount = heal;
 }
 
 SteamPack::~SteamPack()
@@ -21,9 +23,17 @@ void SteamPack::Update()
 
 		mDurateTimer.Update();
 
-		*CurrentHP += mHPS * DELTA_TIME;
+		float heal = mHPS * DELTA_TIME;
 
-		if (mDurateTimer.TimeOver() || *MaxHP <= *CurrentHP)
+		mSumhealAmount += heal;
+
+		if (mSumhealAmount > mMAXhealAmount)
+		{
+			 *CurrentHP += mMAXhealAmount - (mSumhealAmount - heal);
+		}
+		else *CurrentHP += heal;
+
+		if (mDurateTimer.TimeOver() || *MaxHP <= *CurrentHP || mSumhealAmount > mMAXhealAmount)
 		{
 			mIsCast = false;
 
@@ -31,6 +41,7 @@ void SteamPack::Update()
 			{
 				*CurrentHP = *MaxHP;
 			}
+			*CurrentHP = (int)*CurrentHP;
 		}
 	}
 	else
@@ -59,5 +70,7 @@ void SteamPack::CastSkill()
 		mIsCast = true;
 
 		mDurateTimer.SetTimer(mSecond);
+
+		mSumhealAmount = 0;
 	}
 }
