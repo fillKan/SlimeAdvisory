@@ -20,5 +20,7 @@ private:
 	float mSpeed;
 
 	Timer mATKcool;
+
+	const Vector2 ATK_POINT_OFFSET = { -55, 24 };
 };
 

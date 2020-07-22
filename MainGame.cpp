@@ -66,10 +66,10 @@ void MainGame::Release()
 	Camera::ReleaseInstance();
 	Banner::ReleaseInstance();
 
+	ObjectManager::ReleaseInstance();
 	ParticleAdmin::ReleaseInstance();
 	UserInterface::ReleaseInstance();
 	 ImageManager::ReleaseInstance();
-	ObjectManager::ReleaseInstance();
 	ScenceManager::ReleaseInstance();
 }
 
