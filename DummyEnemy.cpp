@@ -43,7 +43,7 @@ void DummyEnemy::Update()
 
 		if (player)
 		{
-			OBJECT->AddObject(new EBullet(Position + Vector2(-55, 24), player->Position, 630.f));
+			OBJECT->AddObject(new EBullet(Position + ATK_POINT_OFFSET, player->Position, 630.f));
 		}
 	}
 }
