@@ -29,6 +29,7 @@ void SkillSetting::Init()
 	mExitButton = new Button(Vector2(WINSIZEX * 0.9f, WINSIZEY * 0.9f));
 	mExitButton->SetChangeImage("Exit/Exit1", "Exit/Exit2", "Exit/Exit3");
 	mExitButton->SetButtonScale(RECT{ -35, -25, 33, 17 });
+	mExitButton->SetRenderPara(ONE * 2, D3DCOLOR_XRGB(255, 255, 255));
 
 	USER_INTERFACE->AddUI(mExitButton);
 }
