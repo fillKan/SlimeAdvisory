@@ -35,6 +35,7 @@ const float PBULLET_DMG = 30.f;
 const float MBOSS_MAXHP = 550.f;
 
 const UINT MBOSS_APPER_NEED = 18;
+const UINT SELECT_MAX_SKILL = 2;
 
 const LPCWSTR TITLE = L"AAA";
 
@@ -73,6 +74,7 @@ const D3DXVECTOR2    UP = D3DXVECTOR2( 0,-1);
 #include "Image.h"
 #include "Particle.h"
 #include "Skill.h"
+#include "PlayerSkillAdmin.h"
 #include "UI.h"
 #include "Button.h"
 #include "Banner.h"

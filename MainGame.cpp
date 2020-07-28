@@ -68,6 +68,8 @@ void MainGame::Release()
 	Camera::ReleaseInstance();
 	Banner::ReleaseInstance();
 
+	PlayerSkillAdmin::ReleaseInstance();
+
 	ObjectManager::ReleaseInstance();
 	ParticleAdmin::ReleaseInstance();
 	UserInterface::ReleaseInstance();

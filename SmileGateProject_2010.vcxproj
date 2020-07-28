@@ -403,6 +403,7 @@
     <ClCompile Include="PBulletBreak.cpp" />
     <ClCompile Include="PHealthBar.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerSkillAdmin.cpp" />
     <ClCompile Include="Scence.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="SkillGauge.cpp" />
@@ -433,6 +434,7 @@
     <ClInclude Include="PBulletBreak.h" />
     <ClInclude Include="PHealthBar.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerSkillAdmin.h" />
     <ClInclude Include="Scence.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Skill.h" />

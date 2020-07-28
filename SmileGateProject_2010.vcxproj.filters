@@ -108,6 +108,9 @@
     <Filter Include="System\Scence\SkillSetting">
       <UniqueIdentifier>{2d93b6c6-e0a8-4e2d-b988-990b094b483a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Skill\PlayerSkillAdmin">
+      <UniqueIdentifier>{a95cbd35-bfde-4b20-a83b-c4ab4dd979b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -263,6 +266,9 @@
     <ClCompile Include="SkillSetting.cpp">
       <Filter>System\Scence\SkillSetting</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerSkillAdmin.cpp">
+      <Filter>System\Skill\PlayerSkillAdmin</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
@@ -359,6 +365,9 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="SkillSetting.h">
       <Filter>System\Scence\SkillSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSkillAdmin.h">
+      <Filter>System\Skill\PlayerSkillAdmin</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
