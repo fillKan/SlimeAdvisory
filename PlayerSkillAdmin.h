@@ -2,8 +2,12 @@
 class PlayerSkillAdmin : public Singleton<PlayerSkillAdmin>
 {
 public:
+	 PlayerSkillAdmin();
+	~PlayerSkillAdmin();
+
+	Skill* GetKeyAttachSkill(int keyCode);
 
 private:
-	Skill* mPSkill[SELECT_MAX_SKILL] = { nullptr };
+	Dictionary<char, Skill*> mPSkill;
 };
 #define PLAYERSKILL PlayerSkillAdmin::Instance()
