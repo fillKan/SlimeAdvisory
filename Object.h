@@ -71,6 +71,7 @@ public:
 	Object** FindBosses();
 	Object* FindPlayer();
 	Object* ForwardCloest(Vector2 parePos, TAG targetTAG);
+	Object* Cloest(Vector2 parePos, TAG targetTAG);
 
 	void CollisionCheck(TAG tagA, TAG tagB);
 
