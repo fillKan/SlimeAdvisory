@@ -110,10 +110,18 @@ void UserInterface::UIRender(Vector2 pos, Image* image, RECT renderingRECT)
 	}
 	if (image->FillImage)
 	{
+		D3DXMatrixAffineTransformation2D(&matrix, 1.0f, nullptr, 0.f, &(pos + image->FillImageOffset));
+
+		IMAGE->GetSprite()->SetTransform(&matrix);
+
 		IMAGE->GetSprite()->Draw(image->FillImage->pTexture, &renderingRECT, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
 	}
 	if (image->EdgeImage != nullptr)
 	{
+		D3DXMatrixAffineTransformation2D(&matrix, 1.0f, nullptr, 0.f, &pos);
+
+		IMAGE->GetSprite()->SetTransform(&matrix);
+
 		if (image->RenderType == UI_RENDER_TYPE::DECREASEBOX_UP)
 		{
 			 IMAGE->GetSprite()->Draw(image->EdgeImage->pTexture, &upRect, nullptr, nullptr, D3DCOLOR_XRGB(255, 255, 255));
