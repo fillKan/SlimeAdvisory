@@ -7,7 +7,7 @@
 #include "PBoost.h"
 #include "SkillGauge.h"
 
-Player::Player() : mBlankShout(1.3f), mSteamPack(2.75f, 6.f, 2.f)
+Player::Player()
 {
 	mEnergyCube  = nullptr;
 	mBoostEffect = nullptr;
@@ -60,14 +60,14 @@ void Player::Init()
 	SkillGauge* skillGauge;
 
 	skillGauge = new SkillGauge(Vector2(55.f, 210.f));
-	skillGauge->SkillLink(&mBlankShout);
+	skillGauge->SkillLink(PLAYERSKILL->GetKeyAttachSkill('Q'));
 	skillGauge->SetImage(IMAGE->AddImage("ESkillGauge", "./image/UI/SkillGaugeBlank.png"), 
 						 IMAGE->AddImage("SkillGauge", "./image/UI/SSkillGauge.png"));
 
 	USER_INTERFACE->AddUI(skillGauge);
 
 	skillGauge = new SkillGauge(Vector2(125.f, 210.f));
-	skillGauge->SkillLink(&mSteamPack);
+	skillGauge->SkillLink(PLAYERSKILL->GetKeyAttachSkill('E'));
 	skillGauge->SetImage(IMAGE->GetImage("ESkillGauge"),
 						 IMAGE->GetImage("SkillGauge"));
 
@@ -85,16 +85,16 @@ void Player::Update()
 
 	mATKcool.Update();
 
-	 mSteamPack.Update();
-	mBlankShout.Update();
+	PLAYERSKILL->GetKeyAttachSkill('Q')->Update();
+	PLAYERSKILL->GetKeyAttachSkill('E')->Update();
 
 	if (INPUT->GetKeyDown('Q'))
 	{
-		mBlankShout.CastSkill();
+		PLAYERSKILL->GetKeyAttachSkill('Q')->CastSkill();
 	}
 	if (INPUT->GetKeyDown('E'))
 	{
-		mSteamPack.CastSkill();
+		PLAYERSKILL->GetKeyAttachSkill('Q')->CastSkill();
 	}
 
 	if (INPUT->GetKey(ATTACKKEY) && mATKcool.TimeOver())
