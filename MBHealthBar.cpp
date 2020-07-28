@@ -35,6 +35,8 @@ void MBHealthBar::Update()
 
 	mImage.SetRect(mRenderType, mFillAmount);
 
+	mImage.FillImageOffset = Vector2(82, 44);
+
 	mSumCURHP = 0.f;
 }
 
