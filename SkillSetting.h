@@ -26,5 +26,8 @@ private:
 	const float  SMALL_CLOUD_SPEED = 0.4f;
 
 	Button* mExitButton;
+
+	Button* mButton_blankShout;
+	Button* mButton_steamPack;
 };
 

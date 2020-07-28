@@ -29,9 +29,22 @@ void SkillSetting::Init()
 	mExitButton = new Button(Vector2(WINSIZEX * 0.9f, WINSIZEY * 0.9f));
 	mExitButton->SetChangeImage("Exit/Exit1", "Exit/Exit2", "Exit/Exit3");
 	mExitButton->SetButtonScale(RECT{ -35, -25, 33, 17 });
-	mExitButton->SetRenderPara(ONE * 2, D3DCOLOR_XRGB(255, 255, 255));
 
 	USER_INTERFACE->AddUI(mExitButton);
+
+	mButton_blankShout = new Button(Vector2(WINSIZEX * 0.425f, WINSIZEY * 0.4f));
+	mButton_blankShout->SetChangeImage("DaengDaengYi1", "DaengDaengYi3", "DaengDaengYi2");
+	mButton_blankShout->SetButtonScale(RECT{ -86, -82, 80, 87 }); // 42 46 208 215 - 이미지ㅡ기으 절반
+	mButton_blankShout->SetRenderPara(ONE * 2, D3DCOLOR_XRGB(255, 255, 255));
+
+	USER_INTERFACE->AddUI(mButton_blankShout);
+
+	mButton_steamPack = new Button(Vector2(WINSIZEX * 0.575f, WINSIZEY * 0.4f));
+	mButton_steamPack->SetChangeImage("DaengDaengYi1", "DaengDaengYi3", "DaengDaengYi2");
+	mButton_steamPack->SetButtonScale(RECT{ -86, -82, 80, 87 }); // 42 46 208 215
+	mButton_steamPack->SetRenderPara(ONE * 2, D3DCOLOR_XRGB(255, 255, 255));
+
+	USER_INTERFACE->AddUI(mButton_steamPack);
 }
 
 void SkillSetting::Update()
