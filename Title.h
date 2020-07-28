@@ -23,6 +23,7 @@ private:
 	Texture* mBackGround;
 	Texture* mCredit;
 	Texture* mCreditWindow;
+	Texture* mHowToPlayWindow;
 
 	Texture* mHCloud[2];
 	Texture* mMCloud[2];

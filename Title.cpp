@@ -14,6 +14,8 @@ void Title::Init()
 	mBackGround = IMAGE->AddImage("BackGround", "./image/BackGround/backgruond.png");
 	mCreditWindow = IMAGE->AddImage("CreditPage", "./image/Title/CreditPage.png");
 
+	mHowToPlayWindow = IMAGE->AddImage("HTP", "./image/Title/HTP.png");
+
 	mTitle = IMAGE->AddImage("MainLogo", "./image/Title/MainLogo.png");
 
 	mHCloud[0] = IMAGE->AddImage("CloudHuge", "./image/BackGround/Cloud/Cloud1.png");
@@ -57,7 +59,6 @@ void Title::Init()
 	mCloseCredit->SetChangeImage("CreditClose/CreditBack1", "CreditClose/CreditBack2", "CreditClose/CreditBack1");
 	mCloseCredit->SetButtonScale(RECT{ -64, -19, 64, 25 });
 
-	BANNER->SetBanner(mCreditWindow, ZERO);
 	BANNER->SetButton(mCloseCredit);
 }
 
@@ -79,6 +80,14 @@ void Title::Update()
 	}
 	if (mCreditButton->OnClick())
 	{
+		BANNER->SetBanner(mCreditWindow, ZERO);
+
+		BANNER->Show();
+	}
+	if (mSettingButton->OnClick())
+	{
+		BANNER->SetBanner(mHowToPlayWindow, ZERO);
+
 		BANNER->Show();
 	}
 	if (mCloseCredit->OnClick())
