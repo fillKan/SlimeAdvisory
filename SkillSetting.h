@@ -42,8 +42,11 @@ private:
 
 	Button* mExitButton;
 
+	Texture *Q, *E;
+
 	SkillButton* mBlankShout;
 	SkillButton* mSteamPack;
+	SkillButton* mGuideMissile;
 
 	const D3DCOLOR UN_SELECTCOLOR = D3DCOLOR_XRGB(100, 100, 100);
 	const D3DCOLOR	  SELECTCOLOR = D3DCOLOR_XRGB(255, 255, 255);

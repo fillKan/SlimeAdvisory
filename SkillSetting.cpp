@@ -20,6 +20,9 @@ void SkillSetting::Init()
 	mSCloud[0] = IMAGE->GetImage("CloudSmall");
 	mSCloud[1] = mSCloud[0];
 
+	Q = IMAGE->AddImage("Q", "./image/UI/Q.png");
+	E = IMAGE->AddImage("E", "./image/UI/E.png");
+
 	mHCloudPos[0] = ZERO; mHCloudPos[1] = Vector2(WINSIZEX, 0);
 	mMCloudPos[0] = ZERO; mMCloudPos[1] = Vector2(WINSIZEX, 0);
 	mSCloudPos[0] = ZERO; mSCloudPos[1] = Vector2(WINSIZEX, 0);
@@ -34,7 +37,7 @@ void SkillSetting::Init()
 
 	Button* skillBtn;
 
-	skillBtn = new Button(Vector2(WINSIZEX * 0.425f, WINSIZEY * 0.4f));
+	skillBtn = new Button(Vector2(WINSIZEX * 0.35f, WINSIZEY * 0.45f));
 	skillBtn->SetChangeImage("DaengDaengYi1", "DaengDaengYi3", "DaengDaengYi2");
 	skillBtn->SetButtonScale(RECT{ -86, -82, 80, 87 }); // 42 46 208 215 - 이미지ㅡ기으 절반
 	skillBtn->SetRenderPara(ONE * 2, UN_SELECTCOLOR);
@@ -43,12 +46,21 @@ void SkillSetting::Init()
 
 	USER_INTERFACE->AddUI(skillBtn);
 
-	skillBtn = new Button(Vector2(WINSIZEX * 0.575f, WINSIZEY * 0.4f));
+	skillBtn = new Button(Vector2(WINSIZEX * 0.65f, WINSIZEY * 0.45f));
 	skillBtn->SetChangeImage("DaengDaengYi1", "DaengDaengYi3", "DaengDaengYi2");
 	skillBtn->SetButtonScale(RECT{ -86, -82, 80, 87 }); // 42 46 208 215
 	skillBtn->SetRenderPara(ONE * 2, UN_SELECTCOLOR);
 
 	mSteamPack = new SkillButton(skillBtn);
+
+	USER_INTERFACE->AddUI(skillBtn);
+
+	skillBtn = new Button(Vector2(WINSIZEX * 0.5f, WINSIZEY * 0.45f));
+	skillBtn->SetChangeImage("DaengDaengYi1", "DaengDaengYi3", "DaengDaengYi2");
+	skillBtn->SetButtonScale(RECT{ -86, -82, 80, 87 }); // 42 46 208 215
+	skillBtn->SetRenderPara(ONE * 2, UN_SELECTCOLOR);
+
+	mGuideMissile = new SkillButton(skillBtn);
 
 	USER_INTERFACE->AddUI(skillBtn);
 }
@@ -77,6 +89,10 @@ void SkillSetting::Update()
 	{
 		SkillSelect(mSteamPack);
 	}
+	if (mGuideMissile->SkillBtn->OnClick())
+	{
+		SkillSelect(mGuideMissile);
+	}
 }
 
 void SkillSetting::Render()
@@ -91,6 +107,9 @@ void SkillSetting::Render()
 
 	mHCloud[0]->Render(mHCloudPos[0]);
 	mHCloud[1]->Render(mHCloudPos[1]);
+
+	Q->CenterRender(Vector2(WINSIZEX * 0.5f, WINSIZEY * 0.45f));
+	E->CenterRender(Vector2(WINSIZEX * 0.65f, WINSIZEY * 0.45f));
 }
 
 void SkillSetting::Release()
