@@ -14,6 +14,8 @@ struct Image
 
 	UI_RENDER_TYPE RenderType = UI_RENDER_TYPE::NONE;
 
+	Vector2 FillImageOffset = ZERO;
+
 	void Render(Vector2 pos);
 
 	void SetRect(UI_RENDER_TYPE renderType, float fillAmount);
