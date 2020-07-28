@@ -94,7 +94,7 @@ void Player::Update()
 	}
 	if (INPUT->GetKeyDown('E'))
 	{
-		PLAYERSKILL->GetKeyAttachSkill('Q')->CastSkill();
+		PLAYERSKILL->GetKeyAttachSkill('E')->CastSkill();
 	}
 
 	if (INPUT->GetKey(ATTACKKEY) && mATKcool.TimeOver())

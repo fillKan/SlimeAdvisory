@@ -6,6 +6,7 @@ public:
 	~PlayerSkillAdmin();
 
 	Skill* GetKeyAttachSkill(int keyCode);
+	void SetKeyAttachSkill(int keyCode, Skill* attachSkill);
 
 private:
 	Dictionary<char, Skill*> mPSkill;

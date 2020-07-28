@@ -31,3 +31,13 @@ Skill* PlayerSkillAdmin::GetKeyAttachSkill(int keyCode)
 	}
 	return nullptr;
 }
+
+void PlayerSkillAdmin::SetKeyAttachSkill(int keyCode, Skill* attachSkill)
+{
+	if (!mPSkill.insert(make_pair(keyCode, attachSkill)).second)
+	{
+		SAFE_DELETE(mPSkill.find(keyCode)->second);
+
+		mPSkill.find(keyCode)->second = attachSkill;
+	}
+}
