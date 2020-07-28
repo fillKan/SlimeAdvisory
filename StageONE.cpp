@@ -89,6 +89,8 @@ void StageONE::Update()
 		USER_INTERFACE->DelUI(mMBHealthBar);
 
 		mMBHealthBar = nullptr;
+
+		mEnemySpawnTimer.SetTimer(1.25f, true);
 	}
 
 	for (int i = 0; i < 2; ++i)
