@@ -111,6 +111,9 @@
     <Filter Include="System\Skill\PlayerSkillAdmin">
       <UniqueIdentifier>{a95cbd35-bfde-4b20-a83b-c4ab4dd979b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Skill\GuideMissile">
+      <UniqueIdentifier>{f17c5654-c282-481d-be7c-a8390eaf3940}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -269,6 +272,9 @@
     <ClCompile Include="PlayerSkillAdmin.cpp">
       <Filter>System\Skill\PlayerSkillAdmin</Filter>
     </ClCompile>
+    <ClCompile Include="GuideMissile.cpp">
+      <Filter>System\Skill\GuideMissile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
@@ -368,6 +374,9 @@
     </ClInclude>
     <ClInclude Include="PlayerSkillAdmin.h">
       <Filter>System\Skill\PlayerSkillAdmin</Filter>
+    </ClInclude>
+    <ClInclude Include="GuideMissile.h">
+      <Filter>System\Skill\GuideMissile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
