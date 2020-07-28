@@ -35,6 +35,18 @@ Skill* PlayerSkillAdmin::GetKeyAttachSkill(int keyCode)
 	return nullptr;
 }
 
+int PlayerSkillAdmin::GetSkillAttachKey(Skill* skill)
+{
+	for (auto iter : mPSkill)
+	{
+		if (iter.second == skill)
+		{
+			return iter.first;
+		}
+	}
+	return -1;
+}
+
 void PlayerSkillAdmin::SetKeyAttachSkill(int keyCode, Skill* attachSkill)
 {
 	if (!mPSkill.insert(make_pair(keyCode, attachSkill)).second)

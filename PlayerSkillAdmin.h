@@ -6,6 +6,7 @@ public:
 	~PlayerSkillAdmin();
 
 	Skill* GetKeyAttachSkill(int keyCode);
+	int GetSkillAttachKey(Skill* skill);
 	void SetKeyAttachSkill(int keyCode, Skill* attachSkill);
 
 private:
