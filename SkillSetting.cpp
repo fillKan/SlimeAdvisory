@@ -32,19 +32,25 @@ void SkillSetting::Init()
 
 	USER_INTERFACE->AddUI(mExitButton);
 
-	mButton_blankShout = new Button(Vector2(WINSIZEX * 0.425f, WINSIZEY * 0.4f));
-	mButton_blankShout->SetChangeImage("DaengDaengYi1", "DaengDaengYi3", "DaengDaengYi2");
-	mButton_blankShout->SetButtonScale(RECT{ -86, -82, 80, 87 }); // 42 46 208 215 - 이미지ㅡ기으 절반
-	mButton_blankShout->SetRenderPara(ONE * 2, D3DCOLOR_XRGB(255, 255, 255));
+	Button* skillBtn;
 
-	USER_INTERFACE->AddUI(mButton_blankShout);
+	skillBtn = new Button(Vector2(WINSIZEX * 0.425f, WINSIZEY * 0.4f));
+	skillBtn->SetChangeImage("DaengDaengYi1", "DaengDaengYi3", "DaengDaengYi2");
+	skillBtn->SetButtonScale(RECT{ -86, -82, 80, 87 }); // 42 46 208 215 - 이미지ㅡ기으 절반
+	skillBtn->SetRenderPara(ONE * 2, UN_SELECTCOLOR);
 
-	mButton_steamPack = new Button(Vector2(WINSIZEX * 0.575f, WINSIZEY * 0.4f));
-	mButton_steamPack->SetChangeImage("DaengDaengYi1", "DaengDaengYi3", "DaengDaengYi2");
-	mButton_steamPack->SetButtonScale(RECT{ -86, -82, 80, 87 }); // 42 46 208 215
-	mButton_steamPack->SetRenderPara(ONE * 2, D3DCOLOR_XRGB(255, 255, 255));
+	mBlankShout = new SkillButton(skillBtn);
 
-	USER_INTERFACE->AddUI(mButton_steamPack);
+	USER_INTERFACE->AddUI(skillBtn);
+
+	skillBtn = new Button(Vector2(WINSIZEX * 0.575f, WINSIZEY * 0.4f));
+	skillBtn->SetChangeImage("DaengDaengYi1", "DaengDaengYi3", "DaengDaengYi2");
+	skillBtn->SetButtonScale(RECT{ -86, -82, 80, 87 }); // 42 46 208 215
+	skillBtn->SetRenderPara(ONE * 2, UN_SELECTCOLOR);
+
+	mSteamPack = new SkillButton(skillBtn);
+
+	USER_INTERFACE->AddUI(skillBtn);
 }
 
 void SkillSetting::Update()
@@ -62,6 +68,14 @@ void SkillSetting::Update()
 	if (mExitButton->OnClick())
 	{
 		SCENCE->LoadScence("Title");
+	}
+	if (mBlankShout->SkillBtn->OnClick())
+	{
+		SkillSelect(mBlankShout);
+	}
+	if (mSteamPack->SkillBtn->OnClick())
+	{
+		SkillSelect(mSteamPack);
 	}
 }
 
@@ -82,4 +96,21 @@ void SkillSetting::Render()
 void SkillSetting::Release()
 {
 	USER_INTERFACE->Release();
+
+	SAFE_DELETE(mBlankShout);
+	SAFE_DELETE(mSteamPack);
+}
+
+void SkillSetting::SkillSelect(SkillButton* skillButton)
+{
+	skillButton->mHasSelect = !skillButton->mHasSelect;
+
+	if (skillButton->mHasSelect)
+	{
+		skillButton->SkillBtn->SetRenderPara(ONE * 2, SELECTCOLOR);
+	}
+	else
+	{
+		skillButton->SkillBtn->SetRenderPara(ONE * 2, UN_SELECTCOLOR);
+	}
 }

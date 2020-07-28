@@ -1,4 +1,16 @@
 #pragma once
+
+struct SkillButton
+{
+	Button* SkillBtn;
+
+	SkillButton(Button* skillButton) : SkillBtn(skillButton), mHasSelect(false)
+	{
+	}
+
+	bool mHasSelect;
+};
+
 class SkillSetting : public Scence
 {
 public:
@@ -9,6 +21,9 @@ public:
 	virtual void Update () override;
 	virtual void Render () override;
 	virtual void Release() override;
+
+private:
+	void SkillSelect(SkillButton* skillButton);
 
 private:
 	Texture* mHCloud[2];
@@ -27,7 +42,10 @@ private:
 
 	Button* mExitButton;
 
-	Button* mButton_blankShout;
-	Button* mButton_steamPack;
+	SkillButton* mBlankShout;
+	SkillButton* mSteamPack;
+
+	const D3DCOLOR UN_SELECTCOLOR = D3DCOLOR_XRGB(100, 100, 100);
+	const D3DCOLOR	  SELECTCOLOR = D3DCOLOR_XRGB(255, 255, 255);
 };
 
