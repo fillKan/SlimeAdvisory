@@ -16,6 +16,8 @@ void MBHealthBar::Init()
 	mImage.EdgeImage = IMAGE->AddImage("boss_icon", "./image/UI/MBossHP/boss_icon.png");
 
 	mSumCURHP = 0.f;
+
+	mImage.FillImageOffset = Vector2(82, 44);
 }
 
 void MBHealthBar::Update()
@@ -34,8 +36,6 @@ void MBHealthBar::Update()
 	mFillAmount = mSumCURHP / (MBOSS_MAXHP * MBOSS_COUNT);
 
 	mImage.SetRect(mRenderType, mFillAmount);
-
-	mImage.FillImageOffset = Vector2(82, 44);
 
 	mSumCURHP = 0.f;
 }
