@@ -124,7 +124,7 @@ void MiddleBoss::Bombing()
 	}
 	else
 	{
-		OBJECT->AddObject(new MBullet(Position, &(OBJECT->FindPlayer()->Position), 3.5f));
+		OBJECT->AddObject(new MBullet(Position, OBJECT->FindPlayer(), 3.5f, 1.6f));
 
 		WaitForNextAcion(1.3f);
 
