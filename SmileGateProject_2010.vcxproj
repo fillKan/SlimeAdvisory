@@ -406,6 +406,7 @@
     <ClCompile Include="Scence.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="SkillGauge.cpp" />
+    <ClCompile Include="SkillSetting.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="StageONE.cpp" />
     <ClCompile Include="SteamPack.cpp" />
@@ -436,6 +437,7 @@
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="SkillGauge.h" />
+    <ClInclude Include="SkillSetting.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="StageONE.h" />
     <ClInclude Include="SteamPack.h" />

@@ -86,7 +86,7 @@ void Title::Update()
 	}
 	if (mSettingButton->OnClick())
 	{
-		BANNER->SetBanner(mHowToPlayWindow, ZERO);
+		SCENCE->LoadScence("SkillSetting");
 
 		BANNER->Show();
 	}

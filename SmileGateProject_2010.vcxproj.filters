@@ -105,6 +105,9 @@
     <Filter Include="System\Skill\BlankShout">
       <UniqueIdentifier>{1e584e84-f04e-413e-800f-1eb14b39bf91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="System\Scence\SkillSetting">
+      <UniqueIdentifier>{2d93b6c6-e0a8-4e2d-b988-990b094b483a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -257,6 +260,9 @@
     <ClCompile Include="BlankShout.cpp">
       <Filter>System\Skill\BlankShout</Filter>
     </ClCompile>
+    <ClCompile Include="SkillSetting.cpp">
+      <Filter>System\Scence\SkillSetting</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
@@ -351,6 +357,9 @@
       <Filter>System\Skill\BlankShout</Filter>
     </ClInclude>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="SkillSetting.h">
+      <Filter>System\Scence\SkillSetting</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
