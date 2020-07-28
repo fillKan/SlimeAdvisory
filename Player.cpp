@@ -87,6 +87,7 @@ void Player::Update()
 
 	PLAYERSKILL->GetKeyAttachSkill('Q')->Update();
 	PLAYERSKILL->GetKeyAttachSkill('E')->Update();
+	PLAYERSKILL->GetKeyAttachSkill('R')->Update();
 
 	if (INPUT->GetKeyDown('Q'))
 	{
@@ -95,6 +96,10 @@ void Player::Update()
 	if (INPUT->GetKeyDown('E'))
 	{
 		PLAYERSKILL->GetKeyAttachSkill('E')->CastSkill();
+	}
+	if (INPUT->GetKeyDown('R'))
+	{
+		PLAYERSKILL->GetKeyAttachSkill('R')->CastSkill();
 	}
 
 	if (INPUT->GetKey(ATTACKKEY) && mATKcool.TimeOver())

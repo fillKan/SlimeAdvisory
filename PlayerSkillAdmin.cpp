@@ -3,6 +3,7 @@
 
 #include "BlankShout.h"
 #include "SteamPack.h"
+#include "GuideMissile.h"
 
 PlayerSkillAdmin::PlayerSkillAdmin()
 {
@@ -10,6 +11,8 @@ PlayerSkillAdmin::PlayerSkillAdmin()
 	mPSkill.insert(make_pair('Q', new BlankShout(BLANKSHOUT_COOL)));
 
 	mPSkill.insert(make_pair('E', new SteamPack(STEAMPACK_COOL, STEAMPACK_HEAL, STEAMPACK_DURATE)));
+
+	mPSkill.insert(make_pair('R', new GuideMissile(0.5f, 100, 5.5f, 8.5f)));
 }
 
 PlayerSkillAdmin::~PlayerSkillAdmin()
