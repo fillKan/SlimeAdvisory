@@ -15,8 +15,11 @@ public:
 
 	void SetChangeImage(const string& default, const string& highlight, const string& onMouse);
 
+	Vector2 GPosition() { return mPosition; }
+
 	bool OnClick();
 	bool OnPress();
+	bool OnMouse();
 
 	bool TakeOff();
 

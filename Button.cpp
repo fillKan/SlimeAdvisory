@@ -76,6 +76,11 @@ bool Button::OnPress()
 	return (mIsCrntClick && mIsPrevClick);
 }
 
+bool Button::OnMouse()
+{
+	return mIsHighlight;
+}
+
 bool Button::TakeOff()
 {
 	return (!mIsCrntClick && mIsPrevClick);
