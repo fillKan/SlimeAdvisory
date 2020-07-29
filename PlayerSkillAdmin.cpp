@@ -8,20 +8,40 @@
 PlayerSkillAdmin::PlayerSkillAdmin()
 {
 	// 기본 스킬 셋팅
-	mPSkill.insert(make_pair('Q', new BlankShout(BLANKSHOUT_COOL)));
+	mPSkillLib.insert(make_pair('Q', mBlankShout = new BlankShout(BLANKSHOUT_COOL)));
 
-	mPSkill.insert(make_pair('E', new SteamPack(STEAMPACK_COOL, STEAMPACK_HEAL, STEAMPACK_DURATE)));
+	mPSkillLib.insert(make_pair('E', mSteamPack = new SteamPack(STEAMPACK_COOL, STEAMPACK_HEAL, STEAMPACK_DURATE)));
 
-	mPSkill.insert(make_pair('R', new GuideMissile(0.5f, 100, 5.5f, 8.5f)));
+	mPSkillLib.insert(make_pair('R', mGuideMissile = new GuideMissile(3.5f, 100, 5.5f, 8.5f)));
+
+	mPSkill = mPSkillLib;
 }
 
 PlayerSkillAdmin::~PlayerSkillAdmin()
 {
-	for (auto iter : mPSkill)
+	for (auto iter : mPSkillLib)
 	{
 		SAFE_DELETE(iter.second);
 	}
+	mPSkillLib.clear();
+
 	mPSkill.clear();
+}
+
+Skill* PlayerSkillAdmin::GetSkill(SKILLS skill)
+{
+	switch (skill)
+	{
+	case SKILLS::BLANKSHOUT:
+		return mBlankShout;
+
+	case SKILLS::STEAMPACK:
+		return mSteamPack;
+
+	case SKILLS::GUIDEMISSILE:
+		return mGuideMissile;
+	}
+	return nullptr;
 }
 
 Skill* PlayerSkillAdmin::GetKeyAttachSkill(int keyCode)
@@ -49,10 +69,10 @@ int PlayerSkillAdmin::GetSkillAttachKey(Skill* skill)
 
 void PlayerSkillAdmin::SetKeyAttachSkill(int keyCode, Skill* attachSkill)
 {
-	if (!mPSkill.insert(make_pair(keyCode, attachSkill)).second)
-	{
-		SAFE_DELETE(mPSkill.find(keyCode)->second);
+	auto find = mPSkill.find(keyCode);
 
-		mPSkill.find(keyCode)->second = attachSkill;
+	if (find != mPSkill.end())
+	{
+		find->second = attachSkill;
 	}
 }
