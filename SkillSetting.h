@@ -4,11 +4,27 @@ struct SkillButton
 {
 	Button* SkillBtn;
 
+	Skill* LinkSkill;
+
 	SkillButton(Button* skillButton) : SkillBtn(skillButton), mHasSelect(false)
 	{
 	}
 
 	bool mHasSelect;
+
+	char AttachKey;
+};
+
+struct SelectKeyImage
+{
+	Texture* Image;
+
+	Vector2 Position;
+
+	SelectKeyImage(Texture* image, Vector2 pos) : Image(image), Position(pos), HasLinkSkill(false)
+	{
+	}
+	bool HasLinkSkill;
 };
 
 class SkillSetting : public Scence
@@ -42,13 +58,22 @@ private:
 
 	Button* mExitButton;
 
-	Texture *Q, *E;
+	SelectKeyImage Q, E;
 
 	SkillButton* mBlankShout;
 	SkillButton* mSteamPack;
 	SkillButton* mGuideMissile;
 
+	Texture* mBlankShoutText;
+	Texture* mSteamPackText;
+	Texture* mGuideMissileText;
+
 	const D3DCOLOR UN_SELECTCOLOR = D3DCOLOR_XRGB(100, 100, 100);
 	const D3DCOLOR	  SELECTCOLOR = D3DCOLOR_XRGB(255, 255, 255);
+
+	const Vector2 LEFT_SIDE = Vector2(WINSIZEX * 0.35f, WINSIZEY * 0.45f);
+	const Vector2 MIDDLE = Vector2(WINSIZEX * 0.5f, WINSIZEY * 0.45f);
+	const Vector2 RIGHT_SIDE = Vector2(WINSIZEX * 0.65f, WINSIZEY * 0.45f);
+
 };
 
