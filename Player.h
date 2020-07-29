@@ -33,8 +33,5 @@ private:
 
 	const Vector2 ATK_POINT_OFFSET = Vector2(130.5f, 20.5f);
 	const Vector2	  BOOST_OFFSET = Vector2(-90.f, 20.f);
-
-	BlankShout mBlankShout;
-	SteamPack   mSteamPack;
 };
 

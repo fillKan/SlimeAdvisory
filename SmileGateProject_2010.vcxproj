@@ -391,6 +391,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DummyEnemy.cpp" />
     <ClCompile Include="EBullet.cpp" />
+    <ClCompile Include="GuideMissile.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="MBHealthBar.cpp" />
@@ -403,9 +404,11 @@
     <ClCompile Include="PBulletBreak.cpp" />
     <ClCompile Include="PHealthBar.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerSkillAdmin.cpp" />
     <ClCompile Include="Scence.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="SkillGauge.cpp" />
+    <ClCompile Include="SkillSetting.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="StageONE.cpp" />
     <ClCompile Include="SteamPack.cpp" />
@@ -418,6 +421,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DummyEnemy.h" />
     <ClInclude Include="EBullet.h" />
+    <ClInclude Include="GuideMissile.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Math.h" />
@@ -432,10 +436,12 @@
     <ClInclude Include="PBulletBreak.h" />
     <ClInclude Include="PHealthBar.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerSkillAdmin.h" />
     <ClInclude Include="Scence.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="SkillGauge.h" />
+    <ClInclude Include="SkillSetting.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="StageONE.h" />
     <ClInclude Include="SteamPack.h" />

@@ -3,7 +3,7 @@
 
 #include "PBulletBreak.h"
 
-PBullet::PBullet(Vector2 pos, Vector2 dir, float rot)
+PBullet::PBullet(Vector2 pos, Vector2 dir, float rot, float speed) : mSpeed(speed)
 {
 	Position = pos;
 
@@ -25,8 +25,6 @@ void PBullet::Init()
 	mAnimation.SetFrame("./image/Player/Bullet/", "PlayerBullet", 6);
 
 	CircleRadius = 15.f;
-
-	mSpeed = 1100.f;
 }
 
 void PBullet::Update()

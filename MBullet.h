@@ -2,7 +2,7 @@
 class MBullet : public Object
 {
 public:
-	 MBullet(Vector2 pos, Vector2* target, float lifeTime);
+	 MBullet(Vector2 pos, Object* target, float lifeTime, float speed);
 	~MBullet();
 
 	virtual void Init   () override;
@@ -14,12 +14,17 @@ public:
 	virtual void OnCollisionStay (Object* other) override;
 	virtual void OnCollisionExit (Object* other) override;
 
+	void SetCollisionTarget(TAG targetTAG, float damage);
+
 private:
-	Vector2* mTarget;
+	Object* mTarget;
 
 	Timer mLifeTimer;
 	Animation mAnimation;
 
+	TAG mTargetTAG;
+
 	float mSpeed;
+	float mDamage;
 };
 

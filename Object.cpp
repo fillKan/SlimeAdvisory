@@ -106,6 +106,33 @@ Object* ObjectManager::ForwardCloest(Vector2 parePos, TAG targetTAG)
 	return cloestObj;
 }
 
+Object* ObjectManager::Cloest(Vector2 parePos, TAG targetTAG)
+{
+	float compareDistance;
+
+	float   cloestDistance = 160000.f;
+	Object* cloestObj	   = nullptr;
+
+	for (auto iter : mObjects)
+	{
+		if (iter->IsActive && iter->Tag == targetTAG)
+		{
+			compareDistance = Math::Distance(iter->Position, parePos);
+
+			if (compareDistance < cloestDistance)
+			{
+				float temp = compareDistance;
+
+				compareDistance = cloestDistance;
+				cloestDistance = temp;
+
+				cloestObj = iter;
+			}
+		}
+	}
+	return cloestObj;
+}
+
 void ObjectManager::CollisionCheck(TAG tagA, TAG tagB)
 {
 	if (mObjects.empty()) return;

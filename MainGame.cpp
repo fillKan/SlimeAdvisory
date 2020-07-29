@@ -3,6 +3,7 @@
 
 #include "StageONE.h"
 #include "Title.h"
+#include "SkillSetting.h"
 
 #include "PBulletBreak.h"
 #include "PAttack.h"
@@ -21,6 +22,7 @@ void MainGame::Init()
 
 	SCENCE->AddScence("StageONE", new StageONE());
 	SCENCE->AddScence("Title", new Title());
+	SCENCE->AddScence("SkillSetting", new SkillSetting());
 
 	PARTICLE->AddParticle(PARTICLES::PBULLET_BREAK, new PBulletBreak(ZERO));
 	PARTICLE->AddParticle(PARTICLES::PATTACK, new PAttack(ZERO));
@@ -65,6 +67,8 @@ void MainGame::Release()
 	 Input::ReleaseInstance();
 	Camera::ReleaseInstance();
 	Banner::ReleaseInstance();
+
+	PlayerSkillAdmin::ReleaseInstance();
 
 	ObjectManager::ReleaseInstance();
 	ParticleAdmin::ReleaseInstance();

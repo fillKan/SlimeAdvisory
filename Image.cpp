@@ -160,6 +160,34 @@ void ImageManager::CenterRender(Texture* texture, Vector2 pos, D3DCOLOR color)
 	}
 }
 
+void ImageManager::Render(Texture* texture, Vector2 pos, D3DCOLOR color, Vector2 scale)
+{
+	if (texture)
+	{
+		D3DXMATRIXA16 matrix;
+		Vector2 Center = Vector2(texture->info.Width * 0.5f, texture->info.Height * 0.5f);
+
+		D3DXMatrixTransformation2D(&matrix, &Center, 0.f, &scale, &Center, 0.f, &pos);
+
+		mSprite->SetTransform(&matrix);
+		mSprite->Draw(texture->pTexture, nullptr, nullptr, nullptr, color);
+	}
+}
+
+void ImageManager::CenterRender(Texture* texture, Vector2 pos, D3DCOLOR color, Vector2 scale)
+{
+	if (texture)
+	{
+		D3DXMATRIXA16 matrix;
+		Vector2 Center = Vector2(texture->info.Width * 0.5f, texture->info.Height * 0.5f);
+
+		D3DXMatrixTransformation2D(&matrix, &Center, 0.f, &scale, &Center, 0.f, &(pos - Center));
+
+		mSprite->SetTransform(&matrix);
+		mSprite->Draw(texture->pTexture, nullptr, nullptr, nullptr, color);
+	}
+}
+
 void ImageManager::Begin()
 {
 	mSprite->Begin(1 << 4);

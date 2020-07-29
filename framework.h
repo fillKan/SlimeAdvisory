@@ -34,7 +34,13 @@ const float ENEMY_DUMMY = 100.f;
 const float PBULLET_DMG = 30.f;
 const float MBOSS_MAXHP = 550.f;
 
+const float BLANKSHOUT_COOL = 1.5f;
+const float STEAMPACK_COOL = 2.75f;
+const float STEAMPACK_HEAL = 6.f;
+const float STEAMPACK_DURATE = 2.f;
+
 const UINT MBOSS_APPER_NEED = 18;
+const UINT SELECT_MAX_SKILL = 2;
 
 const LPCWSTR TITLE = L"AAA";
 
@@ -73,6 +79,7 @@ const D3DXVECTOR2    UP = D3DXVECTOR2( 0,-1);
 #include "Image.h"
 #include "Particle.h"
 #include "Skill.h"
+#include "PlayerSkillAdmin.h"
 #include "UI.h"
 #include "Button.h"
 #include "Banner.h"
